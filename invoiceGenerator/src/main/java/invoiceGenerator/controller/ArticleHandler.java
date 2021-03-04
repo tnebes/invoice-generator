@@ -6,7 +6,6 @@ import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Locale;
 
 public class ArticleHandler extends Handler<Article> {
 
