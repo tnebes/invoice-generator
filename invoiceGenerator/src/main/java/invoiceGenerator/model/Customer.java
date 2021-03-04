@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,30 +13,37 @@ import java.util.List;
 @Entity(name = "customer")
 public class Customer extends Identity {
 
-	static public final boolean NATURAL_PERSON = false;
 	static public final boolean LEGAL_PERSON = true;
-	@Column(nullable = false)
-	private Boolean 			type;
+	static public final boolean NATURAL_PERSON = false;
 
-	@Column(name = "date_of_creation", nullable = false)
+	@NotNull(message = "Type must be defined")
+	private Boolean 			type = NATURAL_PERSON; // 1 legal, 0 natural person
+
+	@NotNull(message = "Customer must have date of creation assigned.")
+	@Column(name = "date_of_creation")
 	private Instant 			dateOfCreation;
 
-	@Column(columnDefinition = "varchar(32)")
+	@Size(max = 32)
+	@Column(name = "vatid")
 	private String 				VATID;
 
-	@Column(name = "national_id_number", columnDefinition = "varchar(32)")
+	@Size(max = 32)
+	@Column(name = "national_id_number")
 	private String 				nationalIdNumber;
 
-	@Column(columnDefinition = "char(100)")
+	@Size(max = 32)
 	private String 				name;
 
-	@Column(name = "first_name", columnDefinition = "varchar(50)")
+	@Size(max = 50)
+	@Column(name = "first_name")
 	private String 				firstName;
 
-	@Column(name = "middle_name", columnDefinition = "varchar(50)")
+	@Size(max = 50)
+	@Column(name = "middle_name")
 	private String 				middleName;
 
-	@Column(name = "last_name", columnDefinition = "varchar(50)")
+	@Size(max = 50)
+	@Column(name = "last_name")
 	private String 				lastName;
 
 	@ManyToOne
@@ -43,23 +52,32 @@ public class Customer extends Identity {
 	@ManyToOne
 	private Address 			shippingAddress;
 
-//	// TODO
-//	@OneToMany(targetEntity = Invoice.class, mappedBy = "customer")
-//	private ArrayList<Invoice> invoices = new ArrayList<>();
-
 	public Customer() {
 
 	}
 
-	public Customer(Boolean type, Instant dateOfCreation, String VATID, String nationalIdNumber, String name, String firstName, String middleName, String lastName, Address billingAddress, Address shippingAddress) {
-		this.type = type;
+	public Customer(Instant dateOfCreation, String nationalIdNumber, String firstName,
+					String middleName, String lastName, Address billingAddress,
+					Address shippingAddress) {
+		this();
+		this.type = Customer.NATURAL_PERSON;
 		this.dateOfCreation = dateOfCreation;
-		this.VATID = VATID;
 		this.nationalIdNumber = nationalIdNumber;
-		this.name = name;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		this.billingAddress = billingAddress;
+		this.shippingAddress = shippingAddress;
+	}
+
+	public Customer(@NotNull(message = "Customer must have date of creation assigned.") Instant dateOfCreation,
+					@Size(max = 32) String VATID,
+					@Size(max = 32) String name,
+					Address billingAddress, Address shippingAddress) {
+		this();
+		this.dateOfCreation = dateOfCreation;
+		this.VATID = VATID;
+		this.name = name;
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
 	}

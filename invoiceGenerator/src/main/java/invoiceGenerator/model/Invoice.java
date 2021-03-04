@@ -1,8 +1,10 @@
 package invoiceGenerator.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,30 +16,38 @@ import java.util.List;
 @Entity(name = "invoice")
 public class Invoice extends Identity {
 
-	@Column(name = "date_of_creation", nullable = false)
+	@NotNull(message = "Date of creation cannot be null.")
+	@Column(name = "date_of_creation")
 	private Instant				dateOfCreation; // not null
 
 	@ManyToOne(targetEntity = Customer.class, optional = true)
 	private Customer			customer;
 
-	@ManyToOne(optional = false)
+	@NotNull(message = "An invoice must have a transaction type.")
+	@ManyToOne
 	private TransactionType 	transactionType; // not null
 
-	@ManyToOne(optional = false)
+	@NotNull(message = "An invoice must have a status.")
+	@ManyToOne
 	private Status				status; // not null
 
-	@Column(name = "invoice_discount_percent", nullable = false)
-	private Byte 				invoiceDiscountPercent;
+	@NotNull(message = "An invoice must have a not null value for discount.")
+	@Column(name = "invoice_discount_percent")
+	private Byte 				invoiceDiscountPercent = 0;
 
-	@Column(nullable = false)
+	@NotNull(message = "An invoice must have a subtotal (total - tax)")
+	@Column
 	private BigDecimal			subtotal;
 
-	@Column(nullable = false)
+	@NotNull(message = "An invoice must have total")
+	@Column
 	private BigDecimal			total;
 
+	@NotNull(message = "An invoice must have the amount due.")
 	@Column(name = "amount_due", nullable = false)
 	private BigDecimal			amountDue;
 
+	@NotNull(message = "An invoice must have some amount paid.")
 	@Column(name = "amount_paid", nullable = false)
 	private BigDecimal			amountPaid; // not null
 
@@ -47,7 +57,7 @@ public class Invoice extends Identity {
 	// TODO delete this?
 	@Column(name = "article_invoice")
 	@OneToMany(mappedBy = "invoice")
-	List<ArticleInvoice> articleInvoice;
+	List<ArticleInvoice> articleInvoice = new ArrayList<>();
 
 	public Invoice() {
 
@@ -56,6 +66,7 @@ public class Invoice extends Identity {
 	public Invoice(Instant dateOfCreation, Customer customer, TransactionType transactionType,
 				   Status status, Byte invoiceDiscountPercent, BigDecimal subtotal, BigDecimal total,
 				   BigDecimal amountDue, BigDecimal amountPaid, Address shippingAddress) {
+		this();
 		this.dateOfCreation = dateOfCreation;
 		this.customer = customer;
 		this.transactionType = transactionType;

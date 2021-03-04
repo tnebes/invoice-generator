@@ -7,7 +7,7 @@ package invoiceGenerator;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import invoiceGenerator.UI.MainMenu;
+import invoiceGenerator.view.MainMenu;
 
 
 /**

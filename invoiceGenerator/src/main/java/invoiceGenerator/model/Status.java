@@ -3,16 +3,21 @@ package invoiceGenerator.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "status")
 public class Status extends Identity {
 
-	@Column(columnDefinition = "varchar(50)", nullable = false)
+	@NotNull(message = "A status must have a name")
+	@Size(max = 50)
+	@Column
 	private String 			name;
 
-	@Column(columnDefinition = "varchar(100)")
+	@Size(max = 100)
+	@Column
 	private String 			description;
 
 	@Column(name = "description_long", columnDefinition = "text")
@@ -20,13 +25,14 @@ public class Status extends Identity {
 
 	@Column(name = "invoices_id")
 	@OneToMany(mappedBy = "status")
-	private List<Invoice> invoices;
+	private List<Invoice> invoices = new ArrayList<>();
 
 	public Status() {
 
 	}
 
 	public Status(String name, String description, String descriptionLong) {
+		this();
 		this.name = name;
 		this.description = description;
 		this.descriptionLong = descriptionLong;

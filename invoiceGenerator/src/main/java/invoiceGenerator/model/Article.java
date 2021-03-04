@@ -3,7 +3,11 @@ package invoiceGenerator.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "article")
@@ -11,28 +15,40 @@ public class Article extends Identity {
 
 	static public final byte STANDARD_TAX_RATE = 25;
 
-	@Column(name = "warehouse_location", columnDefinition = "varchar(10)", nullable = false)
+	@NotNull(message = "Warehouse location must be set.")
+	@NotEmpty(message = "Warehouse location must not be empty.")
+	@Size(max = 10, message = "Location can be maximally 10 characters.")
+	@Column(name = "warehouse_location")
 	private String		warehouseLocation; // not null
 
-	@Column(name = "warehouse_quantity", nullable = false)
-	private Long 		warehouseQuantity; // not null
+	@NotNull(message = "Quantity cannot be null.")
+	@Column(name = "warehouse_quantity")
+	private Long 		warehouseQuantity = 0L; // not null
 
-	@Column(name = "wholesale_price", nullable = false)
+	@NotNull(message = "Wholesale price cannot be null.")
+	@Column(name = "wholesale_price")
 	private BigDecimal 	wholesalePrice; // not null
 
-	@Column(name = "retail_price", nullable = false)
+	@NotNull(message = "Retail price cannot be null.")
+	@Column(name = "retail_price")
 	private BigDecimal	retailPrice;
 
-	@Column(name = "tax_rate", nullable = false)
-	private Byte 		taxRate;
+	@NotNull(message = "Tax rate cannot be null.")
+	@Column(name = "tax_rate")
+	private Byte 		taxRate = 25;
 
-	@Column(name = "short_name", columnDefinition = "varchar(50)", nullable = false)
+	@NotNull(message = "Article must have a short name.")
+	@NotEmpty(message = "Article cannot have a blank or empty name.")
+	@Size(max = 50)
+	@Column(name = "short_name")
 	private String 		shortName; // not null
 
-	@Column(name = "long_name", columnDefinition = "varchar(100)")
+	@Size(max = 100)
+	@Column(name = "long_name")
 	private String 		longName;
 
-	@Column(name = "short_description", columnDefinition = "varchar(100)")
+	@Size(max = 100)
+	@Column(name = "short_description")
 	private String 		shortDescription;
 
 	@Column(name = "long_description", columnDefinition = "text")
@@ -41,23 +57,12 @@ public class Article extends Identity {
 	// TODO delete this?
 	@Column(name = "article_invoice")
 	@OneToMany(mappedBy = "article")
-	private List<ArticleInvoice> articleInvoice;
+	private List<ArticleInvoice> articleInvoice = new ArrayList<>();
 
 	public Article() {
-
 	}
 
-	public Article(String warehouseLocation, Long warehouseQuantity, BigDecimal wholesalePrice, BigDecimal retailPrice, Byte taxRate, String shortName, String longName, String shortDescription, String longDescription) {
-		this.warehouseLocation = warehouseLocation;
-		this.warehouseQuantity = warehouseQuantity;
-		this.wholesalePrice = wholesalePrice;
-		this.retailPrice = retailPrice;
-		this.taxRate = taxRate;
-		this.shortName = shortName;
-		this.longName = longName;
-		this.shortDescription = shortDescription;
-		this.longDescription = longDescription;
-	}
+	// TODO article constructor with arguments?
 
 	public String getWarehouseLocation() {
 		return warehouseLocation;

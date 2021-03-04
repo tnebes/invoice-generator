@@ -1,40 +1,68 @@
 package invoiceGenerator.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity(name = "article_invoice")
 public class ArticleInvoice extends Identity {
 
-	@Column(name = "date_of_creation", nullable = false)
+	@NotNull(message = "Date must exist.")
+	@Column(name = "date_of_creation")
 	private Instant 	dateOfCreation;
 
 	@ManyToOne()
-	@JoinColumn(name = "article", nullable = false)
+	@NotNull(message = "Requires an article.")
+	@JoinColumn(name = "article")
 	private Article		article;
 
 	@ManyToOne()
-	@JoinColumn(name = "invoice", nullable = false)
+	@NotNull(message = "Requires an invoice.")
+	@JoinColumn(name = "invoice")
 	private Invoice		invoice;
 
-	private Byte 		discount;
+	@NotNull(message = "A nonnegative discount must exist")
+	// TODO non-negative number
+	private Byte 		discount = 0;
 
-	@Column(nullable = false)
+	@NotNull(message = "Quantity must be defined")
 	private Long 		quantity;
 
-	@Column(name = "wholesale_price", nullable = false)
+	@NotNull(message = "Wholesale price must be defined.")
+	@Column(name = "wholesale_price")
 	private BigDecimal 	wholesalePrice;
 
-	@Column(name = "retail_price", nullable = false)
+	@NotNull(message = "Retail price must be defined.")
+	@Column(name = "retail_price")
 	private BigDecimal 	retailPrice;
 
-	@Column(name = "tax_rate", nullable = false)
-	private Byte 		taxRate;
+	@NotNull(message = "Tax rate must be defined.")
+	@Column(name = "tax_rate")
+	private Byte 		taxRate = 25;
 
 	@Column(columnDefinition = "text")
 	private String 		note;
-	
+
+	public ArticleInvoice() {
+
+	}
+
+	public ArticleInvoice(Instant dateOfCreation, Article article, Invoice invoice,
+						  Byte discount, Long quantity, BigDecimal wholesalePrice,
+						  BigDecimal retailPrice, Byte taxRate, String note) {
+		this();
+		this.dateOfCreation = dateOfCreation;
+		this.article = article;
+		this.invoice = invoice;
+		this.discount = discount;
+		this.quantity = quantity;
+		this.wholesalePrice = wholesalePrice;
+		this.retailPrice = retailPrice;
+		this.taxRate = taxRate;
+		this.note = note;
+	}
+
 	public Instant getDateOfCreation() {
 		return dateOfCreation;
 	}

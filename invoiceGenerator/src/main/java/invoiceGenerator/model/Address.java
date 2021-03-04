@@ -4,34 +4,62 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity(name = "address")
 public class Address extends Identity {
 
-	static public final boolean SHIPPING_ADDRESS = false;
 	static public final boolean BILLING_ADDRESS = true;
+	static public final boolean SHIPPING_ADDRESS = false;
 
-	private Boolean					type;
-	@Column(columnDefinition = "varchar(50)", nullable = false)
-	private String city;
+	@NotNull(message = "address must be either a billing or shipping address.")
+	private Boolean					type; // 1 billing, 0 shipping
 
-	@Column(name = "ZIP_code", columnDefinition = "varchar(50)", nullable = false)
+	@NotNull(message = "Please enter a city.")
+	@NotEmpty(message = "City cannot be blank or empty.")
+	@Size(max = 50, message = "City name can be maximally 50 characters.")
+	private String 					city;
+
+	@NotNull(message = "Please enter a zip code.")
+	@NotEmpty(message = "zip code cannot be blank or empty.")
+	@Size(max = 50, message = "zip code can be maximally 50 characters.")
+	@Column(name = "zip_code")
 	private String					ZIPCode;
 
-	@Column(columnDefinition = "char(50)", nullable = false)
+	@NotNull(message = "Please enter a street.")
+	@NotEmpty(message = "Street name cannot be blank or empty.")
+	@Size(max = 50, message = "Street name can be maximally 50 characters.")
 	private String					street;
 
-	@Column(name = "street_number", columnDefinition = "varchar(10)")
+	@NotNull(message = "Please enter the street number.")
+	@NotEmpty(message = "Street number cannot be blank or empty.")
+	@Size(max = 10, message = "Street numbr can be maximally 10 characters.")
+	@Column(name = "street_number")
 	private String					streetNumber;
 
-	@Column(name = "street_letter", columnDefinition = "varchar(10)")
+	@Size(max = 10, message = "Street letter can be maximally 10 characters.")
+	@Column(name = "street_letter")
 	private String					streetLetter;
 
-	@Column(columnDefinition = "varchar(50)", nullable = false)
+	@NotNull(message = "Please enter a country.")
+	@NotEmpty(message = "country cannot be blank or empty.")
+	@Size(max = 50, message = "Country name can be maximally 50 characters.")
 	private String					country;
 
-	public Address(Boolean type, String city, String ZIPCode, String street, String streetNumber, String streetLetter, String country) {
+	public Address() {
+	}
+
+	public Address(@NotNull(message = "address must be either a billing or shipping address.") Boolean type,
+				   @NotNull(message = "Please enter a city.") @NotEmpty(message = "City cannot be blank or empty.") @Size(max = 50, message = "City name can be maximally 50 characters.") String city,
+				   @NotNull(message = "Please enter a zip code.") @NotEmpty(message = "zip code cannot be blank or empty.") @Size(max = 50, message = "zip code can be maximally 50 characters.") String ZIPCode,
+				   @NotNull(message = "Please enter a street.") @NotEmpty(message = "Street name cannot be blank or empty.") @Size(max = 50, message = "Street name can be maximally 50 characters.") String street,
+				   @NotNull(message = "Please enter the street number.") @NotEmpty(message = "Street number cannot be blank or empty.") @Size(max = 10, message = "Street numbr can be maximally 10 characters.") String streetNumber,
+				   @Size(max = 10, message = "Street letter can be maximally 10 characters.") String streetLetter,
+				   @NotNull(message = "Please enter a country.") @NotEmpty(message = "country cannot be blank or empty.") @Size(max = 50, message = "Country name can be maximally 50 characters.") String country) {
+		this();
 		this.type = type;
 		this.city = city;
 		this.ZIPCode = ZIPCode;
@@ -39,10 +67,6 @@ public class Address extends Identity {
 		this.streetNumber = streetNumber;
 		this.streetLetter = streetLetter;
 		this.country = country;
-	}
-
-	public Address() {
-
 	}
 
 	public Boolean isType() {
@@ -88,13 +112,4 @@ public class Address extends Identity {
 		this.country = country;
 	}
 
-//	public List<Invoice> getInvoices() {
-//		return invoices;
-//	}
-//	public void setInvoices(List<Invoice> invoiceIDs) {
-//		this.invoices = invoices;
-//	}
-	
-	
-	
 }

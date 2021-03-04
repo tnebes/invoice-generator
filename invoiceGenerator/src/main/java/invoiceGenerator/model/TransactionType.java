@@ -2,22 +2,29 @@ package invoiceGenerator.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.ArrayList;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "transaction_type")
 public class TransactionType extends Identity {
 
-	@Column(columnDefinition = "varchar(100)")
+	@Size(max = 100)
+	@NotNull(message = "Transaction type must have a name.")
+	@NotEmpty(message = "Transaction type's name cannot be blank or empty.")
+	@Column
 	private String 				name;
 
-	@Column(columnDefinition = "varchar(255)")
+	@Size(max = 255)
+	@Column
 	private String 				description;
 
 	public TransactionType() {
-		// this(IDCounter.incrementTransactionTypeCounter(), "default", "default");
+
 	}
 
 	public TransactionType(String name, String description) {
+		this();
 		this.name = name;
 		this.description = description;
 	}
