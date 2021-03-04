@@ -1,0 +1,10 @@
+invoiceGenerator\model\Customer.class
+invoiceGenerator\Main.class
+invoiceGenerator\model\Article.class
+invoiceGenerator\util\HibernateUtil.class
+invoiceGenerator\model\Address.class
+invoiceGenerator\model\ArticleInvoice.class
+invoiceGenerator\model\Invoice.class
+invoiceGenerator\model\Status.class
+invoiceGenerator\model\Identity.class
+invoiceGenerator\model\TransactionType.class
