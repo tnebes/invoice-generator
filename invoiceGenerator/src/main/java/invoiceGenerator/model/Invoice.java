@@ -141,14 +141,19 @@ public class Invoice extends Identity {
 	}
 
 
-	
 	@Override
 	public String toString() {
-		String sb = super.getId() + " " +
-				dateOfCreation.toString() + " ";
-		return sb;
+		return "Invoice{" +
+				"dateOfCreation=" + dateOfCreation +
+				", customer=" + customer +
+				", transactionType=" + transactionType +
+				", status=" + status +
+				", invoiceDiscountPercent=" + invoiceDiscountPercent +
+				", subtotal=" + subtotal +
+				", total=" + total +
+				", amountDue=" + amountDue +
+				", amountPaid=" + amountPaid +
+				", shippingAddress=" + shippingAddress +
+				'}';
 	}
-	
-	
-
 }

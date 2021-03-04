@@ -149,18 +149,20 @@ public class Customer extends Identity {
 //	public void setInvoices(ArrayList<Invoice> invoices) {
 //		this.invoices = invoices;
 //	}
-	
+
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.getId()).append(" ");
-		if (type == NATURAL_PERSON) {
-			sb.append(firstName).append(" ").append(lastName).append(" ");
-		} else {
-			sb.append(name).append(" ");
-		}
-		return sb.toString();
+		return "Customer{" +
+				"type=" + type +
+				", dateOfCreation=" + dateOfCreation +
+				", VATID='" + VATID + '\'' +
+				", nationalIdNumber='" + nationalIdNumber + '\'' +
+				", name='" + name + '\'' +
+				", firstName='" + firstName + '\'' +
+				", middleName='" + middleName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", billingAddress=" + billingAddress +
+				", shippingAddress=" + shippingAddress +
+				'}';
 	}
-	
-	
 }

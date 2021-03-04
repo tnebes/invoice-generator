@@ -112,4 +112,16 @@ public class Address extends Identity {
 		this.country = country;
 	}
 
+	@Override
+	public String toString() {
+		return "Address{" +
+				"type=" + type +
+				", city='" + city + '\'' +
+				", ZIPCode='" + ZIPCode + '\'' +
+				", street='" + street + '\'' +
+				", streetNumber='" + streetNumber + '\'' +
+				", streetLetter='" + streetLetter + '\'' +
+				", country='" + country + '\'' +
+				'}';
+	}
 }

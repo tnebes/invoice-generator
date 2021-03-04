@@ -104,8 +104,12 @@ public class InitialFixtures {
                 e.printStackTrace();
             }
         }
+        // status check
 
+        // transaction type check
 
+        // invoice check
+        
     }
 
 }
