@@ -11,12 +11,17 @@ import java.util.Locale;
 public class ArticleHandler extends Handler<Article> {
 
 
+    public ArticleHandler(Article entity) {
+        super(entity);
+    }
+
+    public ArticleHandler() {
+
+    }
+
     @Override
     protected List<Article> getData() throws InvoiceGeneratorException {
-        session.beginTransaction();
-        List<Article> articles = session.createQuery("from article").list();
-        session.getTransaction().commit();
-        return articles;
+        return session.createQuery("from article").list();
     }
 
     @Override
@@ -45,7 +50,7 @@ public class ArticleHandler extends Handler<Article> {
         if (entity.getTaxRate() < 0) {
             throw new InvoiceGeneratorException("Tax rate cannot be negative.");
         }
-        if (entity.getRetailPrice().subtract(entity.getWholesalePrice().multiply(BigDecimal.valueOf(entity.getTaxRate()))).abs().compareTo(BigDecimal.valueOf(Constants.epsilon)) > 0) {
+        if (entity.getRetailPrice().subtract(entity.getWholesalePrice().multiply(BigDecimal.valueOf((entity.getTaxRate() / 100.0) + 1))).abs().compareTo(BigDecimal.valueOf(Constants.epsilon)) > 0) {
             throw new InvoiceGeneratorException("Price difference between retail and wholesale * tax rate detected.");
         }
     }
@@ -54,7 +59,7 @@ public class ArticleHandler extends Handler<Article> {
         if (entity.getWarehouseQuantity() < 0) {
             throw new InvoiceGeneratorException("Quantity cannot be negative.");
         }
-        List<Article> articles = getData();
+        List<Article> articles = new ArticleHandler(entity).getData();
         // NOTE this is extremely inefficient.
         for (Article article : articles) {
             if (entity.getWarehouseLocation().toLowerCase().equals(article.getWarehouseLocation().toLowerCase())) {

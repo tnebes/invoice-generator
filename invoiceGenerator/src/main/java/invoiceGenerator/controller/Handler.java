@@ -27,7 +27,7 @@ public abstract class Handler<E> {
     protected abstract void deleteValidation() throws InvoiceGeneratorException;
 
     public Handler() {
-        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        this.session = HibernateUtil.getSessionFactory().openSession(); // should not use getCurrentSession()...
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         this.validator = validatorFactory.getValidator();
     }

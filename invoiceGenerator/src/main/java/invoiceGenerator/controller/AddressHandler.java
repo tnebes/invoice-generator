@@ -7,12 +7,16 @@ import java.util.List;
 
 public class AddressHandler extends Handler<Address> {
 
+    public AddressHandler() {
+    }
+
+    public AddressHandler(Address entity) {
+        super(entity);
+    }
 
     @Override
     protected List<Address> getData() throws InvoiceGeneratorException {
-        List<Address> addresses = session.createQuery("from address").list();
-        session.getTransaction().commit();
-        return addresses;
+        return session.createQuery("from address").list();
     }
 
     @Override
