@@ -2,11 +2,11 @@ package invoiceGenerator.util;
 
 public class InvoiceGeneratorException extends Exception {
 
-    InvoiceGeneratorException() {
+    public InvoiceGeneratorException() {
 
     }
 
-    InvoiceGeneratorException(String message) {
+    public InvoiceGeneratorException(String message) {
         super(message);
     }
 

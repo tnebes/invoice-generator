@@ -5,6 +5,7 @@
  */
 package invoiceGenerator;
 
+import invoiceGenerator.util.InitialFixtures;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import invoiceGenerator.view.MainMenu;
@@ -17,12 +18,7 @@ import invoiceGenerator.view.MainMenu;
 public class Main {
     
     public Main() {
-        
-        SessionFactory sessionFactory = invoiceGenerator.util.HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.getTransaction().commit();
-        
+        new InitialFixtures();
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
     }
