@@ -1,12 +1,8 @@
 package invoiceGenerator.util;
 
 import com.github.javafaker.Faker;
-import invoiceGenerator.controller.AddressHandler;
-import invoiceGenerator.controller.ArticleHandler;
-import invoiceGenerator.controller.CustomerHandler;
-import invoiceGenerator.model.Address;
-import invoiceGenerator.model.Article;
-import invoiceGenerator.model.Customer;
+import invoiceGenerator.controller.*;
+import invoiceGenerator.model.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -105,11 +101,31 @@ public class InitialFixtures {
             }
         }
         // status check
+        Status testStatus = new Status();
+        StatusHandler statusHandler = new StatusHandler();
+        testStatus.setName("Cash");
+        testStatus.setDescription("Paid in cash");
+        testStatus.setDescriptionLong("When a customer comes in and pays in cash.");
+        try {
+            statusHandler.setEntity(testStatus);
+            statusHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
 
         // transaction type check
-
+        TransactionType transactionType = new TransactionType();
+        TransactionTypeHandler transactionTypeHandler = new TransactionTypeHandler();
+        transactionType.setName("Processing");
+        transactionType.setDescription("Paid, being processed.");
+        try {
+            transactionTypeHandler.setEntity(transactionType);
+            transactionTypeHandler.create();
+        } catch (InvoiceGeneratorException e ) {
+            e.printStackTrace();
+        }
         // invoice check
-        
+
     }
 
 }

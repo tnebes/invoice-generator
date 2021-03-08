@@ -45,6 +45,14 @@ public class CustomerHandler extends Handler<Customer> {
             if (entity.getBillingAddress() == null) {
                 throw new InvoiceGeneratorException("A legal person must have a billing address.");
             }
+            for (Customer legalCustomer : this.getData()) {
+                if (entity.getVATID().equals(legalCustomer.getVATID())) {
+                    String message = "Customer cannot have the VATID " + entity.getVATID() +
+                            " as used by customer " +
+                            legalCustomer.getVATID();
+                    throw new InvoiceGeneratorException(message);
+                }
+            }
         } else {
             if (entity.getFirstName() == null || entity.getFirstName().isBlank()) {
                 throw new InvoiceGeneratorException("A natural person must have a first name.");
@@ -54,6 +62,13 @@ public class CustomerHandler extends Handler<Customer> {
             }
             if (entity.getBillingAddress() == null) {
                 throw new InvoiceGeneratorException("A natural person must have a valid billing address.");
+            }
+            for (Customer naturalCustomer : this.getData()) {
+                if (entity.getNationalIdNumber().equals(naturalCustomer.getNationalIdNumber())) {
+                    String message = "Customer cannot have the national ID number " + entity.getNationalIdNumber() +
+                            "as used by customer " + naturalCustomer.getNationalIdNumber();
+                    throw new InvoiceGeneratorException(message);
+                }
             }
         }
     }
