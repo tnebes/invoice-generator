@@ -35,7 +35,7 @@ public class Article extends Identity {
 
 	@NotNull(message = "Tax rate cannot be null.")
 	@Column(name = "tax_rate")
-	private Byte 		taxRate = 25;
+	private Byte 		taxRate = STANDARD_TAX_RATE;
 
 	@NotNull(message = "Article must have a short name.")
 	@NotEmpty(message = "Article cannot have a blank or empty name.")
