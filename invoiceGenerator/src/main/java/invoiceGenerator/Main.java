@@ -6,6 +6,7 @@
 package invoiceGenerator;
 
 import invoiceGenerator.util.InitialFixtures;
+import invoiceGenerator.view.Authorisation;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import invoiceGenerator.view.MainMenu;
@@ -19,8 +20,7 @@ public class Main {
     
     public Main() {
         new InitialFixtures();
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.setVisible(true);
+        new Authorisation().setVisible(true);
     }
     
     public static void main(String[] args) {

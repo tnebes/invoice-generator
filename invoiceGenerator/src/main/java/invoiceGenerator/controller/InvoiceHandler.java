@@ -15,7 +15,7 @@ public class InvoiceHandler extends Handler<Invoice> {
 
     @Override
     protected void createValidation() throws InvoiceGeneratorException {
-
+        
     }
 
     @Override
