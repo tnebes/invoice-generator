@@ -15,6 +15,12 @@ import java.util.List;
  */
 public class OperatorHandler extends Handler<Operator> {
 
+    /**
+     * Authorises the operator
+     * @param email of the operator
+     * @param password plain char[] entered by user.
+     * @return instance of Operator class if it is in the database. Returns null if the operator does not exist or the password does not match.
+     */
     public Operator authorise(String email, char[] password) {
         
         Operator operator = (Operator) session
