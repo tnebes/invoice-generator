@@ -128,13 +128,13 @@ public class Authorisation extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginButtonActionPerformed
 
     private void txtUsernameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameTextFieldKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER && !txtUsernameTextField.getText().isEmpty()) {
-            pswPasswordTextField.requestFocus();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
         } 
     }//GEN-LAST:event_txtUsernameTextFieldKeyReleased
 
     private void pswPasswordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordTextFieldKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER && pswPasswordTextField.getPassword().length > 0) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             login();
         }        
     }//GEN-LAST:event_pswPasswordTextFieldKeyReleased
@@ -154,6 +154,8 @@ public class Authorisation extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsernameTextField;
     // End of variables declaration//GEN-END:variables
 
+    // TODO move methods to appropriate package.
+    
     private void login() {
         if(txtUsernameTextField.getText().isEmpty()) {
             handleError(txtUsernameTextField, "email is required.");

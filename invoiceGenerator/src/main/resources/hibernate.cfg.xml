@@ -32,5 +32,6 @@
         <mapping class="invoiceGenerator.model.ArticleInvoice"/>
         <mapping class="invoiceGenerator.model.Status"/>
         <mapping class="invoiceGenerator.model.TransactionType"/>
+        <mapping class="invoiceGenerator.model.Operator"/>
     </session-factory>
 </hibernate-configuration>
