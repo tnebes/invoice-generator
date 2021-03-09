@@ -15,7 +15,7 @@ public class CustomerHandler extends Handler<Customer> {
     }
 
     @Override
-    protected List<Customer> getData() throws InvoiceGeneratorException {
+    public List<Customer> getData() throws InvoiceGeneratorException {
         return session.createQuery("from customer").list();
     }
 

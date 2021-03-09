@@ -9,7 +9,7 @@ public class StatusHandler extends Handler<Status> {
 
 
     @Override
-    protected List<Status> getData() throws InvoiceGeneratorException {
+    public List<Status> getData() throws InvoiceGeneratorException {
         return session.createQuery("from status").list();
     }
 

@@ -7,6 +7,8 @@ package invoiceGenerator.controller;
 
 import invoiceGenerator.model.Operator;
 import invoiceGenerator.util.InvoiceGeneratorException;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.util.List;
 
 /**
@@ -16,29 +18,27 @@ import java.util.List;
 public class OperatorHandler extends Handler<Operator> {
 
     /**
-     * Authorises the operator
+     * Returns an operator operator
      * @param email of the operator
      * @param password plain char[] entered by user.
      * @return instance of Operator class if it is in the database. Returns null if the operator does not exist or the password does not match.
      */
-    public Operator authorise(String email, char[] password) {
+    public Operator getOperator(String email, char[] password) {
         
         Operator operator = (Operator) session
-                .createQuery("from operator o where o.email = :email")
+                .createQuery("from Operator where email = :email", Operator.class)
                 .setParameter("email", email)
                 .getSingleResult();
         if (operator == null) {
             return null;
         }
-        //return BCrypt.checkpw(new String(password), operator.getPassword()) ? operator : null;
-        //temp
-        return null;
+        return BCrypt.checkpw(new String(password), operator.getPassword()) ? operator : null;
     }
     
     
     
     @Override
-    protected List<Operator> getData() throws InvoiceGeneratorException {
+    public List<Operator> getData() throws InvoiceGeneratorException {
         return session.createQuery("from operator").list();
     }
 

@@ -5,11 +5,10 @@
  */
 package invoiceGenerator.view;
 
+import invoiceGenerator.util.AuthorisationUtil;
+
 import java.awt.event.KeyEvent;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -17,11 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class Authorisation extends javax.swing.JFrame {
 
+    private boolean enterFlag = false;
+    
     /**
      * Creates new form Authorisation
      */
     public Authorisation() {      
         initComponents();
+        // TODO remove this
         txtUsernameTextField.setText("tnebes@drau.de");
         
     }
@@ -51,11 +53,6 @@ public class Authorisation extends javax.swing.JFrame {
 
         lblPasswordLabel.setText("password");
 
-        txtUsernameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameTextFieldActionPerformed(evt);
-            }
-        });
         txtUsernameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUsernameTextFieldKeyReleased(evt);
@@ -72,6 +69,11 @@ public class Authorisation extends javax.swing.JFrame {
         btnLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginButtonActionPerformed(evt);
+            }
+        });
+        btnLoginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnLoginButtonKeyReleased(evt);
             }
         });
 
@@ -119,25 +121,35 @@ public class Authorisation extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameTextFieldActionPerformed
-
+    // TODO fix the double enter thing.
     private void btnLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginButtonActionPerformed
-        login();
+        if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
+            this.setVisible(false);
+            AuthorisationUtil.createMainMenu();
+        }
     }//GEN-LAST:event_btnLoginButtonActionPerformed
 
+    private void pswPasswordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordTextFieldKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && !enterFlag) {
+            if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
+                this.setVisible(false);
+                AuthorisationUtil.createMainMenu();
+            }
+        }
+    }//GEN-LAST:event_pswPasswordTextFieldKeyReleased
+
     private void txtUsernameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameTextFieldKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            login();
-        } 
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && !enterFlag) {
+            if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
+                this.setVisible(false);
+                AuthorisationUtil.createMainMenu();
+            }
+        }
     }//GEN-LAST:event_txtUsernameTextFieldKeyReleased
 
-    private void pswPasswordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordTextFieldKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            login();
-        }        
-    }//GEN-LAST:event_pswPasswordTextFieldKeyReleased
+    private void btnLoginButtonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginButtonKeyReleased
+        pswPasswordTextFieldKeyReleased(evt);
+    }//GEN-LAST:event_btnLoginButtonKeyReleased
 
     /**
      * @param args the command line arguments
@@ -154,28 +166,7 @@ public class Authorisation extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsernameTextField;
     // End of variables declaration//GEN-END:variables
 
-    // TODO move methods to appropriate package.
-    
-    private void login() {
-        if(txtUsernameTextField.getText().isEmpty()) {
-            handleError(txtUsernameTextField, "email is required.");
-            return;
-        }
-        
-        try {
-            InternetAddress email = new InternetAddress(txtUsernameTextField.getText());
-            email.validate();
-        } catch (AddressException e) {
-            handleError(txtUsernameTextField, "email is not valid.");
-        }
-        
-        if (pswPasswordTextField.getPassword().length == 0) {
-            handleError(pswPasswordTextField, "password is required.");
-            return;            
-        }
-    }
-    
-    private void handleError(JComponent component, String message) {
+    public void handleError(JComponent component, String message) {
         JOptionPane.showMessageDialog(rootPane, message);
         component.requestFocus();
     }

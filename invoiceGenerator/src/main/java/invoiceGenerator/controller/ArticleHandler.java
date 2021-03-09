@@ -19,7 +19,7 @@ public class ArticleHandler extends Handler<Article> {
     }
 
     @Override
-    protected List<Article> getData() throws InvoiceGeneratorException {
+    public List<Article> getData() throws InvoiceGeneratorException {
         return session.createQuery("from article").list();
     }
 

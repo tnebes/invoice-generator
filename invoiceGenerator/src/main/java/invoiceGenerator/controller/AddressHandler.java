@@ -15,7 +15,7 @@ public class AddressHandler extends Handler<Address> {
     }
 
     @Override
-    protected List<Address> getData() throws InvoiceGeneratorException {
+    public List<Address> getData() throws InvoiceGeneratorException {
         return session.createQuery("from address").list();
     }
 

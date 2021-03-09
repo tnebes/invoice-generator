@@ -9,7 +9,7 @@ public class TransactionTypeHandler extends Handler<TransactionType> {
 
 
     @Override
-    protected List<TransactionType> getData() throws InvoiceGeneratorException {
+    public List<TransactionType> getData() throws InvoiceGeneratorException {
         return session.createQuery("from transaction_type").list();
     }
 

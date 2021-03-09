@@ -9,7 +9,7 @@ public class InvoiceHandler extends Handler<Invoice> {
 
 
     @Override
-    protected List<Invoice> getData() throws InvoiceGeneratorException {
+    public List<Invoice> getData() throws InvoiceGeneratorException {
         return session.createQuery("from invoice").list();
     }
 

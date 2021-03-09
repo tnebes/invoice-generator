@@ -3,6 +3,7 @@ package invoiceGenerator.util;
 import com.github.javafaker.Faker;
 import invoiceGenerator.controller.*;
 import invoiceGenerator.model.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -16,6 +17,20 @@ public class InitialFixtures {
     public InitialFixtures() {
         Faker faker = new Faker();
         Random rng = new Random();
+
+        //operator
+        Operator operator = new Operator();
+        operator.setEmail("tnebes@drau.de");
+        operator.setPassword(BCrypt.hashpw("edunova", BCrypt.gensalt()));
+        operator.setFirstName("Tomislav");
+        operator.setLastName("Nebes");
+        OperatorHandler operatorHandler = new OperatorHandler();
+        try {
+            operatorHandler.setEntity(operator);
+            operatorHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
 
         // address check
         List<Address> addresses = new ArrayList<>();
