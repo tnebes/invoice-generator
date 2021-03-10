@@ -5,11 +5,7 @@
  */
 package invoiceGenerator;
 
-import invoiceGenerator.util.InitialFixtures;
-import invoiceGenerator.view.Authorisation;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import invoiceGenerator.view.MainMenu;
+import invoiceGenerator.view.SplashScreen;
 
 
 /**
@@ -19,8 +15,7 @@ import invoiceGenerator.view.MainMenu;
 public class Main {
     
     public Main() {
-        new InitialFixtures();
-        new Authorisation().setVisible(true);
+        new SplashScreen().setVisible(true);
     }
     
     public static void main(String[] args) {

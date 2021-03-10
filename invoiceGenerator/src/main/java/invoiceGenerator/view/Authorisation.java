@@ -44,7 +44,7 @@ public class Authorisation extends javax.swing.JFrame {
         pswPasswordTextField = new javax.swing.JPasswordField();
         btnLoginButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setText("background");
@@ -124,16 +124,16 @@ public class Authorisation extends javax.swing.JFrame {
     // TODO fix the double enter thing.
     private void btnLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginButtonActionPerformed
         if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
-            this.setVisible(false);
             AuthorisationUtil.createMainMenu();
+            dispose();
         }
     }//GEN-LAST:event_btnLoginButtonActionPerformed
 
     private void pswPasswordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordTextFieldKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER && !enterFlag) {
             if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
-                this.setVisible(false);
                 AuthorisationUtil.createMainMenu();
+                dispose();
             }
         }
     }//GEN-LAST:event_pswPasswordTextFieldKeyReleased
@@ -143,6 +143,7 @@ public class Authorisation extends javax.swing.JFrame {
             if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
                 this.setVisible(false);
                 AuthorisationUtil.createMainMenu();
+                dispose();
             }
         }
     }//GEN-LAST:event_txtUsernameTextFieldKeyReleased

@@ -68,6 +68,10 @@ public class Operator extends Identity {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    public String getFirstLastName() {
+        return firstName + " " + lastName; 
+    }
       
     
 }

@@ -1,5 +1,6 @@
 package invoiceGenerator.controller;
 
+import invoiceGenerator.model.ArticleInvoice;
 import invoiceGenerator.model.Invoice;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
@@ -27,4 +28,22 @@ public class InvoiceHandler extends Handler<Invoice> {
     protected void deleteValidation() throws InvoiceGeneratorException {
 
     }
+    
+    
+    
+    /*
+     * article_invoice goes here
+    // TODO
+     * before saving invoice save each article_invoice
+     * @override create
+    */
+
+    // TODO add the getter for article_invoice
+    // inverse relationship?
+    /*
+    @Override
+    public Invoice create() throws InvoiceGeneratorException {
+        // for (ArticleInvoice articleInvoice :  ) 
+    }
+    */
 }

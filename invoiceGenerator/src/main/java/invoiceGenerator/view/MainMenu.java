@@ -5,6 +5,12 @@
  */
 package invoiceGenerator.view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tnebes
@@ -16,6 +22,26 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
+        new MyTime().start();
+    }
+    
+    private class MyTime extends Thread {
+
+        private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd YYYY HH:mm:ss '- week 'ww");
+        
+        @Override
+        public void run() {
+            while (true) {
+                lblTimeLabel.setText(simpleDateFormat.format(new Date()));
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
     }
 
     /**
@@ -28,7 +54,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         tabController = new javax.swing.JTabbedPane();
-        registerTab = new javax.swing.JPanel();
+        jpRegisterTab = new javax.swing.JPanel();
         customerScrollPane = new javax.swing.JScrollPane();
         customerTextArea = new javax.swing.JTextArea();
         addCustomerButton = new javax.swing.JButton();
@@ -38,25 +64,30 @@ public class MainMenu extends javax.swing.JFrame {
         addCustomerButton1 = new javax.swing.JButton();
         removeCustomerButton1 = new javax.swing.JButton();
         printInvoiceButton = new javax.swing.JButton();
-        accountingTab = new javax.swing.JPanel();
+        jpAccountingTab = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         invoicePanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         customerPanel = new javax.swing.JPanel();
         articlePanel = new javax.swing.JPanel();
         addressPanel = new javax.swing.JPanel();
-        optionsTab = new javax.swing.JPanel();
+        jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
         refreshDatabaseButton = new javax.swing.JButton();
         purgeDatabaseButton = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        lblTimeLabel = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmFile = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jcExitMenuItem = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabController.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        registerTab.setPreferredSize(new java.awt.Dimension(800, 500));
+        jpRegisterTab.setPreferredSize(new java.awt.Dimension(800, 500));
 
         customerTextArea.setEditable(false);
         customerTextArea.setColumns(20);
@@ -103,83 +134,65 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout registerTabLayout = new javax.swing.GroupLayout(registerTab);
-        registerTab.setLayout(registerTabLayout);
-        registerTabLayout.setHorizontalGroup(
-            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerTabLayout.createSequentialGroup()
-                .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registerTabLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpRegisterTabLayout = new javax.swing.GroupLayout(jpRegisterTab);
+        jpRegisterTab.setLayout(jpRegisterTabLayout);
+        jpRegisterTabLayout.setHorizontalGroup(
+            jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpRegisterTabLayout.createSequentialGroup()
+                .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(customerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(registerTabLayout.createSequentialGroup()
+                            .addGroup(jpRegisterTabLayout.createSequentialGroup()
                                 .addComponent(addCustomerButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(removeCustomerButton)))
                         .addGap(35, 35, 35)
-                        .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(shippingScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(registerTabLayout.createSequentialGroup()
+                            .addGroup(jpRegisterTabLayout.createSequentialGroup()
                                 .addComponent(addCustomerButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(removeCustomerButton1))))
-                    .addGroup(registerTabLayout.createSequentialGroup()
+                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
                         .addGap(343, 343, 343)
                         .addComponent(printInvoiceButton)))
                 .addContainerGap(291, Short.MAX_VALUE))
         );
-        registerTabLayout.setVerticalGroup(
-            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerTabLayout.createSequentialGroup()
+        jpRegisterTabLayout.setVerticalGroup(
+            jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpRegisterTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registerTabLayout.createSequentialGroup()
+                .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
                         .addComponent(customerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addCustomerButton)
                             .addComponent(removeCustomerButton)))
-                    .addGroup(registerTabLayout.createSequentialGroup()
+                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
                         .addComponent(shippingScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addCustomerButton1)
                             .addComponent(removeCustomerButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
                 .addComponent(printInvoiceButton)
                 .addContainerGap())
         );
 
-        tabController.addTab("Register", registerTab);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        tabController.addTab("Register", jpRegisterTab);
 
         javax.swing.GroupLayout invoicePanelLayout = new javax.swing.GroupLayout(invoicePanel);
         invoicePanel.setLayout(invoicePanelLayout);
         invoicePanelLayout.setHorizontalGroup(
             invoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(invoicePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         invoicePanelLayout.setVerticalGroup(
             invoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(invoicePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+            .addGap(0, 474, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Invoice", invoicePanel);
@@ -223,18 +236,18 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Address", addressPanel);
 
-        javax.swing.GroupLayout accountingTabLayout = new javax.swing.GroupLayout(accountingTab);
-        accountingTab.setLayout(accountingTabLayout);
-        accountingTabLayout.setHorizontalGroup(
-            accountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jpAccountingTabLayout = new javax.swing.GroupLayout(jpAccountingTab);
+        jpAccountingTab.setLayout(jpAccountingTabLayout);
+        jpAccountingTabLayout.setHorizontalGroup(
+            jpAccountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
         );
-        accountingTabLayout.setVerticalGroup(
-            accountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jpAccountingTabLayout.setVerticalGroup(
+            jpAccountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
         );
 
-        tabController.addTab("Accounting", accountingTab);
+        tabController.addTab("Accounting", jpAccountingTab);
 
         databasePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -272,36 +285,73 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(0, 130, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout optionsTabLayout = new javax.swing.GroupLayout(optionsTab);
-        optionsTab.setLayout(optionsTabLayout);
-        optionsTabLayout.setHorizontalGroup(
-            optionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(optionsTabLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpOptionsTabLayout = new javax.swing.GroupLayout(jpOptionsTab);
+        jpOptionsTab.setLayout(jpOptionsTabLayout);
+        jpOptionsTabLayout.setHorizontalGroup(
+            jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpOptionsTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(568, Short.MAX_VALUE))
         );
-        optionsTabLayout.setVerticalGroup(
-            optionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(optionsTabLayout.createSequentialGroup()
+        jpOptionsTabLayout.setVerticalGroup(
+            jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpOptionsTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
-        tabController.addTab("Options", optionsTab);
+        tabController.addTab("Options", jpOptionsTab);
+
+        jToolBar1.setRollover(true);
+
+        lblTimeLabel.setText("time");
+        jToolBar1.add(lblTimeLabel);
+
+        jmFile.setText("File");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+        jmFile.add(jCheckBoxMenuItem1);
+
+        jcExitMenuItem.setSelected(true);
+        jcExitMenuItem.setText("Exit");
+        jcExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcExitMenuItemActionPerformed(evt);
+            }
+        });
+        jmFile.add(jcExitMenuItem);
+
+        jMenuBar1.add(jmFile);
+
+        jMenu2.setText("Info");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(tabController)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabController, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addComponent(tabController, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -330,6 +380,16 @@ public class MainMenu extends javax.swing.JFrame {
     private void purgeDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purgeDatabaseButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_purgeDatabaseButtonActionPerformed
+
+    private void jcExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcExitMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcExitMenuItemActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
+        JOptionPane.showMessageDialog(rootPane, "This program has been made by Tomislav Nebes.\n2020 - " + simpleDateFormat.format(date));
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -367,7 +427,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel accountingTab;
     private javax.swing.JButton addCustomerButton;
     private javax.swing.JButton addCustomerButton1;
     private javax.swing.JPanel addressPanel;
@@ -378,14 +437,20 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JPanel optionsTab;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JCheckBoxMenuItem jcExitMenuItem;
+    private javax.swing.JMenu jmFile;
+    private javax.swing.JPanel jpAccountingTab;
+    private javax.swing.JPanel jpOptionsTab;
+    private javax.swing.JPanel jpRegisterTab;
+    private javax.swing.JLabel lblTimeLabel;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
     private javax.swing.JButton refreshDatabaseButton;
-    private javax.swing.JPanel registerTab;
     private javax.swing.JButton removeCustomerButton;
     private javax.swing.JButton removeCustomerButton1;
     private javax.swing.JScrollPane shippingScrollPane;

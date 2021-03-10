@@ -7,6 +7,7 @@ package invoiceGenerator.util;
 
 import invoiceGenerator.controller.OperatorHandler;
 import invoiceGenerator.model.Operator;
+import invoiceGenerator.view.Application;
 import invoiceGenerator.view.Authorisation;
 import invoiceGenerator.view.MainMenu;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * @author tnebes
  */
 public class AuthorisationUtil {
-
+    
     public static boolean login(Authorisation authorisation, JTextField usernameTextField, JPasswordField passwordTextField) {
         if(usernameTextField.getText().isEmpty()) {
             authorisation.handleError(usernameTextField, "email is required.");
@@ -44,6 +45,9 @@ public class AuthorisationUtil {
 
         if (operator == null) {
             authorisation.handleError(usernameTextField, "username or password is invalid.");
+        } else {
+            Application.operator = operator;
+            operator.setPassword(null);
         }
         return operator != null;
     }
