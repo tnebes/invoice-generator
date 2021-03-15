@@ -35,7 +35,7 @@ public class Article extends Identity {
 
 	@NotNull(message = "Tax rate cannot be null.")
 	@Column(name = "tax_rate")
-	private Byte 		taxRate = STANDARD_TAX_RATE;
+	private BigDecimal	taxRate = BigDecimal.valueOf(STANDARD_TAX_RATE);
 
 	@NotNull(message = "Article must have a short name.")
 	@NotEmpty(message = "Article cannot have a blank or empty name.")
@@ -88,10 +88,10 @@ public class Article extends Identity {
 	public void setRetailPrice(BigDecimal retailPrice) {
 		this.retailPrice = retailPrice;
 	}
-	public Byte getTaxRate() {
+	public BigDecimal getTaxRate() {
 		return taxRate;
 	}
-	public void setTaxRate(Byte taxRate) {
+	public void setTaxRate(BigDecimal taxRate) {
 		this.taxRate = taxRate;
 	}
 	public String getShortName() {

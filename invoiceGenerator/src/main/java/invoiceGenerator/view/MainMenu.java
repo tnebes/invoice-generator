@@ -79,8 +79,7 @@ public class MainMenu extends javax.swing.JFrame {
         lblTimeLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jcExitMenuItem = new javax.swing.JCheckBoxMenuItem();
+        jmiExampleItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -311,18 +310,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         jmFile.setText("File");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
-        jmFile.add(jCheckBoxMenuItem1);
-
-        jcExitMenuItem.setSelected(true);
-        jcExitMenuItem.setText("Exit");
-        jcExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcExitMenuItemActionPerformed(evt);
-            }
-        });
-        jmFile.add(jcExitMenuItem);
+        jmiExampleItem.setText("Example");
+        jmFile.add(jmiExampleItem);
 
         jMenuBar1.add(jmFile);
 
@@ -381,10 +370,6 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_purgeDatabaseButtonActionPerformed
 
-    private void jcExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcExitMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcExitMenuItemActionPerformed
-
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
@@ -437,13 +422,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JCheckBoxMenuItem jcExitMenuItem;
     private javax.swing.JMenu jmFile;
+    private javax.swing.JMenuItem jmiExampleItem;
     private javax.swing.JPanel jpAccountingTab;
     private javax.swing.JPanel jpOptionsTab;
     private javax.swing.JPanel jpRegisterTab;

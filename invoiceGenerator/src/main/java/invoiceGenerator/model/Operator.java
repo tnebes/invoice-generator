@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
  * @author tnebes
  */
 
-@Entity
+@Entity(name = "operator")
 public class Operator extends Identity {
     
     @NotNull(message = "A password is required.")
