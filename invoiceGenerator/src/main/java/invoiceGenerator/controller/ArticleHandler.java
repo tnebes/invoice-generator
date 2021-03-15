@@ -1,7 +1,6 @@
 package invoiceGenerator.controller;
 
 import invoiceGenerator.model.Article;
-import invoiceGenerator.util.Constants;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
@@ -51,9 +50,10 @@ public class ArticleHandler extends Handler<Article> {
         if (entity.getTaxRate().compareTo(BigDecimal.ZERO) < 0) {
             throw new InvoiceGeneratorException("Tax rate cannot be negative.");
         }
-        // TODO byte > BigDecimal
-        // use all BigDecimal values, remove taxRate as Byte, turn into BigDecimal        
-        if (false) {
+        if (entity.getRetailPrice().compareTo(entity.getWholesalePrice()
+                .multiply(entity.getTaxRate()
+                        .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP)
+                        .add(BigDecimal.ONE))) != 0) {
             throw new InvoiceGeneratorException("Price difference between retail and wholesale * tax rate detected.");
         }
     }
