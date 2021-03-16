@@ -63,7 +63,7 @@ public class InitialFixtures {
             testArticle.setShortName(faker.cat().name());
             testArticle.setWholesalePrice(BigDecimal.valueOf(rng.nextDouble() * 1000));
             testArticle.setTaxRate(BigDecimal.valueOf(rng.nextInt(25)));
-            testArticle.setRetailPrice(testArticle.getWholesalePrice().multiply(testArticle.getTaxRate().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP).add(BigDecimal.ONE)));
+            testArticle.setRetailPrice(testArticle.getWholesalePrice().multiply(testArticle.getCalculableTaxRate().add(BigDecimal.ONE)));
             testArticle.setWarehouseLocation(faker.bothify("?#-?#"));
             testArticle.setWarehouseQuantity((long) rng.nextInt(250));
             ArticleHandler articleHandler = new ArticleHandler();

@@ -68,6 +68,16 @@ public class MainMenu extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         invoicePanel = new javax.swing.JPanel();
         customerPanel = new javax.swing.JPanel();
+        jspCustomerScrollPane = new javax.swing.JScrollPane();
+        lstCustomerList = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         articlePanel = new javax.swing.JPanel();
         addressPanel = new javax.swing.JPanel();
         jpOptionsTab = new javax.swing.JPanel();
@@ -196,15 +206,67 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Invoice", invoicePanel);
 
+        jspCustomerScrollPane.setViewportView(lstCustomerList);
+
+        jLabel1.setText("VAT ID");
+
+        jLabel2.setText("Date added:");
+
+        jLabel3.setText("First name:");
+
+        jLabel4.setText("Middle Name:");
+
+        jLabel5.setText("Last Name:");
+
+        jLabel6.setText("Name:");
+
+        jLabel7.setText("National ID number:");
+
+        jLabel8.setText("Type:");
+
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
         customerPanelLayout.setHorizontalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(customerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jspCustomerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
         customerPanelLayout.setVerticalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(customerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(0, 208, Short.MAX_VALUE))
+                    .addComponent(jspCustomerScrollPane))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Customer", customerPanel);
@@ -422,6 +484,14 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -431,7 +501,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jpAccountingTab;
     private javax.swing.JPanel jpOptionsTab;
     private javax.swing.JPanel jpRegisterTab;
+    private javax.swing.JScrollPane jspCustomerScrollPane;
     private javax.swing.JLabel lblTimeLabel;
+    private javax.swing.JList<String> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
     private javax.swing.JButton refreshDatabaseButton;

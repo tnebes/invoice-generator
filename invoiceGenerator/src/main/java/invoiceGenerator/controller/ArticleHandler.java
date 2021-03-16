@@ -51,10 +51,11 @@ public class ArticleHandler extends Handler<Article> {
             throw new InvoiceGeneratorException("Tax rate cannot be negative.");
         }
         if (entity.getRetailPrice().compareTo(entity.getWholesalePrice()
-                .multiply(entity.getTaxRate()
-                        .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP)
+                .multiply(entity.getCalculableTaxRate()
                         .add(BigDecimal.ONE))) != 0) {
-            throw new InvoiceGeneratorException("Price difference between retail and wholesale * tax rate detected.");
+            String exceptionMessage = String.format(new String("Price difference between retail and wholesale * tax rate detected.\n" +
+                    "Retail: %f; tax rate: %f wholesale: %f"),entity.getRetailPrice(), entity.getCalculableTaxRate(), entity.getWholesalePrice() );
+            throw new InvoiceGeneratorException(exceptionMessage);
         }
     }
 

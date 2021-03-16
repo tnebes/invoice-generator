@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,6 +94,9 @@ public class Article extends Identity {
 	}
 	public void setTaxRate(BigDecimal taxRate) {
 		this.taxRate = taxRate;
+	}
+	public BigDecimal getCalculableTaxRate() {
+		return getTaxRate().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
 	}
 	public String getShortName() {
 		return shortName;

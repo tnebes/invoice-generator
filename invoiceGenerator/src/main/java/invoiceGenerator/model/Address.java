@@ -46,7 +46,7 @@ public class Address extends Identity {
 
 	@NotNull(message = "Please enter a country.")
 	@NotEmpty(message = "country cannot be blank or empty.")
-	@Size(max = 50, message = "Country name can be maximally 50 characters.")
+	@Size(max = 100, message = "Country name can be maximally 100 characters.")
 	private String					country;
 
 	public Address() {
