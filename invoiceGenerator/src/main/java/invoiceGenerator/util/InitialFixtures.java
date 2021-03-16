@@ -81,7 +81,7 @@ public class InitialFixtures {
             Customer naturalCustomer = new Customer();
             CustomerHandler customerHandler = new CustomerHandler();
             naturalCustomer.setDateOfCreation(Instant.now());
-            naturalCustomer.setFirstName(faker.name().firstName());
+            naturalCustomer.setFirstName(faker.pokemon().name());
             if (rng.nextBoolean()) {
                 naturalCustomer.setMiddleName(faker.name().firstName());
             }

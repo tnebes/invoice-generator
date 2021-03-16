@@ -5,6 +5,7 @@
  */
 package invoiceGenerator.view;
 
+import invoiceGenerator.controller.ArticleHandler;
 import invoiceGenerator.controller.CustomerHandler;
 import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Article;
@@ -32,7 +33,7 @@ public class MainMenu extends javax.swing.JFrame {
         new MyTime().start();
         
     }
- 
+
     private class MyTime extends Thread {
 
         private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd YYYY HH:mm:ss '- week 'ww");
@@ -253,12 +254,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         tabController.addTab("Register", jpRegisterTab);
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CustomerPanelClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout invoicePanelLayout = new javax.swing.GroupLayout(invoicePanel);
         invoicePanel.setLayout(invoicePanelLayout);
         invoicePanelLayout.setHorizontalGroup(
@@ -271,6 +266,12 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Invoice", invoicePanel);
+
+        customerPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                customerPanelComponentShown(evt);
+            }
+        });
 
         lstCustomerList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstCustomerList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -485,9 +486,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Customer", customerPanel);
 
-        articlePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                articlePanelMouseClicked(evt);
+        articlePanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                articlePanelComponentShown(evt);
             }
         });
 
@@ -613,8 +614,8 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addComponent(txtArticleRetailPrice))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblArticleShortDescriptionLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleTaxRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtArticleTaxRate, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblArticleShortDescriptionLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
@@ -711,9 +712,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Article", articlePanel);
 
-        addressPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addressPanelMouseClicked(evt);
+        addressPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                addressPanelComponentShown(evt);
             }
         });
 
@@ -886,10 +887,6 @@ public class MainMenu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "This program has been made by Tomislav Nebes.\n2020 - " + simpleDateFormat.format(date));
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void CustomerPanelClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerPanelClicked
-        loadCustomers();
-    }//GEN-LAST:event_CustomerPanelClicked
-
     private void btnArticleDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnArticleDeleteActionPerformed
@@ -907,7 +904,17 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticleSaveActionPerformed
 
     private void lstArticleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArticleListValueChanged
-        // TODO add your handling code here:
+        // TODO what does this do?
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        
+        Article article = lstArticleList.getSelectedValue();
+        if (article == null) {
+            return;
+        }
+        
+        updateArticleList();        
     }//GEN-LAST:event_lstArticleListValueChanged
 
     private void btnCustomerAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerAddCustomerActionPerformed
@@ -956,13 +963,17 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lstAddressListValueChanged
 
-    private void addressPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addressPanelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addressPanelMouseClicked
+    private void customerPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_customerPanelComponentShown
+        loadCustomers();
+    }//GEN-LAST:event_customerPanelComponentShown
 
-    private void articlePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articlePanelMouseClicked
+    private void articlePanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_articlePanelComponentShown
+        loadArticles();
+    }//GEN-LAST:event_articlePanelComponentShown
+
+    private void addressPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_addressPanelComponentShown
         // TODO add your handling code here:
-    }//GEN-LAST:event_articlePanelMouseClicked
+    }//GEN-LAST:event_addressPanelComponentShown
 
     /* Customer Panel */
     /* ************** */
@@ -1012,7 +1023,24 @@ public class MainMenu extends javax.swing.JFrame {
     /* Article Panel */
     /* ************* */
     
+    private void loadArticles() {
+        ArticleHandler articleHandler = new ArticleHandler();        
+        DefaultListModel<Article> articles = new DefaultListModel<>();
+        try {
+            articles.addAll(articleHandler.getData());
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }  
+        lstArticleList.setModel(articles);
+    }
     
+    private void updateArticleList() {
+        clearArticleList();
+    }
+    
+    private void clearArticleList() {
+        
+    }
     
     /* ************* */
 
@@ -1080,7 +1108,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblTimeLabel;
     private javax.swing.JLabel lblVATIDLabel;
     private javax.swing.JList<Article> lstAddressList;
-    private javax.swing.JList<Address> lstArticleList;
+    private javax.swing.JList<Article> lstArticleList;
     private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
