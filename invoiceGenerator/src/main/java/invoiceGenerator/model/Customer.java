@@ -149,20 +149,15 @@ public class Customer extends Identity {
 //	public void setInvoices(ArrayList<Invoice> invoices) {
 //		this.invoices = invoices;
 //	}
-
-	@Override
-	public String toString() {
-		return "Customer{" +
-				"type=" + type +
-				", dateOfCreation=" + dateOfCreation +
-				", VATID='" + VATID + '\'' +
-				", nationalIdNumber='" + nationalIdNumber + '\'' +
-				", name='" + name + '\'' +
-				", firstName='" + firstName + '\'' +
-				", middleName='" + middleName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", billingAddress=" + billingAddress +
-				", shippingAddress=" + shippingAddress +
-				'}';
-	}
+        
+        @Override
+        public String toString() {
+            String returnString = this.getId() + " - ";
+            if (this.isType() == Customer.NATURAL_PERSON) {
+                returnString += this.getFirstName() + " " + this.getLastName();
+            } else {
+                returnString += this.getName() + " " + this.getVATID();
+            }
+            return returnString;
+        }
 }

@@ -5,10 +5,14 @@
  */
 package invoiceGenerator.view;
 
+import invoiceGenerator.controller.CustomerHandler;
+import invoiceGenerator.model.Customer;
+import invoiceGenerator.util.InvoiceGeneratorException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
         new MyTime().start();
+        
     }
     
     private class MyTime extends Thread {
@@ -78,6 +83,8 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         articlePanel = new javax.swing.JPanel();
         addressPanel = new javax.swing.JPanel();
         jpOptionsTab = new javax.swing.JPanel();
@@ -87,7 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
         purgeDatabaseButton = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         lblTimeLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jmbFileInfoBar = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
         jmiExampleItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -193,6 +200,12 @@ public class MainMenu extends javax.swing.JFrame {
 
         tabController.addTab("Register", jpRegisterTab);
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CustomerPanelClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout invoicePanelLayout = new javax.swing.GroupLayout(invoicePanel);
         invoicePanel.setLayout(invoicePanelLayout);
         invoicePanelLayout.setHorizontalGroup(
@@ -206,6 +219,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Invoice", invoicePanel);
 
+        lstCustomerList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jspCustomerScrollPane.setViewportView(lstCustomerList);
 
         jLabel1.setText("VAT ID");
@@ -224,6 +238,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel8.setText("Type:");
 
+        jScrollPane2.setViewportView(jTextPane1);
+
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
         customerPanelLayout.setHorizontalGroup(
@@ -233,15 +249,21 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jspCustomerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addContainerGap(431, Short.MAX_VALUE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         customerPanelLayout.setVerticalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,12 +271,14 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
@@ -264,7 +288,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
-                        .addGap(0, 208, Short.MAX_VALUE))
+                        .addGap(0, 200, Short.MAX_VALUE))
                     .addComponent(jspCustomerScrollPane))
                 .addContainerGap())
         );
@@ -375,7 +399,7 @@ public class MainMenu extends javax.swing.JFrame {
         jmiExampleItem.setText("Example");
         jmFile.add(jmiExampleItem);
 
-        jMenuBar1.add(jmFile);
+        jmbFileInfoBar.add(jmFile);
 
         jMenu2.setText("Info");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -383,9 +407,9 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenu2MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jmbFileInfoBar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jmbFileInfoBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,41 +463,24 @@ public class MainMenu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "This program has been made by Tomislav Nebes.\n2020 - " + simpleDateFormat.format(date));
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void CustomerPanelClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerPanelClicked
+        CustomerHandler customerHandler = new CustomerHandler();        
+        DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            customers.addAll(customerHandler.getData());
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
         }
-        //</editor-fold>
+        lstCustomerList.setModel(customers);
+    }//GEN-LAST:event_CustomerPanelClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
-        });
-    }
-
+    /* Customer Panel */
+    /* ************** */
+    
+    
+    
+    /* ************** */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerButton;
     private javax.swing.JButton addCustomerButton1;
@@ -494,17 +501,19 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmFile;
+    private javax.swing.JMenuBar jmbFileInfoBar;
     private javax.swing.JMenuItem jmiExampleItem;
     private javax.swing.JPanel jpAccountingTab;
     private javax.swing.JPanel jpOptionsTab;
     private javax.swing.JPanel jpRegisterTab;
     private javax.swing.JScrollPane jspCustomerScrollPane;
     private javax.swing.JLabel lblTimeLabel;
-    private javax.swing.JList<String> lstCustomerList;
+    private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
     private javax.swing.JButton refreshDatabaseButton;
