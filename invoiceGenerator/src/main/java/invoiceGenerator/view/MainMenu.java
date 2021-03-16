@@ -30,7 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
         new MyTime().start();
         
     }
-    
+ 
     private class MyTime extends Thread {
 
         private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd YYYY HH:mm:ss '- week 'ww");
@@ -75,16 +75,35 @@ public class MainMenu extends javax.swing.JFrame {
         customerPanel = new javax.swing.JPanel();
         jspCustomerScrollPane = new javax.swing.JScrollPane();
         lstCustomerList = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblIDLabel = new javax.swing.JLabel();
+        lblDateAddedLabel = new javax.swing.JLabel();
+        lblNationalIDNumberLabel = new javax.swing.JLabel();
+        lblFirstNameLabel = new javax.swing.JLabel();
+        lblMiddleNameLabel = new javax.swing.JLabel();
+        lblLastNameLabel = new javax.swing.JLabel();
+        lblNameLabel = new javax.swing.JLabel();
+        lblVATIDLabel = new javax.swing.JLabel();
+        lblCustomerTypeLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jtpNationalIdNumberTextPane = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtpDateAddedTextPane = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jtpFirstNameTextPane = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtpMiddleNameTextPane = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtpLastNameTextPane = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jtpNameTextPane = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jtpVATIDTextPane = new javax.swing.JTextPane();
+        jcbCustomerTypeCheckBox = new javax.swing.JCheckBox();
+        btnCustomerDeleteButton = new javax.swing.JButton();
+        btnCustomerSaveButton = new javax.swing.JButton();
+        btnCustomerRevertButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtpIdTextPane = new javax.swing.JTextPane();
         articlePanel = new javax.swing.JPanel();
         addressPanel = new javax.swing.JPanel();
         jpOptionsTab = new javax.swing.JPanel();
@@ -220,25 +239,81 @@ public class MainMenu extends javax.swing.JFrame {
         jTabbedPane1.addTab("Invoice", invoicePanel);
 
         lstCustomerList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstCustomerList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstCustomerListValueChanged(evt);
+            }
+        });
         jspCustomerScrollPane.setViewportView(lstCustomerList);
 
-        jLabel1.setText("VAT ID");
+        lblIDLabel.setText("ID:");
 
-        jLabel2.setText("Date added:");
+        lblDateAddedLabel.setText("Date added:");
 
-        jLabel3.setText("First name:");
+        lblNationalIDNumberLabel.setText("National ID number:");
 
-        jLabel4.setText("Middle Name:");
+        lblFirstNameLabel.setText("First name:");
 
-        jLabel5.setText("Last Name:");
+        lblMiddleNameLabel.setText("Middle Name:");
+        lblMiddleNameLabel.setPreferredSize(null);
 
-        jLabel6.setText("Name:");
+        lblLastNameLabel.setText("Last Name:");
+        lblLastNameLabel.setPreferredSize(null);
 
-        jLabel7.setText("National ID number:");
+        lblNameLabel.setText("Name:");
+        lblNameLabel.setPreferredSize(null);
 
-        jLabel8.setText("Type:");
+        lblVATIDLabel.setText("VAT ID");
+        lblVATIDLabel.setPreferredSize(null);
 
-        jScrollPane2.setViewportView(jTextPane1);
+        lblCustomerTypeLabel.setText("Type:");
+        lblCustomerTypeLabel.setPreferredSize(null);
+
+        jScrollPane2.setViewportView(jtpNationalIdNumberTextPane);
+
+        jtpDateAddedTextPane.setEnabled(false);
+        jScrollPane3.setViewportView(jtpDateAddedTextPane);
+
+        jScrollPane8.setViewportView(jtpFirstNameTextPane);
+
+        jScrollPane5.setViewportView(jtpMiddleNameTextPane);
+
+        jScrollPane6.setViewportView(jtpLastNameTextPane);
+
+        jScrollPane7.setViewportView(jtpNameTextPane);
+
+        jScrollPane9.setViewportView(jtpVATIDTextPane);
+
+        jcbCustomerTypeCheckBox.setText("Legal entity?");
+        jcbCustomerTypeCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCustomerTypeCheckBoxActionPerformed(evt);
+            }
+        });
+
+        btnCustomerDeleteButton.setText("Delete");
+        btnCustomerDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerDeleteButtonActionPerformed(evt);
+            }
+        });
+
+        btnCustomerSaveButton.setText("Save");
+        btnCustomerSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerSaveButtonActionPerformed(evt);
+            }
+        });
+
+        btnCustomerRevertButton.setText("Revert");
+        btnCustomerRevertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerRevertButtonActionPerformed(evt);
+            }
+        });
+
+        jtpIdTextPane.setEnabled(false);
+        jScrollPane4.setViewportView(jtpIdTextPane);
 
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
@@ -250,19 +325,47 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(lblIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
+                        .addComponent(btnCustomerSaveButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                        .addComponent(btnCustomerRevertButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCustomerDeleteButton))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblNationalIDNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblDateAddedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFirstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane8)))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addComponent(lblMiddleNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addComponent(lblLastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addComponent(lblNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
                     .addGroup(customerPanelLayout.createSequentialGroup()
                         .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(lblVATIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCustomerTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(customerPanelLayout.createSequentialGroup()
+                                .addComponent(jcbCustomerTypeCheckBox)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         customerPanelLayout.setVerticalGroup(
@@ -271,24 +374,51 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDateAddedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblNationalIDNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
+                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
+                                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
+                                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
+                                                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(lblFirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(lblMiddleNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblLastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(lblVATIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(0, 200, Short.MAX_VALUE))
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCustomerTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbCustomerTypeCheckBox))
+                        .addGap(77, 77, 77)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCustomerDeleteButton)
+                            .addComponent(btnCustomerSaveButton)
+                            .addComponent(btnCustomerRevertButton)))
                     .addComponent(jspCustomerScrollPane))
                 .addContainerGap())
         );
@@ -464,6 +594,43 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void CustomerPanelClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerPanelClicked
+        loadCustomers();
+    }//GEN-LAST:event_CustomerPanelClicked
+
+    private void lstCustomerListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstCustomerListValueChanged
+        // TODO what does this do?
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        
+        Customer customer = lstCustomerList.getSelectedValue();
+        if (customer == null) {
+            return;
+        }
+        
+        updateCustomerTextPanes(customer);
+    }//GEN-LAST:event_lstCustomerListValueChanged
+
+    private void jcbCustomerTypeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCustomerTypeCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCustomerTypeCheckBoxActionPerformed
+
+    private void btnCustomerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDeleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCustomerDeleteButtonActionPerformed
+
+    private void btnCustomerSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerSaveButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCustomerSaveButtonActionPerformed
+
+    private void btnCustomerRevertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerRevertButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCustomerRevertButtonActionPerformed
+
+    /* Customer Panel */
+    /* ************** */
+    
+        private void loadCustomers() {
         CustomerHandler customerHandler = new CustomerHandler();        
         DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
@@ -472,13 +639,37 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         lstCustomerList.setModel(customers);
-    }//GEN-LAST:event_CustomerPanelClicked
+    }
+        
+    private void clearCustomerTextPanes() {
+        jtpIdTextPane.setText("");
+        jtpDateAddedTextPane.setText("");
+        jtpNationalIdNumberTextPane.setText("");
+        jcbCustomerTypeCheckBox.setSelected(false);
+        jtpFirstNameTextPane.setText("");
+        jtpMiddleNameTextPane.setText("");
+        jtpLastNameTextPane.setText("");
+        jtpNameTextPane.setText("");
+        jtpVATIDTextPane.setText("");
+    }
 
-    /* Customer Panel */
-    /* ************** */
-    
-    
-    
+    private void updateCustomerTextPanes(Customer customer) {
+        clearCustomerTextPanes();
+        // FIXME a really bad workaround
+        jtpIdTextPane.setText("" + customer.getId());
+        jtpDateAddedTextPane.setText(customer.getDateOfCreation().toString());
+        jtpNationalIdNumberTextPane.setText(customer.getNationalIdNumber());
+        jcbCustomerTypeCheckBox.setSelected(customer.isType());
+        if (customer.isType() == Customer.NATURAL_PERSON) {
+            jtpFirstNameTextPane.setText(customer.getFirstName());
+            jtpMiddleNameTextPane.setText(customer.getMiddleName());
+            jtpLastNameTextPane.setText(customer.getLastName());
+        } else {
+            jtpNameTextPane.setText(customer.getName());
+            jtpVATIDTextPane.setText(customer.getVATID());
+        }
+    }
+        
     /* ************** */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -486,25 +677,27 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton addCustomerButton1;
     private javax.swing.JPanel addressPanel;
     private javax.swing.JPanel articlePanel;
+    private javax.swing.JButton btnCustomerDeleteButton;
+    private javax.swing.JButton btnCustomerRevertButton;
+    private javax.swing.JButton btnCustomerSaveButton;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JScrollPane customerScrollPane;
     private javax.swing.JTextArea customerTextArea;
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JCheckBox jcbCustomerTypeCheckBox;
     private javax.swing.JMenu jmFile;
     private javax.swing.JMenuBar jmbFileInfoBar;
     private javax.swing.JMenuItem jmiExampleItem;
@@ -512,7 +705,24 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jpOptionsTab;
     private javax.swing.JPanel jpRegisterTab;
     private javax.swing.JScrollPane jspCustomerScrollPane;
+    private javax.swing.JTextPane jtpDateAddedTextPane;
+    private javax.swing.JTextPane jtpFirstNameTextPane;
+    private javax.swing.JTextPane jtpIdTextPane;
+    private javax.swing.JTextPane jtpLastNameTextPane;
+    private javax.swing.JTextPane jtpMiddleNameTextPane;
+    private javax.swing.JTextPane jtpNameTextPane;
+    private javax.swing.JTextPane jtpNationalIdNumberTextPane;
+    private javax.swing.JTextPane jtpVATIDTextPane;
+    private javax.swing.JLabel lblCustomerTypeLabel;
+    private javax.swing.JLabel lblDateAddedLabel;
+    private javax.swing.JLabel lblFirstNameLabel;
+    private javax.swing.JLabel lblIDLabel;
+    private javax.swing.JLabel lblLastNameLabel;
+    private javax.swing.JLabel lblMiddleNameLabel;
+    private javax.swing.JLabel lblNameLabel;
+    private javax.swing.JLabel lblNationalIDNumberLabel;
     private javax.swing.JLabel lblTimeLabel;
+    private javax.swing.JLabel lblVATIDLabel;
     private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
