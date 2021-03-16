@@ -298,59 +298,78 @@
                               <Component id="jspCustomerScrollPane" min="-2" pref="238" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblCustomerIDLabel" min="-2" pref="119" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane4" max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnCustomerSaveButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCustomerRevertButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnCustomerAddCustomer" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCustomerDeleteButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="lblCustomerNationalIDNumberLabel" max="32767" attributes="0"/>
-                                          <Component id="lblCustomerDateAddedLabel" max="32767" attributes="0"/>
-                                          <Component id="lblFirstNameLabel" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane8" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblMiddleNameLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane5" pref="407" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblLastNameLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane6" pref="407" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblCustomerNameLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane7" pref="407" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblVATIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCustomerTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jcbCustomerTypeCheckBox" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="lblCustomerNationalIDNumberLabel" max="32767" attributes="0"/>
+                                              <Component id="lblFirstNameLabel" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jScrollPane9" pref="407" max="32767" attributes="0"/>
+                                          <Component id="lblLastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCustomerNationalIDNumber" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtCustomerLastName" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtCustomerFirstName" min="-2" pref="120" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="lblMiddleNameLabel" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtCustomerMiddleName" min="-2" pref="160" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jSeparator1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblCustomerIDLabel" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerID" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Component id="lblCustomerDateAddedLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                                      <Component id="txtCustomerDateAdded" min="-2" pref="160" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblCustomerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblVATIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCustomerVATID" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerLegalName" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblCustomerTypeLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                                              <Component id="jcbCustomerTypeCheckBox" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblCustomerAddress" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnCustomerBillingAddress" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnCustomerShippingAddress" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -364,63 +383,60 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblCustomerIDLabel" min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblCustomerDateAddedLabel" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblCustomerIDLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCustomerDateAddedLabel" alignment="3" max="32767" attributes="0"/>
+                                          <Component id="txtCustomerDateAdded" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                                          <Component id="lblCustomerNationalIDNumberLabel" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblCustomerNationalIDNumberLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerNationalIDNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" alignment="1" attributes="0">
-                                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                                          <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                                                                          <Component id="lblFirstNameLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                      <Component id="lblMiddleNameLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Component id="jScrollPane5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="lblLastNameLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="jScrollPane6" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="lblCustomerNameLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="jScrollPane7" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lblVATIDLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jScrollPane9" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblFirstNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblMiddleNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblLastNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblCustomerNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerLegalName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblVATIDLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtCustomerVATID" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblCustomerTypeLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="jcbCustomerTypeCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblCustomerAddress" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="btnCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="73" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnCustomerDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerRevertButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnCustomerAddCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jspCustomerScrollPane" max="32767" attributes="0"/>
@@ -514,86 +530,6 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpNationalIdNumberTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpDateAddedTextPane">
-                          <Properties>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpFirstNameTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpMiddleNameTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpLastNameTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane7">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpNameTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane9">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpVATIDTextPane">
-                        </Component>
-                      </SubComponents>
-                    </Container>
                     <Component class="javax.swing.JCheckBox" name="jcbCustomerTypeCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Legal entity?"/>
@@ -626,23 +562,67 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerRevertButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jtpIdTextPane">
-                          <Properties>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
+                    <Component class="javax.swing.JTextField" name="txtCustomerID">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerDateAdded">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerNationalIDNumber">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerFirstName">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerMiddleName">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerLastName">
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator1">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerLegalName">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCustomerVATID">
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator2">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblCustomerAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Address:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCustomerBillingAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Billing address"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerBillingAddressActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCustomerShippingAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Shipping address"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerShippingAddressActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCustomerAddCustomer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Add"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerAddCustomerActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="articlePanel">
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="articlePanelMouseClicked"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Article">
@@ -695,7 +675,7 @@
                             <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstArticleListValueChanged"/>
                           </Events>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Article&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Address&gt;"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>
@@ -708,38 +688,23 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblArticleShortDescriptionLabel" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane14" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblArticleShortDescriptionLabel1" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane15" pref="394" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblArticleLongNameLabel" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane16" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="lblArticleWarehouseLocationLabel" min="-2" pref="120" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane12" pref="88" max="32767" attributes="0"/>
+                                                  <Component id="txtArticleWarehouseLocation" min="-2" pref="80" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblArticleIDLabel" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                                                      <Component id="lblArticleShortNameLabel" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jScrollPane10" pref="140" max="32767" attributes="0"/>
-                                                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lblArticleShortNameLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtArticleShortName" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lblArticleIDLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtArticleID" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -747,14 +712,58 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="lblArticleDateAddedLabel" min="-2" pref="80" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane11" max="32767" attributes="0"/>
+                                                  <Component id="txtArticleDateAdded" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="lblArticleQuantityLabel" min="-2" pref="80" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane13" max="32767" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtArticleQuantity" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblArticleShortDescriptionLabel1" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblArticleLongNameLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtArticleLongName" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblArticleShortDescriptionLabel" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtArticleShortDescription" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lblArticleShortDescriptionLabel5" min="-2" pref="135" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="txtArticleRetailPrice" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lblArticleShortDescriptionLabel2" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtArticleTaxRate" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lblArticleShortDescriptionLabel3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <Component id="lblArticleShortDescriptionLabel4" min="-2" pref="135" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtArticleWholesalePrice" pref="173" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btnArticleSave" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnArticleRevert" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnArticleAdd" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnArticleDelete" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -766,47 +775,69 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jScrollPane10" max="32767" attributes="0"/>
-                                      <Component id="lblArticleIDLabel" pref="24" max="32767" attributes="0"/>
-                                      <Component id="lblArticleDateAddedLabel" alignment="0" pref="24" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane11" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblArticleIDLabel" alignment="3" pref="24" max="32767" attributes="0"/>
+                                          <Component id="txtArticleID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="lblArticleDateAddedLabel" alignment="3" pref="24" max="32767" attributes="0"/>
+                                          <Component id="txtArticleDateAdded" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="lblArticleShortNameLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblArticleQuantityLabel" alignment="1" pref="24" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane13" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="lblArticleQuantityLabel" alignment="3" pref="24" max="32767" attributes="0"/>
+                                          <Component id="txtArticleShortName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblArticleWarehouseLocationLabel" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane12" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblArticleWarehouseLocationLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtArticleWarehouseLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblArticleLongNameLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane16" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblArticleLongNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtArticleLongName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jScrollPane14" min="-2" pref="51" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblArticleShortDescriptionLabel" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblArticleShortDescriptionLabel" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="txtArticleShortDescription" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblArticleShortDescriptionLabel1" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblArticleShortDescriptionLabel1" pref="20" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblArticleShortDescriptionLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtArticleTaxRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblArticleShortDescriptionLabel3" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="lblArticleShortDescriptionLabel4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtArticleWholesalePrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblArticleShortDescriptionLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtArticleRetailPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnArticleDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnArticleSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnArticleRevert" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnArticleAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -817,125 +848,34 @@
                             <Property name="text" type="java.lang.String" value="ID:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane10">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpArticleIdTextPane">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleDateAddedLabel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Date added:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane11">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpArticleDateAddedTextPane">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleShortNameLabel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Short name:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpArticleShortNameTextPane">
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleWarehouseLocationLabel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Warehouse location:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane12">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpArticleWarehouseLocationTextPane">
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleQuantityLabel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Quantity:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane13">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpQuantityTextPane">
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Short Description:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane14">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jtaArticleShortDescriptionTextArea">
-                              <Properties>
-                                <Property name="columns" type="int" value="20"/>
-                                <Property name="rows" type="int" value="5"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane15">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jtaArticleShortDescriptionTextArea1">
-                              <Properties>
-                                <Property name="columns" type="int" value="20"/>
-                                <Property name="rows" type="int" value="5"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel1">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Long Description"/>
+                            <Property name="text" type="java.lang.String" value="Long Description:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblArticleLongNameLabel">
@@ -943,22 +883,111 @@
                             <Property name="text" type="java.lang.String" value="Long name:"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane16">
+                        <Component class="javax.swing.JTextField" name="txtArticleID">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleDateAdded">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleShortName">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleQuantity">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleWarehouseLocation">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleLongName">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleShortDescription">
+                        </Component>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                           <AuxValues>
                             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                           </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jtpArticleLongNameTextPane">
+                            <Component class="javax.swing.JTextArea" name="txtArticleLongDescription">
+                              <Properties>
+                                <Property name="columns" type="int" value="20"/>
+                                <Property name="rows" type="int" value="5"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Component class="javax.swing.JSeparator" name="jSeparator3">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Tax rate:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleTaxRate">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel3">
+                          <Properties>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="%"/>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel4">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Wholesale price:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleWholesalePrice">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel5">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Retail price:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtArticleRetailPrice">
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnArticleSave">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Save"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleSaveActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnArticleRevert">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Revert"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleRevertActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnArticleAdd">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Add"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleAddActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnArticleDelete">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Delete"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleDeleteActionPerformed"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="addressPanel">
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addressPanelMouseClicked"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Address">
@@ -970,15 +999,48 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jspArticleScrollPane1" min="-2" pref="238" max="-2" attributes="0"/>
+                              <EmptySpace pref="556" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jspArticleScrollPane1" pref="462" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jspArticleScrollPane1">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JList" name="lstAddressList">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                              <StringArray count="0"/>
+                            </Property>
+                            <Property name="selectionMode" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstAddressListValueChanged"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Article&gt;"/>
+                          </AuxValues>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
