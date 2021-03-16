@@ -4,8 +4,6 @@ import invoiceGenerator.model.Article;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.List;
 
 public class ArticleHandler extends Handler<Article> {
