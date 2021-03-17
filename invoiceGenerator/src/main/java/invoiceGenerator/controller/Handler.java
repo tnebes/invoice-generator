@@ -49,14 +49,16 @@ public abstract class Handler<E> {
     public E update() throws InvoiceGeneratorException {
         validate();
         updateValidation();
-        session.saveOrUpdate(entity);
-        //save();
+        session.beginTransaction();
+        // FIXME nothing other than merge works
+        session.merge(entity);
+        session.getTransaction().commit();
         return this.entity;
     }
 
     private void save() {
         session.beginTransaction();
-        session.saveOrUpdate(this.entity);
+        session.save(this.entity);
         session.getTransaction().commit();
     }
 
