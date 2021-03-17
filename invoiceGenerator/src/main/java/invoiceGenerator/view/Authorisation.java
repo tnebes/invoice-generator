@@ -25,6 +25,8 @@ public class Authorisation extends javax.swing.JFrame {
         initComponents();
         // TODO remove this
         txtUsernameTextField.setText("tnebes@drau.de");
+        // TODO really remove this
+        pswPasswordTextField.setText("edunova");
         
     }
 

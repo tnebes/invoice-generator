@@ -33,6 +33,12 @@ public class CustomerHandler extends Handler<Customer> {
         return (Address) query.getSingleResult();
     }
 
+    public Address getShippingAddressOfCustomer() throws InvoiceGeneratorException {
+        Query query = session.createQuery("from address where id = :i");
+        query.setParameter("i", entity.getShippingAddress().getId());
+        return (Address) query.getSingleResult();
+    }
+
     @Override
     protected void createValidation() throws InvoiceGeneratorException {
         informationCheck();

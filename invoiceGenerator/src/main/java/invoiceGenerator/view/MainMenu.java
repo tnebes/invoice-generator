@@ -1099,7 +1099,21 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerAddCustomerActionPerformed
 
     private void btnCustomerShippingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerShippingAddressActionPerformed
-        // TODO add your handling code here:
+        Customer customer = lstCustomerList.getSelectedValue();
+        if (customer == null) {
+            JOptionPane.showInternalMessageDialog(null, "No customer selected.");
+            return;
+        }
+        if (customer.getShippingAddress() == null) {
+            JOptionPane.showInternalMessageDialog(null, "Customer has no shipping address.");
+            return;
+        }
+        try {
+            Address address = new CustomerHandler(customer).getShippingAddressOfCustomer();
+            gotoAddress(address);
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnCustomerShippingAddressActionPerformed
 
     private void btnCustomerBillingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerBillingAddressActionPerformed
@@ -1123,11 +1137,26 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerBillingAddressActionPerformed
 
     private void btnCustomerRevertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerRevertButtonActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to revert changes made to this customer?",
+                "Revert Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Customer customer = lstCustomerList.getSelectedValue();
+            if (customer == null) {
+                return;
+            }
+            updateCustomerInformation(customer);
+        }
     }//GEN-LAST:event_btnCustomerRevertButtonActionPerformed
 
     private void btnCustomerSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerSaveButtonActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to make changes to this customer?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Customer customer = lstCustomerList.getSelectedValue();
+            updateCustomer(customer);
+        }
     }//GEN-LAST:event_btnCustomerSaveButtonActionPerformed
 
     private void btnCustomerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDeleteButtonActionPerformed
@@ -1246,7 +1275,6 @@ public class MainMenu extends javax.swing.JFrame {
 
 
     private void selectCustomer(Customer customer) {
-        // FIXME this does not work.
         lstCustomerList.grabFocus();
         lstCustomerList.clearSelection();
         lstCustomerList.setSelectedValue(customer, true);
@@ -1256,6 +1284,27 @@ public class MainMenu extends javax.swing.JFrame {
     private void gotoAddress(Address address) {
         tpAccounting.setSelectedIndex(3); // go to addresses tab
         selectAddress(address);
+    }
+
+    private void updateCustomer(Customer customer) {
+        customer.setType(jcbCustomerTypeCheckBox.isSelected());
+        if (customer.isType() == Customer.NATURAL_PERSON) {
+            customer.setFirstName(txtCustomerFirstName.getText());
+            customer.setMiddleName(txtCustomerMiddleName.getText());
+            customer.setLastName(txtCustomerLastName.getText());
+            customer.setNationalIdNumber(txtCustomerNationalIDNumber.getText());
+            // TODO add update for billing and shipping address.
+        } else {
+            customer.setName(txtCustomerLegalName.getText());
+            customer.setVATID(txtCustomerVATID.getText());
+        }
+        CustomerHandler customerHandler = new CustomerHandler(customer);
+        try {
+            customerHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /* ************** */

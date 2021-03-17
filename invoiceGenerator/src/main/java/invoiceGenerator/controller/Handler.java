@@ -47,7 +47,8 @@ public abstract class Handler<E> {
     public E update() throws InvoiceGeneratorException {
         validate();
         updateValidation();
-        save();
+        session.update(this.entity);
+        // used to be save();
         return this.entity;
     }
 

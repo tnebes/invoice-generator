@@ -18,7 +18,7 @@ public class InitialFixtures {
         Faker faker = new Faker();
         Random rng = new Random();
 
-        //operator
+        // operator
         Operator operator = new Operator();
         operator.setEmail("tnebes@drau.de");
         operator.setPassword(BCrypt.hashpw("edunova", BCrypt.gensalt()));
