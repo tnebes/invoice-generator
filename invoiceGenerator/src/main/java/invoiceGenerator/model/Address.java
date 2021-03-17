@@ -36,7 +36,7 @@ public class Address extends Identity {
 
 	@NotNull(message = "Please enter the street number.")
 	@NotEmpty(message = "Street number cannot be blank or empty.")
-	@Size(max = 10, message = "Street numbr can be maximally 10 characters.")
+	@Size(max = 10, message = "Street number can be maximally 10 characters.")
 	@Column(name = "street_number")
 	private String					streetNumber;
 

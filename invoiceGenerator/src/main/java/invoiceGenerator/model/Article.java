@@ -125,17 +125,6 @@ public class Article extends Identity {
 
 	@Override
 	public String toString() {
-		return "Article{" +
-				"warehouseLocation='" + warehouseLocation + '\'' +
-				", warehouseQuantity=" + warehouseQuantity +
-				", wholesalePrice=" + wholesalePrice +
-				", retailPrice=" + retailPrice +
-				", taxRate=" + taxRate +
-				", shortName='" + shortName + '\'' +
-				", longName='" + longName + '\'' +
-				", shortDescription='" + shortDescription + '\'' +
-				", longDescription='" + longDescription + '\'' +
-				", articleInvoice=" + articleInvoice +
-				'}';
+            return this.getId() + " - " + this.getShortName() + " : " + this.getWarehouseQuantity();
 	}
 }

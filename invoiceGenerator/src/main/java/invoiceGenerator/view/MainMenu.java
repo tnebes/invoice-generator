@@ -61,6 +61,7 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         tabController = new javax.swing.JTabbedPane();
         jpRegisterTab = new javax.swing.JPanel();
         customerScrollPane = new javax.swing.JScrollPane();
@@ -110,7 +111,6 @@ public class MainMenu extends javax.swing.JFrame {
         lstArticleList = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         lblArticleIDLabel = new javax.swing.JLabel();
-        lblArticleDateAddedLabel = new javax.swing.JLabel();
         lblArticleShortNameLabel = new javax.swing.JLabel();
         lblArticleWarehouseLocationLabel = new javax.swing.JLabel();
         lblArticleQuantityLabel = new javax.swing.JLabel();
@@ -118,7 +118,6 @@ public class MainMenu extends javax.swing.JFrame {
         lblArticleShortDescriptionLabel1 = new javax.swing.JLabel();
         lblArticleLongNameLabel = new javax.swing.JLabel();
         txtArticleID = new javax.swing.JTextField();
-        txtArticleDateAdded = new javax.swing.JTextField();
         txtArticleShortName = new javax.swing.JTextField();
         txtArticleQuantity = new javax.swing.JTextField();
         txtArticleWarehouseLocation = new javax.swing.JTextField();
@@ -138,9 +137,31 @@ public class MainMenu extends javax.swing.JFrame {
         btnArticleRevert = new javax.swing.JButton();
         btnArticleAdd = new javax.swing.JButton();
         btnArticleDelete = new javax.swing.JButton();
+        btnArticleCalculateCost = new javax.swing.JButton();
         addressPanel = new javax.swing.JPanel();
         jspArticleScrollPane1 = new javax.swing.JScrollPane();
         lstAddressList = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstAddressCustomerList = new javax.swing.JList<>();
+        lblAddressCustomerWAddress = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnAddressSave = new javax.swing.JButton();
+        btnAddressRevert = new javax.swing.JButton();
+        btnAddressAdd = new javax.swing.JButton();
+        btnAddressDelete = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        lblAddressCity = new javax.swing.JLabel();
+        txtAddressCity = new javax.swing.JTextField();
+        lblAddressCity1 = new javax.swing.JLabel();
+        txtAddressCity1 = new javax.swing.JTextField();
+        lblAddressStreet = new javax.swing.JLabel();
+        txtAddressStreet = new javax.swing.JTextField();
+        lblAddressStreetNumber = new javax.swing.JLabel();
+        txtAddressStreetNumber = new javax.swing.JTextField();
+        lblAddressStreetLetter = new javax.swing.JLabel();
+        txtAddressStreetLetter = new javax.swing.JTextField();
+        lblAddressCountry = new javax.swing.JLabel();
+        txtAddressCountry = new javax.swing.JTextField();
         jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
@@ -152,6 +173,9 @@ public class MainMenu extends javax.swing.JFrame {
         jmFile = new javax.swing.JMenu();
         jmiExampleItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -502,8 +526,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblArticleIDLabel.setText("ID:");
 
-        lblArticleDateAddedLabel.setText("Date added:");
-
         lblArticleShortNameLabel.setText("Short name:");
 
         lblArticleWarehouseLocationLabel.setText("Warehouse location:");
@@ -517,8 +539,6 @@ public class MainMenu extends javax.swing.JFrame {
         lblArticleLongNameLabel.setText("Long name:");
 
         txtArticleID.setEditable(false);
-
-        txtArticleDateAdded.setEditable(false);
 
         txtArticleLongDescription.setColumns(20);
         txtArticleLongDescription.setRows(5);
@@ -562,6 +582,8 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        btnArticleCalculateCost.setText("Calculate");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -570,30 +592,6 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleWarehouseLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleWarehouseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleShortName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleID)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleDateAddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleDateAdded))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtArticleQuantity))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblArticleShortDescriptionLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -607,54 +605,68 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtArticleShortDescription))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleShortDescriptionLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtArticleRetailPrice))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblArticleShortDescriptionLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtArticleTaxRate, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblArticleShortDescriptionLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(lblArticleShortDescriptionLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtArticleWholesalePrice, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnArticleSave)
                         .addGap(18, 18, 18)
                         .addComponent(btnArticleRevert)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnArticleAdd)
                         .addGap(18, 18, 18)
-                        .addComponent(btnArticleDelete)))
+                        .addComponent(btnArticleDelete))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblArticleShortDescriptionLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblArticleShortDescriptionLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtArticleRetailPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnArticleCalculateCost))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtArticleTaxRate, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblArticleShortDescriptionLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblArticleShortDescriptionLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtArticleWholesalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 61, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblArticleIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtArticleID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtArticleQuantity)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblArticleWarehouseLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtArticleShortName)
+                            .addComponent(txtArticleWarehouseLocation))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblArticleIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                        .addComponent(txtArticleID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblArticleDateAddedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                        .addComponent(txtArticleDateAdded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                        .addComponent(txtArticleShortName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtArticleQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblArticleIDLabel)
+                    .addComponent(txtArticleID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtArticleShortName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtArticleQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblArticleWarehouseLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtArticleWarehouseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticleLongNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtArticleLongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -665,8 +677,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblArticleShortDescriptionLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                        .addGap(81, 81, 81))
+                        .addComponent(lblArticleShortDescriptionLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                        .addGap(36, 36, 36))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -679,8 +691,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticleShortDescriptionLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtArticleRetailPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addComponent(txtArticleRetailPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnArticleCalculateCost))
+                .addGap(75, 75, 75)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnArticleDelete)
                     .addComponent(btnArticleSave)
@@ -726,20 +739,159 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jspArticleScrollPane1.setViewportView(lstAddressList);
 
+        jScrollPane1.setViewportView(lstAddressCustomerList);
+
+        lblAddressCustomerWAddress.setText("Customer with selected address:");
+
+        btnAddressSave.setText("Save");
+        btnAddressSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddressSaveActionPerformed(evt);
+            }
+        });
+
+        btnAddressRevert.setText("Revert");
+        btnAddressRevert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddressRevertActionPerformed(evt);
+            }
+        });
+
+        btnAddressAdd.setText("Add");
+        btnAddressAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddressAddActionPerformed(evt);
+            }
+        });
+
+        btnAddressDelete.setText("Delete");
+        btnAddressDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddressDeleteActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setText("Billing address?");
+
+        lblAddressCity.setText("City:");
+
+        lblAddressCity1.setText("ZIP");
+
+        lblAddressStreet.setText("Street:");
+
+        lblAddressStreetNumber.setText("Street number:");
+
+        lblAddressStreetLetter.setText("Street letter:");
+
+        lblAddressCountry.setText("Country:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAddressSave)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddressRevert)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddressAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddressDelete))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblAddressStreetLetter)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblAddressCountry)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAddressCountry))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAddressStreet)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAddressStreet))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAddressCity)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAddressCity1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAddressStreetNumber)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAddressStreetNumber)))))
+                        .addGap(0, 17, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressStreetNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressStreetNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddressDelete)
+                    .addComponent(btnAddressSave)
+                    .addComponent(btnAddressRevert)
+                    .addComponent(btnAddressAdd))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout addressPanelLayout = new javax.swing.GroupLayout(addressPanel);
         addressPanel.setLayout(addressPanelLayout);
         addressPanelLayout.setHorizontalGroup(
             addressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addressPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jspArticleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addGroup(addressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jspArticleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressCustomerWAddress))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         addressPanelLayout.setVerticalGroup(
             addressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addressPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jspArticleScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                .addGroup(addressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(addressPanelLayout.createSequentialGroup()
+                        .addComponent(jspArticleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAddressCustomerWAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -914,7 +1066,7 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         
-        updateArticleList();        
+        updateArticleList(article);
     }//GEN-LAST:event_lstArticleListValueChanged
 
     private void btnCustomerAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerAddCustomerActionPerformed
@@ -972,8 +1124,24 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_articlePanelComponentShown
 
     private void addressPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_addressPanelComponentShown
-        // TODO add your handling code here:
+        loadAddresses();
     }//GEN-LAST:event_addressPanelComponentShown
+
+    private void btnAddressSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddressSaveActionPerformed
+
+    private void btnAddressRevertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressRevertActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddressRevertActionPerformed
+
+    private void btnAddressAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddressAddActionPerformed
+
+    private void btnAddressDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddressDeleteActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -1034,23 +1202,56 @@ public class MainMenu extends javax.swing.JFrame {
         lstArticleList.setModel(articles);
     }
     
-    private void updateArticleList() {
+    private void updateArticleList(Article article) {
         clearArticleList();
+        //TODO bad workaround with empty strings
+        txtArticleID.setText(article.getId() + "");
+        txtArticleShortName.setText(article.getShortName());
+        txtArticleQuantity.setText(article.getWarehouseQuantity() + "");
+        txtArticleLongName.setText(article.getLongName());
+        txtArticleShortDescription.setText(article.getShortDescription());
+        txtArticleLongDescription.setText(article.getLongDescription());
+        txtArticleTaxRate.setText(article.getTaxRate() + "");
+        txtArticleWholesalePrice.setText(article.getWholesalePrice() + "");
+        txtArticleRetailPrice.setText(article.getRetailPrice() + "");
     }
     
     private void clearArticleList() {
-        
+        txtArticleID.setText("");
+        txtArticleShortName.setText("");
+        txtArticleQuantity.setText("");
+        txtArticleWarehouseLocation.setText("");
+        txtArticleLongName.setText("");
+        txtArticleShortDescription.setText("");
+        txtArticleLongDescription.setText("");
+        txtArticleTaxRate.setText("");
+        txtArticleWholesalePrice.setText("");
+        txtArticleRetailPrice.setText("");
     }
     
     /* ************* */
+    
+    /* Adddress Panel */
+    /* ************** */
+    
+    private void loadAddresses() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    
+    /* ************** */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerButton;
     private javax.swing.JButton addCustomerButton1;
     private javax.swing.JPanel addressPanel;
     private javax.swing.JPanel articlePanel;
+    private javax.swing.JButton btnAddressAdd;
+    private javax.swing.JButton btnAddressDelete;
+    private javax.swing.JButton btnAddressRevert;
+    private javax.swing.JButton btnAddressSave;
     private javax.swing.JButton btnArticleAdd;
+    private javax.swing.JButton btnArticleCalculateCost;
     private javax.swing.JButton btnArticleDelete;
     private javax.swing.JButton btnArticleRevert;
     private javax.swing.JButton btnArticleSave;
@@ -1066,8 +1267,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -1084,7 +1289,13 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jspArticleScrollPane;
     private javax.swing.JScrollPane jspArticleScrollPane1;
     private javax.swing.JScrollPane jspCustomerScrollPane;
-    private javax.swing.JLabel lblArticleDateAddedLabel;
+    private javax.swing.JLabel lblAddressCity;
+    private javax.swing.JLabel lblAddressCity1;
+    private javax.swing.JLabel lblAddressCountry;
+    private javax.swing.JLabel lblAddressCustomerWAddress;
+    private javax.swing.JLabel lblAddressStreet;
+    private javax.swing.JLabel lblAddressStreetLetter;
+    private javax.swing.JLabel lblAddressStreetNumber;
     private javax.swing.JLabel lblArticleIDLabel;
     private javax.swing.JLabel lblArticleLongNameLabel;
     private javax.swing.JLabel lblArticleQuantityLabel;
@@ -1107,7 +1318,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblMiddleNameLabel;
     private javax.swing.JLabel lblTimeLabel;
     private javax.swing.JLabel lblVATIDLabel;
-    private javax.swing.JList<Article> lstAddressList;
+    private javax.swing.JList<Customer> lstAddressCustomerList;
+    private javax.swing.JList<Address> lstAddressList;
     private javax.swing.JList<Article> lstArticleList;
     private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
@@ -1118,7 +1330,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane shippingScrollPane;
     private javax.swing.JTextArea shippingTextArea;
     private javax.swing.JTabbedPane tabController;
-    private javax.swing.JTextField txtArticleDateAdded;
+    private javax.swing.JTextField txtAddressCity;
+    private javax.swing.JTextField txtAddressCity1;
+    private javax.swing.JTextField txtAddressCountry;
+    private javax.swing.JTextField txtAddressStreet;
+    private javax.swing.JTextField txtAddressStreetLetter;
+    private javax.swing.JTextField txtAddressStreetNumber;
     private javax.swing.JTextField txtArticleID;
     private javax.swing.JTextArea txtArticleLongDescription;
     private javax.swing.JTextField txtArticleLongName;
