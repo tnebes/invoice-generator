@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "customer")
 public class Customer extends Identity {
@@ -160,4 +161,17 @@ public class Customer extends Identity {
             }
             return returnString;
         }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Customer customer = (Customer) o;
+		return customer.getId() == this.getId();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getId());
+	}
 }

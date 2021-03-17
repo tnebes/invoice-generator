@@ -18,8 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -77,7 +76,7 @@ public class MainMenu extends javax.swing.JFrame {
         removeCustomerButton1 = new javax.swing.JButton();
         printInvoiceButton = new javax.swing.JButton();
         jpAccountingTab = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tpAccounting = new javax.swing.JTabbedPane();
         invoicePanel = new javax.swing.JPanel();
         customerPanel = new javax.swing.JPanel();
         jspCustomerScrollPane = new javax.swing.JScrollPane();
@@ -294,7 +293,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Invoice", invoicePanel);
+        tpAccounting.addTab("Invoice", invoicePanel);
 
         customerPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -513,7 +512,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Customer", customerPanel);
+        tpAccounting.addTab("Customer", customerPanel);
 
         articlePanel.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -730,7 +729,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Article", articlePanel);
+        tpAccounting.addTab("Article", articlePanel);
 
         addressPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -921,17 +920,17 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Address", addressPanel);
+        tpAccounting.addTab("Address", addressPanel);
 
         javax.swing.GroupLayout jpAccountingTabLayout = new javax.swing.GroupLayout(jpAccountingTab);
         jpAccountingTab.setLayout(jpAccountingTabLayout);
         jpAccountingTabLayout.setHorizontalGroup(
             jpAccountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tpAccounting)
         );
         jpAccountingTabLayout.setVerticalGroup(
             jpAccountingTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tpAccounting)
         );
 
         tabController.addTab("Accounting", jpAccountingTab);
@@ -1228,6 +1227,26 @@ public class MainMenu extends javax.swing.JFrame {
             txtCustomerVATID.setText(customer.getVATID());
         }
     }
+
+
+    private void selectCustomer(Customer customer) {
+        // FIXME this does not work.
+        lstCustomerList.grabFocus();
+        lstCustomerList.getSelectionModel().clearSelection();
+        int customerIndex = -1;
+        for (int i = 0; i < lstCustomerList.getModel().getSize(); i++) {
+            if (customer.equals(lstCustomerList.getModel().getElementAt(i))) {
+                customerIndex = i;
+                break;
+            }
+        }
+        try {
+            lstCustomerList.setSelectedIndex(customerIndex);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        updateCustomerInformation(customer);
+    }
         
     /* ************** */
     
@@ -1291,8 +1310,8 @@ public class MainMenu extends javax.swing.JFrame {
     private void updateAddressInformation(Address address) {
         clearAddressInformation();
         clearAddressCustomerInformation();
-        //TODO bad workaround
         cbAddressType.setSelected(address.isType());
+        //TODO bad workaround
         txtAddressId.setText(address.getId() + "");
         txtAddressCity.setText(address.getCity());
         txtAddressZIP.setText(address.getZIPCode());
@@ -1329,11 +1348,10 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     private void gotoCustomer(Customer customer) {
-        
+        tpAccounting.setSelectedIndex(1); // goes to customer tab
+        selectCustomer(customer);
     }
 
-
-    
     /* ************** */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1371,7 +1389,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JCheckBox jcbCustomerTypeCheckBox;
     private javax.swing.JMenu jmFile;
@@ -1426,6 +1443,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane shippingScrollPane;
     private javax.swing.JTextArea shippingTextArea;
     private javax.swing.JTabbedPane tabController;
+    private javax.swing.JTabbedPane tpAccounting;
     private javax.swing.JTextField txtAddressCity;
     private javax.swing.JTextField txtAddressCountry;
     private javax.swing.JTextField txtAddressId;
