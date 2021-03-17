@@ -162,7 +162,7 @@ public class Customer extends Identity {
             return returnString;
         }
 
-	@Override
+        @Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
@@ -174,4 +174,5 @@ public class Customer extends Identity {
 	public int hashCode() {
 		return Objects.hash(this.getId());
 	}
+
 }

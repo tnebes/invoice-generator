@@ -67,10 +67,10 @@ public class CustomerHandler extends Handler<Customer> {
             }
             if (this.getData().size() != 0) {
                 for (Customer legalCustomer : this.getData()) {
-                    if (entity.getVATID().equals(legalCustomer.getVATID())) {
+                    if (entity.getVATID().equals(legalCustomer.getVATID()) && !(entity.equals(legalCustomer))) {
                         String message = "Customer cannot have the VATID " + entity.getVATID() +
                                 " as used by customer " +
-                                legalCustomer.getVATID();
+                                legalCustomer.getId();
                         throw new InvoiceGeneratorException(message);
                     }
                 }
@@ -85,11 +85,13 @@ public class CustomerHandler extends Handler<Customer> {
             if (entity.getBillingAddress() == null) {
                 throw new InvoiceGeneratorException("A natural person must have a valid billing address.");
             }
-            if (entity.getNationalIdNumber() != null && this.getData().size() != 0) {
+            if (!entity.getNationalIdNumber().isBlank()
+                    && entity.getNationalIdNumber() != null
+                    && this.getData().size() != 0) {
                 for (Customer naturalCustomer : this.getData()) {
-                    if (entity.getNationalIdNumber().equals(naturalCustomer.getNationalIdNumber())) {
+                    if (entity.getNationalIdNumber().equals(naturalCustomer.getNationalIdNumber()) && !(entity.equals(naturalCustomer))) {
                         String message = "Customer cannot have the national ID number " + entity.getNationalIdNumber() +
-                                "as used by customer " + naturalCustomer.getNationalIdNumber();
+                                " as used by customer " + naturalCustomer.getNationalIdNumber();
                         throw new InvoiceGeneratorException(message);
                     }
                 }

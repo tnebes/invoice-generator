@@ -34,7 +34,7 @@ public class InitialFixtures {
 
         // address check
         List<Address> addresses = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 21; i++) {
             Address testAddress = new Address();
             testAddress.setZIPCode(faker.address().zipCode());
             testAddress.setCity(faker.address().city());

@@ -10,6 +10,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.CacheMode;
 
 /**
  * @author tnebes
@@ -28,6 +29,7 @@ public abstract class Handler<E> {
 
     public Handler() {
         this.session = HibernateUtil.getSessionFactory().openSession(); // should not use getCurrentSession()...
+        this.session.setCacheMode(CacheMode.IGNORE);
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         this.validator = validatorFactory.getValidator();
     }
@@ -47,17 +49,18 @@ public abstract class Handler<E> {
     public E update() throws InvoiceGeneratorException {
         validate();
         updateValidation();
-        session.update(this.entity);
-        // used to be save();
+        session.saveOrUpdate(entity);
+        //save();
         return this.entity;
     }
 
     private void save() {
         session.beginTransaction();
-        session.save(this.entity);
+        session.saveOrUpdate(this.entity);
         session.getTransaction().commit();
     }
 
+    
     private void validate() throws InvoiceGeneratorException {
         Set<ConstraintViolation<E>> constraintViolations = validator.validate(this.entity);
         if(constraintViolations.size() > 0) {

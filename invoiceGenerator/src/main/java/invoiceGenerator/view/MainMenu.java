@@ -8,6 +8,7 @@ package invoiceGenerator.view;
 import invoiceGenerator.controller.AddressHandler;
 import invoiceGenerator.controller.ArticleHandler;
 import invoiceGenerator.controller.CustomerHandler;
+import invoiceGenerator.controller.InvoiceHandler;
 import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Article;
 import invoiceGenerator.model.Customer;
@@ -26,14 +27,30 @@ import javax.swing.*;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    InvoiceHandler invoiceHandler;
+    CustomerHandler customerHandler;
+    ArticleHandler articleHandler;
+    AddressHandler addressHandler;
+
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
+        this.invoiceHandler = new InvoiceHandler();
+        this.customerHandler = new CustomerHandler();
+        this.articleHandler = new ArticleHandler();
+        this.addressHandler = new AddressHandler();
         initComponents();
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
+        loadFromDatabase();
         new MyTime().start();
-        
+    }
+
+    private void loadFromDatabase() {
+        //loadInvoices();
+        loadAddresses();
+        loadCustomers();
+        loadArticles();
     }
 
     private class MyTime extends Thread {
@@ -1081,7 +1098,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticleSaveActionPerformed
 
     private void lstArticleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArticleListValueChanged
-        // TODO what does this do?
+        // avoids null values
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -1177,7 +1194,6 @@ public class MainMenu extends javax.swing.JFrame {
         if (customer == null) {
             return;
         }
-
         updateCustomerInformation(customer);
     }//GEN-LAST:event_lstCustomerListValueChanged
 
@@ -1234,7 +1250,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* ************** */
     
     private void loadCustomers() {
-        CustomerHandler customerHandler = new CustomerHandler();        
         DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
             customers.addAll(customerHandler.getData());
@@ -1313,7 +1328,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* ************* */
     
     private void loadArticles() {
-        ArticleHandler articleHandler = new ArticleHandler();        
         DefaultListModel<Article> articles = new DefaultListModel<>();
         try {
             articles.addAll(articleHandler.getData());
@@ -1356,7 +1370,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* ************** */
     
     private void loadAddresses() {
-        AddressHandler addressHandler = new AddressHandler();
         DefaultListModel<Address> addresses = new DefaultListModel<>();
         try {
             addresses.addAll(addressHandler.getData());
