@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "address")
 public class Address extends Identity {
@@ -116,5 +117,18 @@ public class Address extends Identity {
 	public String toString() {
 		String addressType = this.isType() ? "billing" : "shipping";
 		return this.getId() + " - " + addressType + " " + this.getStreet() + " " + this.getStreetNumber() + " " + this.getStreetLetter();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Address address = (Address) o;
+		return Objects.equals(this.getId(), address.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getId());
 	}
 }

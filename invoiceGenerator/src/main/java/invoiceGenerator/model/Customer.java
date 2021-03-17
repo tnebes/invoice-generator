@@ -167,7 +167,7 @@ public class Customer extends Identity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Customer customer = (Customer) o;
-		return customer.getId() == this.getId();
+		return Objects.equals(customer.getId(), this.getId());
 	}
 
 	@Override

@@ -27,6 +27,12 @@ public class CustomerHandler extends Handler<Customer> {
         return query.list();
     }
 
+    public Address getBillingAddressOfCustomer() throws InvoiceGeneratorException {
+        Query query = session.createQuery("from address where id = :i");
+        query.setParameter("i", entity.getBillingAddress().getId());
+        return (Address) query.getSingleResult();
+    }
+
     @Override
     protected void createValidation() throws InvoiceGeneratorException {
         informationCheck();

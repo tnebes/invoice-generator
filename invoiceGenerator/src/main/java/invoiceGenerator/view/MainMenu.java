@@ -1103,7 +1103,23 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerShippingAddressActionPerformed
 
     private void btnCustomerBillingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerBillingAddressActionPerformed
-        // TODO add your handling code here:
+        Customer customer = lstCustomerList.getSelectedValue();
+        if (customer == null) {
+            JOptionPane.showInternalMessageDialog(null, "No customer selected.");
+            return;
+        }
+        if (customer.getBillingAddress() == null) {
+            JOptionPane.showInternalMessageDialog(null, "Customer has no billing address.");
+            return;
+        }
+        try {
+            Address address = new CustomerHandler(customer).getBillingAddressOfCustomer();
+            gotoAddress(address);
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_btnCustomerBillingAddressActionPerformed
 
     private void btnCustomerRevertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerRevertButtonActionPerformed
@@ -1232,22 +1248,16 @@ public class MainMenu extends javax.swing.JFrame {
     private void selectCustomer(Customer customer) {
         // FIXME this does not work.
         lstCustomerList.grabFocus();
-        lstCustomerList.getSelectionModel().clearSelection();
-        int customerIndex = -1;
-        for (int i = 0; i < lstCustomerList.getModel().getSize(); i++) {
-            if (customer.equals(lstCustomerList.getModel().getElementAt(i))) {
-                customerIndex = i;
-                break;
-            }
-        }
-        try {
-            lstCustomerList.setSelectedIndex(customerIndex);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        updateCustomerInformation(customer);
+        lstCustomerList.clearSelection();
+        lstCustomerList.setSelectedValue(customer, true);
+        updateCustomerInformation(lstCustomerList.getSelectedValue());
     }
-        
+
+    private void gotoAddress(Address address) {
+        tpAccounting.setSelectedIndex(3); // go to addresses tab
+        selectAddress(address);
+    }
+
     /* ************** */
     
     /* Article Panel */
@@ -1286,7 +1296,7 @@ public class MainMenu extends javax.swing.JFrame {
         txtArticleLongName.setText("");
         txtArticleShortDescription.setText("");
         txtArticleLongDescription.setText("");
-        txtArticleTaxRate.setText("25");
+        txtArticleTaxRate.setText(Article.STANDARD_TAX_RATE + "");
         txtArticleWholesalePrice.setText("");
         txtArticleRetailPrice.setText("");
     }
@@ -1350,6 +1360,13 @@ public class MainMenu extends javax.swing.JFrame {
     private void gotoCustomer(Customer customer) {
         tpAccounting.setSelectedIndex(1); // goes to customer tab
         selectCustomer(customer);
+    }
+
+    private void selectAddress(Address address) {
+        lstAddressList.grabFocus();
+        lstAddressList.clearSelection();
+        lstAddressList.setSelectedValue(address, true);
+        updateAddressInformation(lstAddressList.getSelectedValue());
     }
 
     /* ************** */
