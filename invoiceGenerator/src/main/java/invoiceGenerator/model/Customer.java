@@ -46,7 +46,7 @@ public class Customer extends Identity {
 	@Column(name = "last_name")
 	private String 				lastName;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Address				billingAddress;
 
 	@ManyToOne

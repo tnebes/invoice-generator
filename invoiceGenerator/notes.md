@@ -1,6 +1,6 @@
 # Todo list #
 
-* Add visibility of address to the customer panel
+* Shipping address can be assigned to billing address and vice versa. Fixme.
 * Add ability to edit the address from the customer panel
 
 # Know bugs #

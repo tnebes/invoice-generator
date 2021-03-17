@@ -5,6 +5,7 @@
  */
 package invoiceGenerator.view;
 
+import invoiceGenerator.controller.AddressHandler;
 import invoiceGenerator.controller.ArticleHandler;
 import invoiceGenerator.controller.CustomerHandler;
 import invoiceGenerator.model.Address;
@@ -12,7 +13,9 @@ import invoiceGenerator.model.Article;
 import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -149,11 +152,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnAddressRevert = new javax.swing.JButton();
         btnAddressAdd = new javax.swing.JButton();
         btnAddressDelete = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbAddressType = new javax.swing.JCheckBox();
         lblAddressCity = new javax.swing.JLabel();
         txtAddressCity = new javax.swing.JTextField();
         lblAddressCity1 = new javax.swing.JLabel();
-        txtAddressCity1 = new javax.swing.JTextField();
+        txtAddressZIP = new javax.swing.JTextField();
         lblAddressStreet = new javax.swing.JLabel();
         txtAddressStreet = new javax.swing.JTextField();
         lblAddressStreetNumber = new javax.swing.JLabel();
@@ -162,6 +165,8 @@ public class MainMenu extends javax.swing.JFrame {
         txtAddressStreetLetter = new javax.swing.JTextField();
         lblAddressCountry = new javax.swing.JLabel();
         txtAddressCountry = new javax.swing.JTextField();
+        lblAddressId = new javax.swing.JLabel();
+        txtAddressId = new javax.swing.JTextField();
         jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
@@ -172,7 +177,7 @@ public class MainMenu extends javax.swing.JFrame {
         jmbFileInfoBar = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
         jmiExampleItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmInfo = new javax.swing.JMenu();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -356,9 +361,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        txtCustomerID.setEnabled(false);
+        txtCustomerID.setEditable(false);
 
-        txtCustomerDateAdded.setEnabled(false);
+        txtCustomerDateAdded.setEditable(false);
 
         lblCustomerAddress.setText("Address:");
 
@@ -545,6 +550,8 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtArticleLongDescription);
 
         lblArticleShortDescriptionLabel2.setText("Tax rate:");
+
+        txtArticleTaxRate.setText("25");
 
         lblArticleShortDescriptionLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblArticleShortDescriptionLabel3.setText("%");
@@ -739,6 +746,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jspArticleScrollPane1.setViewportView(lstAddressList);
 
+        lstAddressCustomerList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstAddressCustomerListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstAddressCustomerList);
 
         lblAddressCustomerWAddress.setText("Customer with selected address:");
@@ -771,11 +783,12 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Billing address?");
+        cbAddressType.setText("Billing address?");
+        cbAddressType.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         lblAddressCity.setText("City:");
 
-        lblAddressCity1.setText("ZIP");
+        lblAddressCity1.setText("ZIP:");
 
         lblAddressStreet.setText("Street:");
 
@@ -784,6 +797,10 @@ public class MainMenu extends javax.swing.JFrame {
         lblAddressStreetLetter.setText("Street letter:");
 
         lblAddressCountry.setText("Country:");
+
+        lblAddressId.setText("ID:");
+
+        txtAddressId.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -802,49 +819,58 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(btnAddressDelete))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lblAddressStreetLetter)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblAddressCountry)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtAddressCountry))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(lblAddressStreet)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAddressStreet))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(lblAddressCity)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                            .addComponent(lblAddressStreet)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtAddressStreet))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                            .addComponent(lblAddressCity)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cbAddressType, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAddressId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAddressId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblAddressCity1)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtAddressZIP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblAddressStreetNumber)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtAddressStreetNumber)))))
-                        .addGap(0, 17, Short.MAX_VALUE)))
+                                        .addComponent(txtAddressStreetNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 14, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAddressId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAddressId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbAddressType, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAddressCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAddressZIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -857,7 +883,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(txtAddressStreetLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddressDelete)
                     .addComponent(btnAddressSave)
@@ -977,13 +1003,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         jmbFileInfoBar.add(jmFile);
 
-        jMenu2.setText("Info");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmInfo.setText("Info");
+        jmInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                jmInfoMouseClicked(evt);
             }
         });
-        jmbFileInfoBar.add(jMenu2);
+        jmbFileInfoBar.add(jmInfo);
 
         setJMenuBar(jmbFileInfoBar);
 
@@ -1033,11 +1059,11 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_purgeDatabaseButtonActionPerformed
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void jmInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmInfoMouseClicked
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
         JOptionPane.showMessageDialog(rootPane, "This program has been made by Tomislav Nebes.\n2020 - " + simpleDateFormat.format(date));
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }//GEN-LAST:event_jmInfoMouseClicked
 
     private void btnArticleDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleDeleteActionPerformed
         // TODO add your handling code here:
@@ -1066,7 +1092,7 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         
-        updateArticleList(article);
+        updateArticleInformation(article);
     }//GEN-LAST:event_lstArticleListValueChanged
 
     private void btnCustomerAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerAddCustomerActionPerformed
@@ -1108,11 +1134,22 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
 
-        updateCustomerTextPanes(customer);
+        updateCustomerInformation(customer);
     }//GEN-LAST:event_lstCustomerListValueChanged
 
     private void lstAddressListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAddressListValueChanged
-        // TODO add your handling code here:
+        // TODO what does this do?
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        Address address = lstAddressList.getSelectedValue();
+        if (address == null) {
+            return;
+        }
+
+        updateAddressInformation(address);
+
     }//GEN-LAST:event_lstAddressListValueChanged
 
     private void customerPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_customerPanelComponentShown
@@ -1143,6 +1180,12 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddressDeleteActionPerformed
 
+    private void lstAddressCustomerListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAddressCustomerListMouseClicked
+        if (evt.getClickCount() == 2) {
+            gotoCustomer(lstAddressCustomerList.getSelectedValue());
+        }
+    }//GEN-LAST:event_lstAddressCustomerListMouseClicked
+
     /* Customer Panel */
     /* ************** */
     
@@ -1157,7 +1200,7 @@ public class MainMenu extends javax.swing.JFrame {
         lstCustomerList.setModel(customers);
     }
         
-    private void clearCustomerTextPanes() {
+    private void clearCustomerInformation() {
         txtCustomerID.setText("");
         txtCustomerDateAdded.setText("");
         txtCustomerNationalIDNumber.setText("");
@@ -1169,8 +1212,8 @@ public class MainMenu extends javax.swing.JFrame {
         txtCustomerVATID.setText("");
     }
 
-    private void updateCustomerTextPanes(Customer customer) {
-        clearCustomerTextPanes();
+    private void updateCustomerInformation(Customer customer) {
+        clearCustomerInformation();
         // FIXME a really bad workaround
         txtCustomerID.setText("" + customer.getId());
         txtCustomerDateAdded.setText(customer.getDateOfCreation().toString());
@@ -1202,8 +1245,8 @@ public class MainMenu extends javax.swing.JFrame {
         lstArticleList.setModel(articles);
     }
     
-    private void updateArticleList(Article article) {
-        clearArticleList();
+    private void updateArticleInformation(Article article) {
+        clearArticleInformation();
         //TODO bad workaround with empty strings
         txtArticleID.setText(article.getId() + "");
         txtArticleShortName.setText(article.getShortName());
@@ -1216,7 +1259,7 @@ public class MainMenu extends javax.swing.JFrame {
         txtArticleRetailPrice.setText(article.getRetailPrice() + "");
     }
     
-    private void clearArticleList() {
+    private void clearArticleInformation() {
         txtArticleID.setText("");
         txtArticleShortName.setText("");
         txtArticleQuantity.setText("");
@@ -1224,19 +1267,71 @@ public class MainMenu extends javax.swing.JFrame {
         txtArticleLongName.setText("");
         txtArticleShortDescription.setText("");
         txtArticleLongDescription.setText("");
-        txtArticleTaxRate.setText("");
+        txtArticleTaxRate.setText("25");
         txtArticleWholesalePrice.setText("");
         txtArticleRetailPrice.setText("");
     }
     
     /* ************* */
     
-    /* Adddress Panel */
+    /* Address Panel */
     /* ************** */
     
     private void loadAddresses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        AddressHandler addressHandler = new AddressHandler();
+        DefaultListModel<Address> addresses = new DefaultListModel<>();
+        try {
+            addresses.addAll(addressHandler.getData());
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        lstAddressList.setModel(addresses);
     }
+
+    private void updateAddressInformation(Address address) {
+        clearAddressInformation();
+        clearAddressCustomerInformation();
+        //TODO bad workaround
+        cbAddressType.setSelected(address.isType());
+        txtAddressId.setText(address.getId() + "");
+        txtAddressCity.setText(address.getCity());
+        txtAddressZIP.setText(address.getZIPCode());
+        txtAddressStreet.setText(address.getStreet());
+        txtAddressStreetNumber.setText(address.getStreetNumber());
+        txtAddressStreetLetter.setText(address.getStreetLetter());
+        txtAddressCountry.setText(address.getCountry());
+        updateAddressCustomerList(address);
+    }
+    
+    private void updateAddressCustomerList(Address address) {
+        DefaultListModel<Customer> customers = new DefaultListModel<>();
+        try {
+            customers.addAll(new CustomerHandler().getCustomersWithAddress(address));
+        }catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        lstAddressCustomerList.setModel(customers);
+    }
+    
+    private void clearAddressInformation() {
+        cbAddressType.setSelected(false);
+        txtAddressId.setText("");
+        txtAddressCity.setText("");
+        txtAddressZIP.setText("");
+        txtAddressStreet.setText("");
+        txtAddressStreetNumber.setText("");
+        txtAddressStreetLetter.setText("");
+        txtAddressCountry.setText("");
+    }
+
+    private void clearAddressCustomerInformation() {
+        lstAddressCustomerList.setModel(new DefaultListModel<>());
+    }
+    
+    private void gotoCustomer(Customer customer) {
+        
+    }
+
 
     
     /* ************** */
@@ -1261,14 +1356,13 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCustomerRevertButton;
     private javax.swing.JButton btnCustomerSaveButton;
     private javax.swing.JButton btnCustomerShippingAddress;
+    private javax.swing.JCheckBox cbAddressType;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JScrollPane customerScrollPane;
     private javax.swing.JTextArea customerTextArea;
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
@@ -1281,6 +1375,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JCheckBox jcbCustomerTypeCheckBox;
     private javax.swing.JMenu jmFile;
+    private javax.swing.JMenu jmInfo;
     private javax.swing.JMenuBar jmbFileInfoBar;
     private javax.swing.JMenuItem jmiExampleItem;
     private javax.swing.JPanel jpAccountingTab;
@@ -1293,6 +1388,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblAddressCity1;
     private javax.swing.JLabel lblAddressCountry;
     private javax.swing.JLabel lblAddressCustomerWAddress;
+    private javax.swing.JLabel lblAddressId;
     private javax.swing.JLabel lblAddressStreet;
     private javax.swing.JLabel lblAddressStreetLetter;
     private javax.swing.JLabel lblAddressStreetNumber;
@@ -1331,11 +1427,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextArea shippingTextArea;
     private javax.swing.JTabbedPane tabController;
     private javax.swing.JTextField txtAddressCity;
-    private javax.swing.JTextField txtAddressCity1;
     private javax.swing.JTextField txtAddressCountry;
+    private javax.swing.JTextField txtAddressId;
     private javax.swing.JTextField txtAddressStreet;
     private javax.swing.JTextField txtAddressStreetLetter;
     private javax.swing.JTextField txtAddressStreetNumber;
+    private javax.swing.JTextField txtAddressZIP;
     private javax.swing.JTextField txtArticleID;
     private javax.swing.JTextArea txtArticleLongDescription;
     private javax.swing.JTextField txtArticleLongName;

@@ -22,12 +22,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="jmInfo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Info"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmInfoMouseClicked"/>
           </Events>
         </Menu>
       </SubComponents>
@@ -570,12 +570,12 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCustomerID">
                       <Properties>
-                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="editable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCustomerDateAdded">
                       <Properties>
-                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="editable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCustomerNationalIDNumber">
@@ -908,6 +908,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtArticleTaxRate">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="25"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblArticleShortDescriptionLabel3">
                           <Properties>
@@ -1055,6 +1058,9 @@
                               <StringArray count="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lstAddressCustomerListMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Customer&gt;"/>
                           </AuxValues>
@@ -1085,45 +1091,52 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jCheckBox1" min="-2" pref="130" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="lblAddressStreetLetter" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtAddressStreetLetter" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtAddressStreetLetter" min="-2" pref="64" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="lblAddressCountry" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="txtAddressCountry" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblAddressStreet" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtAddressStreet" max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="lblAddressStreet" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Component id="txtAddressStreet" max="32767" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="lblAddressCity" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Component id="txtAddressCity" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          </Group>
                                                       </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblAddressCity" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtAddressCity" min="-2" pref="200" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="cbAddressType" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="lblAddressId" max="32767" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="txtAddressId" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="lblAddressCity1" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtAddressCity1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          <Component id="txtAddressZIP" min="-2" pref="200" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="lblAddressStreetNumber" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtAddressStreetNumber" max="32767" attributes="0"/>
+                                                          <Component id="txtAddressStreetNumber" min="-2" pref="139" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1134,13 +1147,19 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="lblAddressId" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="txtAddressId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="cbAddressType" min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblAddressCity" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="txtAddressCity" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblAddressCity1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="txtAddressCity1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtAddressZIP" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1156,7 +1175,7 @@
                                       <Component id="lblAddressCountry" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="txtAddressCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="278" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddressDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1201,9 +1220,10 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddressDeleteActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                        <Component class="javax.swing.JCheckBox" name="cbAddressType">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Billing address?"/>
+                            <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblAddressCity">
@@ -1215,10 +1235,10 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblAddressCity1">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="ZIP"/>
+                            <Property name="text" type="java.lang.String" value="ZIP:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtAddressCity1">
+                        <Component class="javax.swing.JTextField" name="txtAddressZIP">
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblAddressStreet">
                           <Properties>
@@ -1247,6 +1267,16 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAddressCountry">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblAddressId">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="ID:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtAddressId">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>

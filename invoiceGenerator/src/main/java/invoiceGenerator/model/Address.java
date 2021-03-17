@@ -114,14 +114,7 @@ public class Address extends Identity {
 
 	@Override
 	public String toString() {
-		return "Address{" +
-				"type=" + type +
-				", city='" + city + '\'' +
-				", ZIPCode='" + ZIPCode + '\'' +
-				", street='" + street + '\'' +
-				", streetNumber='" + streetNumber + '\'' +
-				", streetLetter='" + streetLetter + '\'' +
-				", country='" + country + '\'' +
-				'}';
+		String addressType = this.isType() ? "billing" : "shipping";
+		return this.getId() + " - " + addressType + " " + this.getStreet() + " " + this.getStreetNumber() + " " + this.getStreetLetter();
 	}
 }

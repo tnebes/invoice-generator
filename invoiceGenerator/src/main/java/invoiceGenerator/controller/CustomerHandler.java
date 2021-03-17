@@ -1,7 +1,9 @@
 package invoiceGenerator.controller;
 
+import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.InvoiceGeneratorException;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -17,6 +19,12 @@ public class CustomerHandler extends Handler<Customer> {
     @Override
     public List<Customer> getData() throws InvoiceGeneratorException {
         return session.createQuery("from customer").list();
+    }
+
+    public List<Customer> getCustomersWithAddress(Address address) throws InvoiceGeneratorException {
+        Query query = session.createQuery("from customer where billingAddress_id = :i or shippingAddress_id = :i");
+        query.setParameter("i", address.getId());
+        return query.list();
     }
 
     @Override
