@@ -85,8 +85,8 @@ public class CustomerHandler extends Handler<Customer> {
             if (entity.getBillingAddress() == null) {
                 throw new InvoiceGeneratorException("A natural person must have a valid billing address.");
             }
-            if (!entity.getNationalIdNumber().isBlank()
-                    && entity.getNationalIdNumber() != null
+            if (entity.getNationalIdNumber() != null
+                    && !entity.getNationalIdNumber().isBlank()
                     && this.getData().size() != 0) {
                 for (Customer naturalCustomer : this.getData()) {
                     if (entity.getNationalIdNumber().equals(naturalCustomer.getNationalIdNumber()) && !(entity.equals(naturalCustomer))) {

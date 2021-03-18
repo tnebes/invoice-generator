@@ -6,6 +6,7 @@ import invoiceGenerator.model.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class InitialFixtures {
             testArticle.setShortName(faker.cat().name());
             testArticle.setWholesalePrice(BigDecimal.valueOf(rng.nextDouble() * 1000));
             testArticle.setTaxRate(BigDecimal.valueOf(rng.nextInt(25)));
-            testArticle.setRetailPrice(testArticle.getWholesalePrice().multiply(testArticle.getCalculableTaxRate().add(BigDecimal.ONE)));
+            testArticle.setRetailPrice(testArticle.getWholesalePrice().multiply(testArticle.getCalculableTaxRate().add(BigDecimal.ONE)).setScale(2, RoundingMode.HALF_UP));
             testArticle.setWarehouseLocation(faker.bothify("?#-?#"));
             testArticle.setWarehouseQuantity((long) rng.nextInt(250));
             ArticleHandler articleHandler = new ArticleHandler();

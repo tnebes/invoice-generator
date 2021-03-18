@@ -24,7 +24,7 @@
             create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
             none: does nothing with the schema, makes no changes to the database
         -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!-- dbcp connection pool configuration -->
         <property name="hibernate.dbcp.initialSize">5</property>
         <property name="hibernate.dbcp.maxTotal">20</property>

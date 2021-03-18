@@ -15,8 +15,11 @@ import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -606,6 +609,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnArticleCalculateCost.setText("Calculate");
+        btnArticleCalculateCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArticleCalculateCostActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1265,6 +1273,11 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lstAddressCustomerListMouseClicked
 
+    private void btnArticleCalculateCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleCalculateCostActionPerformed
+        calculateArticlePriceDetails();
+
+    }//GEN-LAST:event_btnArticleCalculateCostActionPerformed
+
     /* Customer Panel */
     /* ************** */
     
@@ -1333,6 +1346,7 @@ public class MainMenu extends javax.swing.JFrame {
             customer.setVATID(txtCustomerVATID.getText());
         }
         try {
+            customerHandler.setEntity(customer);
             customerHandler.update();
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
@@ -1357,16 +1371,16 @@ public class MainMenu extends javax.swing.JFrame {
     
     private void updateArticleInformation(Article article) {
         clearArticleInformation();
-        //TODO bad workaround with empty strings
-        txtArticleID.setText(article.getId() + "");
+        txtArticleID.setText(article.getId().toString());
         txtArticleShortName.setText(article.getShortName());
-        txtArticleWarehouseQuantity.setText(article.getWarehouseQuantity() + "");
+        txtArticleWarehouseQuantity.setText(article.getWarehouseQuantity().toString());
+        txtArticleWarehouseLocation.setText(article.getWarehouseLocation());
         txtArticleLongName.setText(article.getLongName());
         txtArticleShortDescription.setText(article.getShortDescription());
         txtArticleLongDescription.setText(article.getLongDescription());
-        txtArticleTaxRate.setText(article.getTaxRate() + "");
-        txtArticleWholesalePrice.setText(article.getWholesalePrice() + "");
-        txtArticleRetailPrice.setText(article.getRetailPrice() + "");
+        txtArticleTaxRate.setText(article.getTaxRate().toString());
+        txtArticleWholesalePrice.setText(article.getWholesalePrice().toString());
+        txtArticleRetailPrice.setText(article.getRetailPrice().toString());
     }
     
     private void clearArticleInformation() {
@@ -1383,7 +1397,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void updateArticle(Article article) {
-        // articleCalculateCost();
+        // calculateArticlePriceDetails();
         article.setLongDescription(txtArticleLongDescription.getText());
         article.setLongName(txtArticleLongName.getText());
         article.setTaxRate(new BigDecimal(txtArticleTaxRate.getText()));
@@ -1393,8 +1407,80 @@ public class MainMenu extends javax.swing.JFrame {
         article.setShortName(txtArticleShortName.getText());
         article.setWarehouseLocation(txtArticleWarehouseLocation.getText());
         article.setWarehouseQuantity(Long.parseLong(txtArticleWarehouseQuantity.getText()));
+        try {
+            articleHandler.setEntity(article);
+            articleHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
-    
+
+    private void calculateArticlePriceDetails() {
+        List<JTextField> textFieldList = new ArrayList<>();
+        textFieldList.add(txtArticleRetailPrice);
+        textFieldList.add(txtArticleWholesalePrice);
+        textFieldList.add(txtArticleTaxRate);
+        int counter = 0;
+        for (JTextField textField : textFieldList) {
+            if (textField.getText().isBlank()) {
+                counter++;
+            }
+        }
+        String message = "";
+        switch (counter) {
+            case 0 : message = "At least one field must be empty in order to calculate price details.";
+                break;
+            case 2 :
+            case 3 :
+                message = "At least two fields must be filled in to be able to calculate price details";
+                break;
+            default: message = "";
+        }
+        if (!message.isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, message);
+            return;
+        }
+
+        if (txtArticleRetailPrice.getText().isBlank()) {
+            calculateArticleRetailPrice();
+            return;
+        }
+        if (txtArticleWholesalePrice.getText().isBlank()) {
+            calculateArticleWholesalePrice();
+            return;
+        }
+        if (txtArticleTaxRate.getText().isBlank()) {
+            calculateArticleTaxRate();
+            return;
+        }
+    }
+
+    private void calculateArticleRetailPrice() {
+        BigDecimal retailPrice;
+        BigDecimal articleWholesalePrice = new BigDecimal(txtArticleWholesalePrice.getText());
+        BigDecimal articleTaxRate = new BigDecimal(txtArticleTaxRate.getText()).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        retailPrice = articleWholesalePrice
+                .multiply(articleTaxRate.add(BigDecimal.ONE))
+                .setScale(2, RoundingMode.HALF_UP);
+        txtArticleRetailPrice.setText(retailPrice.toString());
+    }
+
+    private void calculateArticleTaxRate() {
+        BigDecimal taxRate;
+        BigDecimal articleRetailPrice = new BigDecimal(txtArticleRetailPrice.getText());
+        BigDecimal articleWholesalePrice = new BigDecimal(txtArticleWholesalePrice.getText());
+        taxRate = articleRetailPrice.subtract(articleWholesalePrice).divide(articleWholesalePrice, 2, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
+        txtArticleTaxRate.setText(taxRate.toString());
+    }
+
+    private void calculateArticleWholesalePrice() {
+        BigDecimal wholesalePrice;
+        BigDecimal articleRetailPrice = new BigDecimal(txtArticleRetailPrice.getText());
+        BigDecimal articleTaxRate = new BigDecimal(txtArticleTaxRate.getText()).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        wholesalePrice = articleRetailPrice.divide(articleTaxRate.add(BigDecimal.ONE), 2, RoundingMode.HALF_UP);
+        txtArticleWholesalePrice.setText(wholesalePrice.toString());
+    }
+
     /* ************* */
     
     /* Address Panel */
@@ -1564,12 +1650,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtArticleID;
     private javax.swing.JTextArea txtArticleLongDescription;
     private javax.swing.JTextField txtArticleLongName;
-    private javax.swing.JTextField txtArticleWarehouseQuantity;
     private javax.swing.JTextField txtArticleRetailPrice;
     private javax.swing.JTextField txtArticleShortDescription;
     private javax.swing.JTextField txtArticleShortName;
     private javax.swing.JTextField txtArticleTaxRate;
     private javax.swing.JTextField txtArticleWarehouseLocation;
+    private javax.swing.JTextField txtArticleWarehouseQuantity;
     private javax.swing.JTextField txtArticleWholesalePrice;
     private javax.swing.JTextField txtCustomerDateAdded;
     private javax.swing.JTextField txtCustomerFirstName;

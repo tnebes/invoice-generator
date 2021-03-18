@@ -4,6 +4,7 @@ import invoiceGenerator.model.Article;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class ArticleHandler extends Handler<Article> {
@@ -50,9 +51,9 @@ public class ArticleHandler extends Handler<Article> {
         }
         if (entity.getRetailPrice().compareTo(entity.getWholesalePrice()
                 .multiply(entity.getCalculableTaxRate()
-                        .add(BigDecimal.ONE))) != 0) {
+                        .add(BigDecimal.ONE)).setScale(2, RoundingMode.HALF_UP)) != 0) {
             String exceptionMessage = String.format(new String("Price difference between retail and wholesale * tax rate detected.\n" +
-                    "Retail: %f; tax rate: %f wholesale: %f"),entity.getRetailPrice(), entity.getCalculableTaxRate(), entity.getWholesalePrice() );
+                    "Retail: %f; tax rate: %f wholesale: %f"),entity.getRetailPrice(), entity.getTaxRate(), entity.getWholesalePrice() );
             throw new InvoiceGeneratorException(exceptionMessage);
         }
     }
