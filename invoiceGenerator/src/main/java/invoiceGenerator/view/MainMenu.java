@@ -13,10 +13,10 @@ import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Article;
 import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.InvoiceGeneratorException;
+
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -138,7 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
         lblArticleLongNameLabel = new javax.swing.JLabel();
         txtArticleID = new javax.swing.JTextField();
         txtArticleShortName = new javax.swing.JTextField();
-        txtArticleQuantity = new javax.swing.JTextField();
+        txtArticleWarehouseQuantity = new javax.swing.JTextField();
         txtArticleWarehouseLocation = new javax.swing.JTextField();
         txtArticleLongName = new javax.swing.JTextField();
         txtArticleShortDescription = new javax.swing.JTextField();
@@ -663,7 +663,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtArticleQuantity)))
+                                .addComponent(txtArticleWarehouseQuantity)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -686,7 +686,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticleQuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtArticleQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtArticleWarehouseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblArticleWarehouseLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtArticleWarehouseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 27, Short.MAX_VALUE)
@@ -1090,11 +1090,26 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticleAddActionPerformed
 
     private void btnArticleRevertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleRevertActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to revert changes made to this article?",
+                "Revert Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Article article = lstArticleList.getSelectedValue();
+            if (article == null) {
+                return;
+            }
+            updateArticleInformation(article);
+        }
     }//GEN-LAST:event_btnArticleRevertActionPerformed
 
     private void btnArticleSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleSaveActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to make changes to this article?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Article article = lstArticleList.getSelectedValue();
+            updateArticle(article);
+        }
     }//GEN-LAST:event_btnArticleSaveActionPerformed
 
     private void lstArticleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArticleListValueChanged
@@ -1126,7 +1141,9 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         try {
-            Address address = new CustomerHandler(customer).getShippingAddressOfCustomer();
+            // Address address = new CustomerHandler(customer).getShippingAddressOfCustomer();
+            customerHandler.setEntity(customer);
+            Address address = customerHandler.getShippingAddressOfCustomer();
             gotoAddress(address);
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
@@ -1144,7 +1161,9 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         try {
-            Address address = new CustomerHandler(customer).getBillingAddressOfCustomer();
+            //Address address = new CustomerHandler(customer).getBillingAddressOfCustomer();
+            customerHandler.setEntity(customer);
+            Address address = customerHandler.getBillingAddressOfCustomer();
             gotoAddress(address);
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
@@ -1313,7 +1332,6 @@ public class MainMenu extends javax.swing.JFrame {
             customer.setName(txtCustomerLegalName.getText());
             customer.setVATID(txtCustomerVATID.getText());
         }
-        CustomerHandler customerHandler = new CustomerHandler(customer);
         try {
             customerHandler.update();
         } catch (InvoiceGeneratorException e) {
@@ -1342,7 +1360,7 @@ public class MainMenu extends javax.swing.JFrame {
         //TODO bad workaround with empty strings
         txtArticleID.setText(article.getId() + "");
         txtArticleShortName.setText(article.getShortName());
-        txtArticleQuantity.setText(article.getWarehouseQuantity() + "");
+        txtArticleWarehouseQuantity.setText(article.getWarehouseQuantity() + "");
         txtArticleLongName.setText(article.getLongName());
         txtArticleShortDescription.setText(article.getShortDescription());
         txtArticleLongDescription.setText(article.getLongDescription());
@@ -1354,7 +1372,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void clearArticleInformation() {
         txtArticleID.setText("");
         txtArticleShortName.setText("");
-        txtArticleQuantity.setText("");
+        txtArticleWarehouseQuantity.setText("");
         txtArticleWarehouseLocation.setText("");
         txtArticleLongName.setText("");
         txtArticleShortDescription.setText("");
@@ -1362,6 +1380,19 @@ public class MainMenu extends javax.swing.JFrame {
         txtArticleTaxRate.setText(Article.STANDARD_TAX_RATE + "");
         txtArticleWholesalePrice.setText("");
         txtArticleRetailPrice.setText("");
+    }
+
+    private void updateArticle(Article article) {
+        // articleCalculateCost();
+        article.setLongDescription(txtArticleLongDescription.getText());
+        article.setLongName(txtArticleLongName.getText());
+        article.setTaxRate(new BigDecimal(txtArticleTaxRate.getText()));
+        article.setWholesalePrice(new BigDecimal(txtArticleWholesalePrice.getText()));
+        article.setRetailPrice(new BigDecimal(txtArticleRetailPrice.getText()));
+        article.setShortDescription(txtArticleShortDescription.getText());
+        article.setShortName(txtArticleShortName.getText());
+        article.setWarehouseLocation(txtArticleWarehouseLocation.getText());
+        article.setWarehouseQuantity(Long.parseLong(txtArticleWarehouseQuantity.getText()));
     }
     
     /* ************* */
@@ -1397,7 +1428,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void updateAddressCustomerList(Address address) {
         DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
-            customers.addAll(new CustomerHandler().getCustomersWithAddress(address));
+            customers.addAll(customerHandler.getCustomersWithAddress(address));
         }catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
@@ -1533,7 +1564,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtArticleID;
     private javax.swing.JTextArea txtArticleLongDescription;
     private javax.swing.JTextField txtArticleLongName;
-    private javax.swing.JTextField txtArticleQuantity;
+    private javax.swing.JTextField txtArticleWarehouseQuantity;
     private javax.swing.JTextField txtArticleRetailPrice;
     private javax.swing.JTextField txtArticleShortDescription;
     private javax.swing.JTextField txtArticleShortName;

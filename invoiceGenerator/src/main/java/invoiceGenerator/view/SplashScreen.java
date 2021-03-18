@@ -10,6 +10,8 @@ import invoiceGenerator.util.InitialFixtures;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
+import java.net.ConnectException;
+
 /**
  *
  * @author tnebes
@@ -31,11 +33,17 @@ public class SplashScreen extends javax.swing.JFrame {
         public void run() {
             // TODO remove once unnecessary.
             // new InitialFixtures();
-            if (HibernateUtil.getSessionFactory().openSession().getMetamodel().getEntities().size() > 0) {
-                new Authorisation().setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(rootPane,"Database not initialised.");
+            try {
+                if (HibernateUtil.getSessionFactory().openSession().getMetamodel().getEntities().size() > 0) {
+                    new Authorisation().setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Database not initialised.");
+                }
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "Unable to connect to database.");
+                System.exit(1);
             }
         } 
     }
