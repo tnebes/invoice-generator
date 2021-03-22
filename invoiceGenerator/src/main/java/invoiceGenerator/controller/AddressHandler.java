@@ -36,12 +36,16 @@ public class AddressHandler extends Handler<Address> {
     }
 
     private void checkAddressAssociatedWithCustomer() throws InvoiceGeneratorException {
-//        if (entity.getAssociatedCustomers().size() != 0) {
-//            StringBuilder sb = new StringBuilder("Address cannot be deleted as it is associated with customer(s): ");
-//            for (Customer customer : entity.getAssociatedCustomers()) {
-//                sb.append(customer.toString()).append("\n");
-//            }
-//            throw new InvoiceGeneratorException(sb.toString());
-//        }
+        if (entity.getAssociatedBillingCustomers().size() != 0
+        || entity.getAssociatedShippingCustomers().size() != 0) {
+            StringBuilder sb = new StringBuilder("Address cannot be deleted as it is associated with customer(s): ");
+            for (Customer customer : entity.getAssociatedBillingCustomers()) {
+                sb.append(customer.toString()).append("\n");
+            }
+            for (Customer customer : entity.getAssociatedShippingCustomers()) {
+                sb.append(customer.toString()).append("\n");
+            }
+            throw new InvoiceGeneratorException(sb.toString());
+        }
     }
 }

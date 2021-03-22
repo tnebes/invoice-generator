@@ -53,8 +53,6 @@ public class Address extends Identity {
 	private List<Customer> associatedShippingCustomers = new ArrayList<>();
 	@OneToMany(mappedBy = "billingAddress")
 	private List<Customer> associatedBillingCustomers = new ArrayList<>();
-	@Transient
-	private List<Customer> associatedCustomers = new ArrayList<>();
 
 	public Address() {
 	}
@@ -119,6 +117,21 @@ public class Address extends Identity {
 		this.country = country;
 	}
 
+	public List<Customer> getAssociatedShippingCustomers() {
+		return associatedShippingCustomers;
+	}
+
+	public void setAssociatedShippingCustomers(List<Customer> associatedShippingCustomers) {
+		this.associatedShippingCustomers = associatedShippingCustomers;
+	}
+
+	public List<Customer> getAssociatedBillingCustomers() {
+		return associatedBillingCustomers;
+	}
+
+	public void setAssociatedBillingCustomers(List<Customer> associatedBillingCustomers) {
+		this.associatedBillingCustomers = associatedBillingCustomers;
+	}
 
 	@Override
 	public String toString() {
