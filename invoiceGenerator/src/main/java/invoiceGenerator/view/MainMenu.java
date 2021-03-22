@@ -1204,7 +1204,13 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerSaveButtonActionPerformed
 
     private void btnCustomerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDeleteButtonActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to delete this customer?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Customer customer = lstCustomerList.getSelectedValue();
+            deleteCustomer(customer);
+        }
     }//GEN-LAST:event_btnCustomerDeleteButtonActionPerformed
 
     private void jcbCustomerTypeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCustomerTypeCheckBoxActionPerformed
@@ -1357,7 +1363,15 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
+    }
 
+    private void deleteCustomer(Customer customer) {
+        customerHandler.setEntity(customer);
+        try {
+            customerHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 
     /* ************** */

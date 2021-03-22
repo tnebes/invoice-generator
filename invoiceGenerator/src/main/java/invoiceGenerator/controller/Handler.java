@@ -50,7 +50,7 @@ public abstract class Handler<E> {
         validate();
         updateValidation();
         session.beginTransaction();
-        // FIXME nothing other than merge works
+        // nothing other than merge works
         session.merge(entity);
         session.getTransaction().commit();
         return this.entity;

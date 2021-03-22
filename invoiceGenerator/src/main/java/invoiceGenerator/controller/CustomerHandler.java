@@ -51,7 +51,11 @@ public class CustomerHandler extends Handler<Customer> {
 
     @Override
     protected void deleteValidation() throws InvoiceGeneratorException {
+        checkHasConnection();
+    }
 
+    private void checkHasConnection() {
+        // TODO check if customer has invoice.
     }
 
     private void informationCheck() throws InvoiceGeneratorException {

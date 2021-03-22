@@ -7,6 +7,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,6 +50,9 @@ public class Address extends Identity {
 	@NotEmpty(message = "country cannot be blank or empty.")
 	@Size(max = 100, message = "Country name can be maximally 100 characters.")
 	private String					country;
+
+	@OneToMany
+	private List<Customer> associatedCustomers = new ArrayList<>();
 
 	public Address() {
 	}
@@ -111,6 +115,13 @@ public class Address extends Identity {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public List<Customer> getAssociatedCustomers() {
+		return associatedCustomers;
+	}
+
+	public void setAssociatedCustomers(List<Customer> associatedCustomers) {
+		this.associatedCustomers = associatedCustomers;
 	}
 
 	@Override
