@@ -1098,6 +1098,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticleAddActionPerformed
 
     private void btnArticleRevertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleRevertActionPerformed
+        if (!somethingSelectedInList(lstArticleList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to revert changes made to this article?",
                 "Revert Check",
@@ -1110,7 +1114,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnArticleRevertActionPerformed
 
+    private boolean somethingSelectedInList(Object selectedValue) {
+        return selectedValue != null;
+    }
+
     private void btnArticleSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleSaveActionPerformed
+        if (!somethingSelectedInList(lstArticleList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to make changes to this article?",
                 "Save Check",
@@ -1181,6 +1193,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerBillingAddressActionPerformed
 
     private void btnCustomerRevertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerRevertButtonActionPerformed
+        if (!somethingSelectedInList(lstCustomerList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to revert changes made to this customer?",
                 "Revert Check",
@@ -1194,6 +1210,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerRevertButtonActionPerformed
 
     private void btnCustomerSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerSaveButtonActionPerformed
+        if (!somethingSelectedInList(lstCustomerList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to make changes to this customer?",
                 "Save Check",
@@ -1204,6 +1224,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerSaveButtonActionPerformed
 
     private void btnCustomerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDeleteButtonActionPerformed
+        if (!somethingSelectedInList(lstCustomerList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to delete this customer?",
                 "Save Check",
@@ -1257,6 +1281,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_addressPanelComponentShown
 
     private void btnAddressSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressSaveActionPerformed
+        if (!somethingSelectedInList(lstAddressList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(null,
                 "Are you sure you wish to make changes to this address?",
                 "Save Check",
@@ -1276,7 +1304,17 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddressAddActionPerformed
 
     private void btnAddressDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressDeleteActionPerformed
-        // TODO add your handling code here:
+        if (!somethingSelectedInList(lstAddressList.getSelectedValue())) {
+            JOptionPane.showMessageDialog(rootPane, "Something must be selected from the list.");
+            return;
+        }
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to delete this address?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Address address = lstAddressList.getSelectedValue();
+            deleteAddress(address);
+        }
     }//GEN-LAST:event_btnAddressDeleteActionPerformed
 
     private void lstAddressCustomerListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAddressCustomerListMouseClicked
@@ -1582,7 +1620,10 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
+    }
 
+    private void deleteAddress(Address address) {
+        // TODO
     }
 
     /* ************** */
