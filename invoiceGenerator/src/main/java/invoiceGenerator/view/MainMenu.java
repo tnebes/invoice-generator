@@ -1623,7 +1623,12 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void deleteAddress(Address address) {
-        // TODO
+        addressHandler.setEntity(address);
+        try {
+            addressHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 
     /* ************** */

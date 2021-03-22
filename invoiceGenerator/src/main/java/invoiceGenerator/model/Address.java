@@ -1,9 +1,6 @@
 package invoiceGenerator.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -51,7 +48,12 @@ public class Address extends Identity {
 	@Size(max = 100, message = "Country name can be maximally 100 characters.")
 	private String					country;
 
-	@OneToMany
+
+	@OneToMany(mappedBy = "shippingAddress")
+	private List<Customer> associatedShippingCustomers = new ArrayList<>();
+	@OneToMany(mappedBy = "billingAddress")
+	private List<Customer> associatedBillingCustomers = new ArrayList<>();
+	@Transient
 	private List<Customer> associatedCustomers = new ArrayList<>();
 
 	public Address() {
@@ -116,13 +118,7 @@ public class Address extends Identity {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public List<Customer> getAssociatedCustomers() {
-		return associatedCustomers;
-	}
 
-	public void setAssociatedCustomers(List<Customer> associatedCustomers) {
-		this.associatedCustomers = associatedCustomers;
-	}
 
 	@Override
 	public String toString() {
