@@ -1212,7 +1212,6 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbCustomerTypeCheckBoxActionPerformed
 
     private void lstCustomerListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstCustomerListValueChanged
-        // TODO what does this do?
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -1252,7 +1251,14 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_addressPanelComponentShown
 
     private void btnAddressSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressSaveActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to make changes to this address?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0) {
+            Address address = lstAddressList.getSelectedValue();
+            updateAddress(address);
+        }
+
     }//GEN-LAST:event_btnAddressSaveActionPerformed
 
     private void btnAddressRevertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressRevertActionPerformed
@@ -1546,6 +1552,23 @@ public class MainMenu extends javax.swing.JFrame {
         lstAddressList.clearSelection();
         lstAddressList.setSelectedValue(address, true);
         updateAddressInformation(lstAddressList.getSelectedValue());
+    }
+
+    private void updateAddress(Address address) {
+        address.setType(cbAddressType.isSelected());
+        address.setCity(txtAddressCity.getText());
+        address.setZIPCode(txtAddressZIP.getText());
+        address.setStreet(txtAddressStreet.getText());
+        address.setStreetNumber(txtAddressStreetNumber.getText());
+        address.setStreetLetter(txtAddressStreetLetter.getText());
+        address.setCountry(txtAddressCountry.getText());
+        try {
+            addressHandler.setEntity(address);
+            addressHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /* ************** */

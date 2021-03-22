@@ -49,6 +49,12 @@ public class ArticleHandler extends Handler<Article> {
         if (entity.getTaxRate().compareTo(BigDecimal.ZERO) < 0) {
             throw new InvoiceGeneratorException("Tax rate cannot be negative.");
         }
+        System.out.println(entity.getWholesalePrice().setScale(2, RoundingMode.HALF_UP)
+                .multiply(entity.getCalculableTaxRate()
+                        .add(BigDecimal.ONE).setScale(2, RoundingMode.HALF_UP)).setScale(2, RoundingMode.HALF_UP));
+        System.out.println(entity.getWholesalePrice());
+        System.out.println(entity.getCalculableTaxRate());
+        System.out.println(entity.getCalculableTaxRate().add(BigDecimal.ONE));
         if (entity.getRetailPrice().compareTo(entity.getWholesalePrice()
                 .multiply(entity.getCalculableTaxRate()
                         .add(BigDecimal.ONE)).setScale(2, RoundingMode.HALF_UP)) != 0) {
@@ -65,7 +71,7 @@ public class ArticleHandler extends Handler<Article> {
         List<Article> articles = new ArticleHandler(entity).getData();
         // NOTE this is extremely inefficient.
         for (Article article : articles) {
-            if (entity.getWarehouseLocation().toLowerCase().equals(article.getWarehouseLocation().toLowerCase())) {
+            if (entity.getWarehouseLocation().equalsIgnoreCase(article.getWarehouseLocation())) {
                 String exceptionMessage = "Warehouse location ";
                 exceptionMessage += entity.getWarehouseLocation();
                 exceptionMessage += " is identical to the location of id ";
