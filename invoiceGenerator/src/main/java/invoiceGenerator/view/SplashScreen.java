@@ -31,9 +31,9 @@ public class SplashScreen extends javax.swing.JFrame {
 
         @Override
         public void run() {
-            // TODO remove once unnecessary.
-            new InitialFixtures();
             try {
+                // TODO remove once unnecessary.
+                new InitialFixtures();
                 if (HibernateUtil.getSessionFactory().openSession().getMetamodel().getEntities().size() > 0) {
                     new Authorisation().setVisible(true);
                     dispose();
