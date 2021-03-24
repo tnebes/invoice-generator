@@ -715,6 +715,8 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnArticleRevert" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnArticleClear" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnArticleAdd" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnArticleDelete" min="-2" max="-2" attributes="0"/>
@@ -828,6 +830,7 @@
                                       <Component id="btnArticleSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnArticleRevert" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnArticleAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnArticleClear" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -971,6 +974,14 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleCalculateCostActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnArticleClear">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Clear"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticleClearActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>

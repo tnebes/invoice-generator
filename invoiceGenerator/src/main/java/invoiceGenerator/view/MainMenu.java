@@ -167,6 +167,7 @@ public class MainMenu extends javax.swing.JFrame {
         btnArticleAdd = new javax.swing.JButton();
         btnArticleDelete = new javax.swing.JButton();
         btnArticleCalculateCost = new javax.swing.JButton();
+        btnArticleClear = new javax.swing.JButton();
         addressPanel = new javax.swing.JPanel();
         jspArticleScrollPane1 = new javax.swing.JScrollPane();
         lstAddressList = new javax.swing.JList<>();
@@ -623,6 +624,13 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        btnArticleClear.setText("Clear");
+        btnArticleClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArticleClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -648,6 +656,8 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnArticleRevert)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnArticleClear)
+                        .addGap(18, 18, 18)
                         .addComponent(btnArticleAdd)
                         .addGap(18, 18, 18)
                         .addComponent(btnArticleDelete))
@@ -737,7 +747,8 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(btnArticleDelete)
                     .addComponent(btnArticleSave)
                     .addComponent(btnArticleRevert)
-                    .addComponent(btnArticleAdd))
+                    .addComponent(btnArticleAdd)
+                    .addComponent(btnArticleClear))
                 .addContainerGap())
         );
 
@@ -1112,7 +1123,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticleDeleteActionPerformed
 
     private void btnArticleAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleAddActionPerformed
-        // TODO add your handling code here:
+        saveNewArticle();
     }//GEN-LAST:event_btnArticleAddActionPerformed
 
     private void btnArticleRevertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleRevertActionPerformed
@@ -1349,7 +1360,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnAddressClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressClearActionPerformed
         clearAddressInformation();
+        lstAddressList.clearSelection();
     }//GEN-LAST:event_btnAddressClearActionPerformed
+
+    private void btnArticleClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleClearActionPerformed
+        clearArticleInformation();
+        lstArticleList.clearSelection();
+    }//GEN-LAST:event_btnArticleClearActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -1478,7 +1495,16 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void updateArticle(Article article) {
-        // calculateArticlePriceDetails();
+        collectArticleInformation(article);
+        try {
+            articleHandler.setEntity(article);
+            articleHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void collectArticleInformation(Article article) {
         article.setLongDescription(txtArticleLongDescription.getText());
         article.setLongName(txtArticleLongName.getText());
         article.setTaxRate(new BigDecimal(txtArticleTaxRate.getText()));
@@ -1488,12 +1514,6 @@ public class MainMenu extends javax.swing.JFrame {
         article.setShortName(txtArticleShortName.getText());
         article.setWarehouseLocation(txtArticleWarehouseLocation.getText());
         article.setWarehouseQuantity(Long.parseLong(txtArticleWarehouseQuantity.getText()));
-        try {
-            articleHandler.setEntity(article);
-            articleHandler.update();
-        } catch (InvoiceGeneratorException e) {
-            e.printStackTrace();
-        }
     }
 
     private void calculateArticlePriceDetails() {
@@ -1507,7 +1527,7 @@ public class MainMenu extends javax.swing.JFrame {
                 counter++;
             }
         }
-        String message = "";
+        String message;
         switch (counter) {
             case 0 : message = "At least one field must be empty in order to calculate price details.";
                 break;
@@ -1560,6 +1580,18 @@ public class MainMenu extends javax.swing.JFrame {
         BigDecimal articleTaxRate = new BigDecimal(txtArticleTaxRate.getText()).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
         wholesalePrice = articleRetailPrice.divide(articleTaxRate.add(BigDecimal.ONE), 2, RoundingMode.HALF_UP);
         txtArticleWholesalePrice.setText(wholesalePrice.toString());
+    }
+
+    private void saveNewArticle() {
+        Article newArticle = new Article();
+        collectArticleInformation(newArticle);
+        try {
+            articleHandler.setEntity(newArticle);
+            articleHandler.create();
+            loadArticles();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 
     /* ************* */
@@ -1689,6 +1721,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnAddressSave;
     private javax.swing.JButton btnArticleAdd;
     private javax.swing.JButton btnArticleCalculateCost;
+    private javax.swing.JButton btnArticleClear;
     private javax.swing.JButton btnArticleDelete;
     private javax.swing.JButton btnArticleRevert;
     private javax.swing.JButton btnArticleSave;
