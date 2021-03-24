@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.JoinColumn;
 import javax.swing.*;
 
 /**
@@ -71,7 +72,13 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
         }
-        
+    }
+
+    private boolean genericSaveCheck(String object) {
+        return JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to save this " + object + "?",
+                "Save Check",
+                JOptionPane.YES_NO_OPTION) == 0;
     }
 
     /**
@@ -186,7 +193,7 @@ public class MainMenu extends javax.swing.JFrame {
         txtAddressCountry = new javax.swing.JTextField();
         lblAddressId = new javax.swing.JLabel();
         txtAddressId = new javax.swing.JTextField();
-        btnAddressNewAddress = new javax.swing.JButton();
+        btnAddressClear = new javax.swing.JButton();
         jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
@@ -827,10 +834,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         txtAddressId.setEditable(false);
 
-        btnAddressNewAddress.setText("New");
-        btnAddressNewAddress.addActionListener(new java.awt.event.ActionListener() {
+        btnAddressClear.setText("Clear");
+        btnAddressClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddressNewAddressActionPerformed(evt);
+                btnAddressClearActionPerformed(evt);
             }
         });
 
@@ -846,7 +853,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnAddressRevert)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddressNewAddress)
+                        .addComponent(btnAddressClear)
                         .addGap(18, 18, 18)
                         .addComponent(btnAddressAdd)
                         .addGap(18, 18, 18)
@@ -923,7 +930,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(btnAddressSave)
                     .addComponent(btnAddressRevert)
                     .addComponent(btnAddressAdd)
-                    .addComponent(btnAddressNewAddress))
+                    .addComponent(btnAddressClear))
                 .addContainerGap())
         );
 
@@ -1340,9 +1347,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnArticleCalculateCostActionPerformed
 
-    private void btnAddressNewAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressNewAddressActionPerformed
-        createAddress();
-    }//GEN-LAST:event_btnAddressNewAddressActionPerformed
+    private void btnAddressClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressClearActionPerformed
+        clearAddressInformation();
+    }//GEN-LAST:event_btnAddressClearActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -1560,8 +1567,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* Address Panel */
     /* ************** */
 
-    private static Address tempAddress;
-    
     private void loadAddresses() {
         DefaultListModel<Address> addresses = new DefaultListModel<>();
         try {
@@ -1654,23 +1659,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
 
-    private void createAddress() {
-        tempAddress = new Address();
-        clearAddressInformation();
-    }
-
-
     private void saveNewAddress() {
-        try {
-            collectAddressInformation(tempAddress);
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(rootPane, "In order to save a new address, the button 'new' must be pressed.");
+        Address newAddress = new Address();
+        collectAddressInformation(newAddress);
+        addressHandler.setEntity(newAddress);
+        if (!genericSaveCheck("address")) {
             return;
         }
-        addressHandler.setEntity(tempAddress);
         try {
             addressHandler.create();
-            tempAddress = null;
             clearAddressInformation();
             loadAddresses();
         } catch (InvoiceGeneratorException e) {
@@ -1686,8 +1683,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel addressPanel;
     private javax.swing.JPanel articlePanel;
     private javax.swing.JButton btnAddressAdd;
+    private javax.swing.JButton btnAddressClear;
     private javax.swing.JButton btnAddressDelete;
-    private javax.swing.JButton btnAddressNewAddress;
     private javax.swing.JButton btnAddressRevert;
     private javax.swing.JButton btnAddressSave;
     private javax.swing.JButton btnArticleAdd;

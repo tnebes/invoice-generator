@@ -1088,7 +1088,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAddressRevert" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="btnAddressNewAddress" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAddressClear" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAddressAdd" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1186,7 +1186,7 @@
                                       <Component id="btnAddressSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressRevert" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAddressNewAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAddressClear" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1284,12 +1284,12 @@
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnAddressNewAddress">
+                        <Component class="javax.swing.JButton" name="btnAddressClear">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="New"/>
+                            <Property name="text" type="java.lang.String" value="Clear"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddressNewAddressActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddressClearActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
