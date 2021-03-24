@@ -135,6 +135,9 @@ public class MainMenu extends javax.swing.JFrame {
         btnCustomerBillingAddress = new javax.swing.JButton();
         btnCustomerShippingAddress = new javax.swing.JButton();
         btnCustomerAddCustomer = new javax.swing.JButton();
+        btnCustomerClear = new javax.swing.JButton();
+        btnChangeCustomerBillingAddress = new javax.swing.JButton();
+        btnChangeCustomerShippingAddress = new javax.swing.JButton();
         articlePanel = new javax.swing.JPanel();
         jspArticleScrollPane = new javax.swing.JScrollPane();
         lstArticleList = new javax.swing.JList<>();
@@ -416,6 +419,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        btnCustomerClear.setText("Clear");
+        btnCustomerClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerClearActionPerformed(evt);
+            }
+        });
+
+        btnChangeCustomerBillingAddress.setText("Change / add");
+
+        btnChangeCustomerShippingAddress.setText("Change / add");
+
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
         customerPanelLayout.setHorizontalGroup(
@@ -430,6 +444,8 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCustomerRevertButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCustomerClear)
+                        .addGap(18, 18, 18)
                         .addComponent(btnCustomerAddCustomer)
                         .addGap(18, 18, 18)
                         .addComponent(btnCustomerDeleteButton))
@@ -478,9 +494,13 @@ public class MainMenu extends javax.swing.JFrame {
                             .addGroup(customerPanelLayout.createSequentialGroup()
                                 .addComponent(lblCustomerAddress)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCustomerBillingAddress)
+                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnChangeCustomerBillingAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCustomerBillingAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCustomerShippingAddress)))
+                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCustomerShippingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnChangeCustomerShippingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -531,12 +551,17 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(lblCustomerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCustomerBillingAddress)
                             .addComponent(btnCustomerShippingAddress))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnChangeCustomerBillingAddress)
+                            .addComponent(btnChangeCustomerShippingAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCustomerDeleteButton)
                             .addComponent(btnCustomerSaveButton)
                             .addComponent(btnCustomerRevertButton)
-                            .addComponent(btnCustomerAddCustomer)))
+                            .addComponent(btnCustomerAddCustomer)
+                            .addComponent(btnCustomerClear)))
                     .addComponent(jspCustomerScrollPane))
                 .addContainerGap())
         );
@@ -1176,7 +1201,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lstArticleListValueChanged
 
     private void btnCustomerAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerAddCustomerActionPerformed
-        // TODO add your handling code here:
+        saveNewCustomer();
     }//GEN-LAST:event_btnCustomerAddCustomerActionPerformed
 
     private void btnCustomerShippingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerShippingAddressActionPerformed
@@ -1368,6 +1393,10 @@ public class MainMenu extends javax.swing.JFrame {
         lstArticleList.clearSelection();
     }//GEN-LAST:event_btnArticleClearActionPerformed
 
+    private void btnCustomerClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerClearActionPerformed
+        clearCustomerInformation();
+    }//GEN-LAST:event_btnCustomerClearActionPerformed
+
     /* Customer Panel */
     /* ************** */
     
@@ -1410,7 +1439,6 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
 
-
     private void selectCustomer(Customer customer) {
         lstCustomerList.grabFocus();
         lstCustomerList.clearSelection();
@@ -1424,17 +1452,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void updateCustomer(Customer customer) {
-        customer.setType(jcbCustomerTypeCheckBox.isSelected());
-        if (customer.isType() == Customer.NATURAL_PERSON) {
-            customer.setFirstName(txtCustomerFirstName.getText());
-            customer.setMiddleName(txtCustomerMiddleName.getText());
-            customer.setLastName(txtCustomerLastName.getText());
-            customer.setNationalIdNumber(txtCustomerNationalIDNumber.getText());
-            // TODO add update for billing and shipping address.
-        } else {
-            customer.setName(txtCustomerLegalName.getText());
-            customer.setVATID(txtCustomerVATID.getText());
-        }
+        collectCustomerInformation(customer);
         try {
             customerHandler.setEntity(customer);
             customerHandler.update();
@@ -1443,11 +1461,37 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
 
+    private void collectCustomerInformation(Customer customer) {
+        customer.setType(jcbCustomerTypeCheckBox.isSelected());
+        if (customer.isType() == Customer.NATURAL_PERSON) {
+            customer.setFirstName(txtCustomerFirstName.getText());
+            customer.setMiddleName(txtCustomerMiddleName.getText());
+            customer.setLastName(txtCustomerLastName.getText());
+            customer.setNationalIdNumber(txtCustomerNationalIDNumber.getText());
+        } else {
+            customer.setName(txtCustomerLegalName.getText());
+            customer.setVATID(txtCustomerVATID.getText());
+        }
+        // TODO add update for billing and shipping address.
+    }
+
     private void deleteCustomer(Customer customer) {
         customerHandler.setEntity(customer);
         try {
             customerHandler.delete();
         } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void saveNewCustomer() {
+        Customer newCustomer = new Customer();
+        collectCustomerInformation(newCustomer);
+        try {
+            customerHandler.setEntity(newCustomer);
+            customerHandler.create();
+            loadCustomers();
+        }catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
     }
@@ -1725,8 +1769,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnArticleDelete;
     private javax.swing.JButton btnArticleRevert;
     private javax.swing.JButton btnArticleSave;
+    private javax.swing.JButton btnChangeCustomerBillingAddress;
+    private javax.swing.JButton btnChangeCustomerShippingAddress;
     private javax.swing.JButton btnCustomerAddCustomer;
     private javax.swing.JButton btnCustomerBillingAddress;
+    private javax.swing.JButton btnCustomerClear;
     private javax.swing.JButton btnCustomerDeleteButton;
     private javax.swing.JButton btnCustomerRevertButton;
     private javax.swing.JButton btnCustomerSaveButton;

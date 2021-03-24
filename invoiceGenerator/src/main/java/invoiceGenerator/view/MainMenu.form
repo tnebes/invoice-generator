@@ -309,6 +309,8 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCustomerRevertButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnCustomerClear" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCustomerAddCustomer" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCustomerDeleteButton" min="-2" max="-2" attributes="0"/>
@@ -370,9 +372,15 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblCustomerAddress" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnCustomerBillingAddress" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnCustomerShippingAddress" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="btnChangeCustomerBillingAddress" max="32767" attributes="0"/>
+                                                  <Component id="btnCustomerBillingAddress" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="btnCustomerShippingAddress" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="btnChangeCustomerShippingAddress" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -437,12 +445,18 @@
                                           <Component id="btnCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnChangeCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnChangeCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="45" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnCustomerDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerRevertButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnCustomerAddCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnCustomerClear" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jspCustomerScrollPane" max="32767" attributes="0"/>
@@ -622,6 +636,24 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerAddCustomerActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCustomerClear">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomerClearActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnChangeCustomerBillingAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Change / add"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnChangeCustomerShippingAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Change / add"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
