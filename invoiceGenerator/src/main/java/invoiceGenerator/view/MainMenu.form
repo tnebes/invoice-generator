@@ -1088,6 +1088,8 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAddressRevert" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnAddressNewAddress" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAddressAdd" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAddressDelete" min="-2" max="-2" attributes="0"/>
@@ -1134,7 +1136,7 @@
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="lblAddressStreetNumber" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtAddressStreetNumber" min="-2" pref="139" max="-2" attributes="0"/>
+                                                          <Component id="txtAddressStreetNumber" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -1184,6 +1186,7 @@
                                       <Component id="btnAddressSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressRevert" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAddressNewAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1280,6 +1283,14 @@
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnAddressNewAddress">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="New"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddressNewAddressActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
