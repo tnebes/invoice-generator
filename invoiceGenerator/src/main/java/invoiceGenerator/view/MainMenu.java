@@ -427,8 +427,18 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnChangeCustomerBillingAddress.setText("Change / add");
+        btnChangeCustomerBillingAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeCustomerBillingAddressActionPerformed(evt);
+            }
+        });
 
         btnChangeCustomerShippingAddress.setText("Change / add");
+        btnChangeCustomerShippingAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeCustomerShippingAddressActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
@@ -1397,6 +1407,14 @@ public class MainMenu extends javax.swing.JFrame {
         clearCustomerInformation();
     }//GEN-LAST:event_btnCustomerClearActionPerformed
 
+    private void btnChangeCustomerBillingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeCustomerBillingAddressActionPerformed
+        customerChangeAddAddress(true); // billing
+    }//GEN-LAST:event_btnChangeCustomerBillingAddressActionPerformed
+
+    private void btnChangeCustomerShippingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeCustomerShippingAddressActionPerformed
+        customerChangeAddAddress(false); // shipping
+    }//GEN-LAST:event_btnChangeCustomerShippingAddressActionPerformed
+
     /* Customer Panel */
     /* ************** */
     
@@ -1494,6 +1512,10 @@ public class MainMenu extends javax.swing.JFrame {
         }catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void customerChangeAddAddress(boolean b) {
+        new AddressPicker().setVisible(true);
     }
 
     /* ************** */
