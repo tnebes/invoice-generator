@@ -13,6 +13,7 @@ import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Article;
 import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.InvoiceGeneratorException;
+import invoiceGenerator.view.viewUtil.AddressPicker;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -22,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.JoinColumn;
 import javax.swing.*;
 
 /**
@@ -1408,10 +1408,18 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerClearActionPerformed
 
     private void btnChangeCustomerBillingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeCustomerBillingAddressActionPerformed
+        if (lstCustomerList.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(rootPane, "No customer selected.");
+            return;
+        }
         customerChangeAddAddress(true); // billing
     }//GEN-LAST:event_btnChangeCustomerBillingAddressActionPerformed
 
     private void btnChangeCustomerShippingAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeCustomerShippingAddressActionPerformed
+        if (lstCustomerList.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(rootPane, "No customer selected.");
+            return;
+        }
         customerChangeAddAddress(false); // shipping
     }//GEN-LAST:event_btnChangeCustomerShippingAddressActionPerformed
 
@@ -1509,14 +1517,30 @@ public class MainMenu extends javax.swing.JFrame {
             customerHandler.setEntity(newCustomer);
             customerHandler.create();
             loadCustomers();
-        }catch (InvoiceGeneratorException e) {
+        } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
     }
-    
-    private void customerChangeAddAddress(boolean b) {
-        new AddressPicker().setVisible(true);
+
+    private void customerChangeAddAddress(boolean addressType) {
+        new AddressPicker(this, addressType).setVisible(true);
     }
+
+    public void customerSetAddress(Address newAddress, boolean addressType) {
+        Customer customer = lstCustomerList.getSelectedValue();
+        if (addressType) { // billing
+            customer.setBillingAddress(newAddress);
+        } else {
+            customer.setShippingAddress(newAddress);
+        }
+        customerHandler.setEntity(customer);
+        try {
+            customerHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /* ************** */
     

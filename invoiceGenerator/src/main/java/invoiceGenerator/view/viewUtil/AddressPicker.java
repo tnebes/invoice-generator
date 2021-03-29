@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package invoiceGenerator.view;
+package invoiceGenerator.view.viewUtil;
+import invoiceGenerator.controller.AddressHandler;
 import invoiceGenerator.model.Address;
+import invoiceGenerator.util.InvoiceGeneratorException;
+import invoiceGenerator.view.MainMenu;
+
+import javax.swing.*;
 
 /**
  *
@@ -12,11 +17,19 @@ import invoiceGenerator.model.Address;
  */
 public class AddressPicker extends javax.swing.JFrame {
 
+    private MainMenu mainMenu;
+    private boolean addressType; // true billing, false shipping
+    private AddressHandler addressHandler;
+
     /**
      * Creates new form AddressPicker
      */
-    public AddressPicker() {
+    public AddressPicker(MainMenu mainMenu, boolean addressType) {
+        this.addressHandler = new AddressHandler();
         initComponents();
+        initAddresses();
+        this.mainMenu = mainMenu;
+        this.addressType = addressType;
     }
 
     /**
@@ -33,7 +46,7 @@ public class AddressPicker extends javax.swing.JFrame {
         btnChoose = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
 
@@ -89,8 +102,9 @@ public class AddressPicker extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
-        returnChosenAddress();
+        triggerAddressCollection();
     }//GEN-LAST:event_btnChooseActionPerformed
+
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
@@ -111,11 +125,32 @@ public class AddressPicker extends javax.swing.JFrame {
     private javax.swing.JList<Address> lstAddressList;
     // End of variables declaration//GEN-END:variables
 
-    private Address returnChosenAddress() {
+    private void initAddresses() {
+        DefaultListModel<Address> addresses = new DefaultListModel<>();
+        try {
+            addresses.addAll(addressHandler.getData());
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        lstAddressList.setModel(addresses);
+    }
+
+    public Address returnChosenAddress() {
         Address selectedAddress = lstAddressList.getSelectedValue();
         if (selectedAddress != null) {
             return selectedAddress;
         }
         return null;
     }
+
+    private void triggerAddressCollection() {
+        Address newAddress = returnChosenAddress();
+        if (newAddress != null) {
+            this.mainMenu.customerSetAddress(newAddress, addressType);
+            this.dispose();
+            return;
+        }
+        JOptionPane.showMessageDialog(rootPane, "No address selected.");
+    }
+
 }
