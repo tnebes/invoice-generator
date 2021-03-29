@@ -1121,7 +1121,7 @@
                     </Container>
                     <Component class="javax.swing.JLabel" name="lblAddressCustomerWAddress">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Customer with selected address:"/>
+                        <Property name="text" type="java.lang.String" value="Customer(s) with selected address:"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="jPanel2">
