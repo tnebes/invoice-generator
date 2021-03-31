@@ -1812,7 +1812,7 @@ public class MainMenu extends javax.swing.JFrame {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         String hqlString;
-        for (EntityType<?> tableName : session.getMetamodel().getEntities()) {
+        for (EntityType tableName : session.getMetamodel().getEntities()) {
             hqlString = "TRUNCATE TABLE ".concat(tableName.getName());
             session.createSQLQuery(hqlString).executeUpdate();
         }
