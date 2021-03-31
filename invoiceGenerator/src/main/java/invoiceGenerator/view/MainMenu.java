@@ -1512,8 +1512,8 @@ public class MainMenu extends javax.swing.JFrame {
         Customer newCustomer = new Customer();
         collectCustomerInformation(newCustomer);
         newCustomer.setDateOfCreation(Instant.now());
-//        Address BillingAddress = ;
-//        newCustomer.setBillingAddress()
+        collectCustomerBillingAddress();
+        newCustomer.setBillingAddress(newBillingAddress);
         try {
             customerHandler.setEntity(newCustomer);
             customerHandler.create();
@@ -1523,8 +1523,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
 
+    // FIXME bad workaround using a static method.
+    public static Address newBillingAddress;
+
+    public void collectCustomerBillingAddress() {
+        new AddressPicker(this, true, false).setVisible(true);
+    }
+
     private void customerChangeAddAddress(boolean addressType) {
-        new AddressPicker(this, addressType).setVisible(true);
+        new AddressPicker(this, addressType, false).setVisible(true);
     }
 
     public void customerSetAddress(Address newAddress, boolean addressType) {
