@@ -18,6 +18,7 @@ import invoiceGenerator.view.viewUtil.AddressPicker;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -1513,24 +1514,23 @@ public class MainMenu extends javax.swing.JFrame {
     private void saveNewCustomer() {
         Customer newCustomer = new Customer();
         collectCustomerInformation(newCustomer);
-        try {
-            customerHandler.setEntity(newCustomer);
-            customerHandler.create();
-            loadCustomers();
-        } catch (InvoiceGeneratorException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // FIXME bad workaround using a static method.
-    public static Address newBillingAddress;
-
-    public void collectCustomerBillingAddress() {
-        new AddressPicker(this, true, false).setVisible(true);
+        newCustomer.setDateOfCreation(Instant.now());
+        AddressPicker ohMyGod = new AddressPicker(this, false);
+        ohMyGod.setVisible(true);
+        ohMyGod.howHardCanItBe(newAddress -> {
+            try {
+                newCustomer.setBillingAddress(newAddress);
+                customerHandler.setEntity(newCustomer);
+                customerHandler.create();
+                loadCustomers();
+            } catch (InvoiceGeneratorException eee) {
+            eee.printStackTrace();
+            }
+        });
     }
 
     private void customerChangeAddAddress(boolean addressType) {
-        new AddressPicker(this, addressType, false).setVisible(true);
+        new AddressPicker(this, addressType).setVisible(true);
     }
 
     public void customerSetAddress(Address newAddress, boolean addressType) {

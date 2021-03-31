@@ -25,7 +25,7 @@ public class AddressPicker extends javax.swing.JFrame {
     /**
      * Creates new form AddressPicker
      */
-    public AddressPicker(MainMenu mainMenu, boolean addressType, boolean forCustomerCreation) {
+    public AddressPicker(MainMenu mainMenu, boolean addressType) {
         this.addressHandler = new AddressHandler();
         initComponents();
         initAddresses();
@@ -139,25 +139,26 @@ public class AddressPicker extends javax.swing.JFrame {
 
     public Address returnChosenAddress() {
         Address selectedAddress = lstAddressList.getSelectedValue();
-        if (selectedAddress != null) {
-            return selectedAddress;
-        }
-        return null;
+        return selectedAddress;
     }
 
     private void triggerAddressCollection() {
         Address newAddress = returnChosenAddress();
         if (newAddress != null) {
-            if (forCustomerCreation) {
-                MainMenu.newBillingAddress = newAddress;
-                this.dispose();
-                return;
-            }
-            this.mainMenu.customerSetAddress(newAddress, addressType);
+            // Dumb.dumbAddress = newAddress;
             this.dispose();
             return;
         }
         JOptionPane.showMessageDialog(rootPane, "No address selected.");
+    }
+
+    public interface muhInterface {
+        void run(Address address);
+    }
+    public void howHardCanItBe(muhInterface bakes) {
+        btnChoose.addActionListener(e ->
+            bakes.run(returnChosenAddress())
+        );
     }
 
 }
