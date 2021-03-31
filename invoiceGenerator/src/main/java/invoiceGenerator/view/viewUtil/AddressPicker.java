@@ -152,12 +152,12 @@ public class AddressPicker extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "No address selected.");
     }
 
-    public interface addressReturner {
+    public interface AddressReturner {
         void run(Address address);
     }
-    public void giveMeAddress(addressReturner bakes) {
+    public void giveMeAddress(AddressReturner addressReturner) {
         btnChoose.addActionListener(e ->
-            bakes.run(returnChosenAddress())
+            addressReturner.run(returnChosenAddress())
         );
     }
 

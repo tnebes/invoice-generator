@@ -1530,7 +1530,11 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void customerChangeAddAddress(boolean addressType) {
-        new AddressPicker(this, addressType).setVisible(true);
+        AddressPicker addressPicker = new AddressPicker(this, addressType);
+        addressPicker.setVisible(true);
+        addressPicker.giveMeAddress(newAddress -> {
+            customerSetAddress(newAddress, addressType);
+        });
     }
 
     public void customerSetAddress(Address newAddress, boolean addressType) {
