@@ -18,7 +18,6 @@ import invoiceGenerator.view.viewUtil.AddressPicker;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -832,7 +831,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstAddressCustomerList);
 
-        lblAddressCustomerWAddress.setText("Customer(s) with selected address:");
+        lblAddressCustomerWAddress.setText("Customer with selected address:");
 
         btnAddressSave.setText("Save");
         btnAddressSave.addActionListener(new java.awt.event.ActionListener() {
@@ -1319,6 +1318,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lstCustomerListValueChanged
 
     private void lstAddressListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAddressListValueChanged
+        // TODO what does this do?
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -1450,6 +1450,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void updateCustomerInformation(Customer customer) {
         clearCustomerInformation();
+        // FIXME a really bad workaround
         txtCustomerID.setText("" + customer.getId());
         txtCustomerDateAdded.setText(customer.getDateOfCreation().toString());
         txtCustomerNationalIDNumber.setText(customer.getNationalIdNumber());
@@ -1497,6 +1498,7 @@ public class MainMenu extends javax.swing.JFrame {
             customer.setName(txtCustomerLegalName.getText());
             customer.setVATID(txtCustomerVATID.getText());
         }
+        // TODO add update for billing and shipping address.
     }
 
     private void deleteCustomer(Customer customer) {
@@ -1511,17 +1513,6 @@ public class MainMenu extends javax.swing.JFrame {
     private void saveNewCustomer() {
         Customer newCustomer = new Customer();
         collectCustomerInformation(newCustomer);
-        newCustomer.setDateOfCreation(Instant.now());
-        collectCustomerBillingAddress();
-        newCustomer.setBillingAddress(newBillingAddress);
-        while (newBillingAddress == null) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
         try {
             customerHandler.setEntity(newCustomer);
             customerHandler.create();
@@ -1548,6 +1539,12 @@ public class MainMenu extends javax.swing.JFrame {
             customer.setBillingAddress(newAddress);
         } else {
             customer.setShippingAddress(newAddress);
+        }
+        customerHandler.setEntity(customer);
+        try {
+            customerHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
         }
     }
 
