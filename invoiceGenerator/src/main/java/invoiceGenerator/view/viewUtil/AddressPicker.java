@@ -17,21 +17,15 @@ import javax.swing.*;
  */
 public class AddressPicker extends javax.swing.JFrame {
 
-    private MainMenu mainMenu;
-    private boolean addressType; // true billing, false shipping
-    private boolean forCustomerCreation;
     private AddressHandler addressHandler;
 
     /**
      * Creates new form AddressPicker
      */
-    public AddressPicker(MainMenu mainMenu, boolean addressType) {
+    public AddressPicker() {
         this.addressHandler = new AddressHandler();
         initComponents();
         initAddresses();
-        this.mainMenu = mainMenu;
-        this.addressType = addressType;
-        this.forCustomerCreation = forCustomerCreation;
     }
 
     /**
@@ -145,7 +139,6 @@ public class AddressPicker extends javax.swing.JFrame {
     private void triggerAddressCollection() {
         Address newAddress = returnChosenAddress();
         if (newAddress != null) {
-            // TODO address here
             this.dispose();
             return;
         }
@@ -155,6 +148,7 @@ public class AddressPicker extends javax.swing.JFrame {
     public interface AddressReturner {
         void run(Address address);
     }
+
     public void giveMeAddress(AddressReturner addressReturner) {
         btnChoose.addActionListener(e ->
             addressReturner.run(returnChosenAddress())

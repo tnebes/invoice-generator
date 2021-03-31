@@ -12,8 +12,10 @@ import invoiceGenerator.controller.InvoiceHandler;
 import invoiceGenerator.model.Address;
 import invoiceGenerator.model.Article;
 import invoiceGenerator.model.Customer;
+import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.viewUtil.AddressPicker;
+import org.hibernate.Session;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -24,10 +26,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.metamodel.EntityType;
 import javax.swing.*;
 
 /**
- *
  * @author tnebes
  */
 public class MainMenu extends javax.swing.JFrame {
@@ -61,7 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
     private class MyTime extends Thread {
 
         private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd YYYY HH:mm:ss '- week 'ww");
-        
+
         @Override
         public void run() {
             while (true) {
@@ -202,7 +204,6 @@ public class MainMenu extends javax.swing.JFrame {
         jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
-        refreshDatabaseButton = new javax.swing.JButton();
         purgeDatabaseButton = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         lblTimeLabel = new javax.swing.JLabel();
@@ -1029,8 +1030,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         databaseLabel.setText("Database");
 
-        refreshDatabaseButton.setText("Refresh database");
-
         purgeDatabaseButton.setText("Purge database");
         purgeDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1046,19 +1045,16 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(databasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(databaseLabel)
-                    .addComponent(refreshDatabaseButton)
                     .addComponent(purgeDatabaseButton))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         databasePanelLayout.setVerticalGroup(
             databasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(databasePanelLayout.createSequentialGroup()
                 .addComponent(databaseLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(refreshDatabaseButton)
                 .addGap(18, 18, 18)
                 .addComponent(purgeDatabaseButton)
-                .addGap(0, 130, Short.MAX_VALUE))
+                .addGap(0, 164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpOptionsTabLayout = new javax.swing.GroupLayout(jpOptionsTab);
@@ -1145,7 +1141,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_printInvoiceButtonActionPerformed
 
     private void purgeDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purgeDatabaseButtonActionPerformed
-        // TODO add your handling code here:
+        purgeDatabase();
     }//GEN-LAST:event_purgeDatabaseButtonActionPerformed
 
     private void jmInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmInfoMouseClicked
@@ -1202,12 +1198,12 @@ public class MainMenu extends javax.swing.JFrame {
         if (evt.getValueIsAdjusting()) {
             return;
         }
-        
+
         Article article = lstArticleList.getSelectedValue();
         if (article == null) {
             return;
         }
-        
+
         updateArticleInformation(article);
     }//GEN-LAST:event_lstArticleListValueChanged
 
@@ -1319,7 +1315,6 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lstCustomerListValueChanged
 
     private void lstAddressListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAddressListValueChanged
-        // TODO what does this do?
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -1426,17 +1421,17 @@ public class MainMenu extends javax.swing.JFrame {
 
     /* Customer Panel */
     /* ************** */
-    
+
     private void loadCustomers() {
         DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
             customers.addAll(customerHandler.getData());
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
-        }  
+        }
         lstCustomerList.setModel(customers);
     }
-        
+
     private void clearCustomerInformation() {
         txtCustomerID.setText("");
         txtCustomerDateAdded.setText("");
@@ -1499,7 +1494,6 @@ public class MainMenu extends javax.swing.JFrame {
             customer.setName(txtCustomerLegalName.getText());
             customer.setVATID(txtCustomerVATID.getText());
         }
-        // TODO add update for billing and shipping address.
     }
 
     private void deleteCustomer(Customer customer) {
@@ -1515,7 +1509,7 @@ public class MainMenu extends javax.swing.JFrame {
         Customer newCustomer = new Customer();
         collectCustomerInformation(newCustomer);
         newCustomer.setDateOfCreation(Instant.now());
-        AddressPicker addressPicker = new AddressPicker(this, false);
+        AddressPicker addressPicker = new AddressPicker();
         addressPicker.setVisible(true);
         addressPicker.giveMeAddress(newAddress -> {
             try {
@@ -1524,17 +1518,15 @@ public class MainMenu extends javax.swing.JFrame {
                 customerHandler.create();
                 loadCustomers();
             } catch (InvoiceGeneratorException e) {
-            e.printStackTrace();
+                e.printStackTrace();
             }
         });
     }
 
     private void customerChangeAddAddress(boolean addressType) {
-        AddressPicker addressPicker = new AddressPicker(this, addressType);
+        AddressPicker addressPicker = new AddressPicker();
         addressPicker.setVisible(true);
-        addressPicker.giveMeAddress(newAddress -> {
-            customerSetAddress(newAddress, addressType);
-        });
+        addressPicker.giveMeAddress(newAddress -> customerSetAddress(newAddress, addressType));
     }
 
     public void customerSetAddress(Address newAddress, boolean addressType) {
@@ -1554,20 +1546,20 @@ public class MainMenu extends javax.swing.JFrame {
 
 
     /* ************** */
-    
+
     /* Article Panel */
     /* ************* */
-    
+
     private void loadArticles() {
         DefaultListModel<Article> articles = new DefaultListModel<>();
         try {
             articles.addAll(articleHandler.getData());
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
-        }  
+        }
         lstArticleList.setModel(articles);
     }
-    
+
     private void updateArticleInformation(Article article) {
         clearArticleInformation();
         txtArticleID.setText(article.getId().toString());
@@ -1581,7 +1573,7 @@ public class MainMenu extends javax.swing.JFrame {
         txtArticleWholesalePrice.setText(article.getWholesalePrice().toString());
         txtArticleRetailPrice.setText(article.getRetailPrice().toString());
     }
-    
+
     private void clearArticleInformation() {
         txtArticleID.setText("");
         txtArticleShortName.setText("");
@@ -1630,13 +1622,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
         String message;
         switch (counter) {
-            case 0 : message = "At least one field must be empty in order to calculate price details.";
+            case 0:
+                message = "At least one field must be empty in order to calculate price details.";
                 break;
-            case 2 :
-            case 3 :
+            case 2:
+            case 3:
                 message = "At least two fields must be filled in to be able to calculate price details";
                 break;
-            default: message = "";
+            default:
+                message = "";
         }
         if (!message.isBlank()) {
             JOptionPane.showMessageDialog(rootPane, message);
@@ -1696,7 +1690,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     /* ************* */
-    
+
     /* Address Panel */
     /* ************** */
 
@@ -1723,17 +1717,17 @@ public class MainMenu extends javax.swing.JFrame {
         txtAddressCountry.setText(address.getCountry());
         updateAddressCustomerList(address);
     }
-    
+
     private void updateAddressCustomerList(Address address) {
         DefaultListModel<Customer> customers = new DefaultListModel<>();
         try {
             customers.addAll(customerHandler.getCustomersWithAddress(address));
-        }catch (InvoiceGeneratorException e) {
+        } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
         lstAddressCustomerList.setModel(customers);
     }
-    
+
     private void clearAddressInformation() {
         cbAddressType.setSelected(false);
         txtAddressId.setText("");
@@ -1748,7 +1742,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void clearAddressCustomerInformation() {
         lstAddressCustomerList.setModel(new DefaultListModel<>());
     }
-    
+
     private void gotoCustomer(Customer customer) {
         tpAccounting.setSelectedIndex(1); // goes to customer tab
         selectCustomer(customer);
@@ -1810,6 +1804,26 @@ public class MainMenu extends javax.swing.JFrame {
 
     /* ************** */
     
+    /* ************** */
+    /* ***Options**** */
+
+    private void purgeDatabase() {
+        // BUG for now does nothing as it does not account for foreign key constraints
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        String hqlString;
+        for (EntityType<?> tableName : session.getMetamodel().getEntities()) {
+            hqlString = "TRUNCATE TABLE ".concat(tableName.getName());
+            session.createSQLQuery(hqlString).executeUpdate();
+        }
+        session.getTransaction().commit();
+        // TODO this should be substantially improved.
+        JOptionPane.showMessageDialog(rootPane, "Database purged. A new operator must now be added manually to database.");
+        System.exit(1);
+
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomerButton;
     private javax.swing.JButton addCustomerButton1;
@@ -1898,7 +1912,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
-    private javax.swing.JButton refreshDatabaseButton;
     private javax.swing.JButton removeCustomerButton;
     private javax.swing.JButton removeCustomerButton1;
     private javax.swing.JScrollPane shippingScrollPane;
