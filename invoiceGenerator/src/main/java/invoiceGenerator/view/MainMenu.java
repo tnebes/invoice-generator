@@ -1514,6 +1514,14 @@ public class MainMenu extends javax.swing.JFrame {
         newCustomer.setDateOfCreation(Instant.now());
         collectCustomerBillingAddress();
         newCustomer.setBillingAddress(newBillingAddress);
+        while (newBillingAddress == null) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         try {
             customerHandler.setEntity(newCustomer);
             customerHandler.create();
