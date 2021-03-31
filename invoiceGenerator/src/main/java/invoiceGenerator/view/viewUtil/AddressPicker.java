@@ -145,17 +145,17 @@ public class AddressPicker extends javax.swing.JFrame {
     private void triggerAddressCollection() {
         Address newAddress = returnChosenAddress();
         if (newAddress != null) {
-            // Dumb.dumbAddress = newAddress;
+            // TODO address here
             this.dispose();
             return;
         }
         JOptionPane.showMessageDialog(rootPane, "No address selected.");
     }
 
-    public interface muhInterface {
+    public interface addressReturner {
         void run(Address address);
     }
-    public void howHardCanItBe(muhInterface bakes) {
+    public void giveMeAddress(addressReturner bakes) {
         btnChoose.addActionListener(e ->
             bakes.run(returnChosenAddress())
         );

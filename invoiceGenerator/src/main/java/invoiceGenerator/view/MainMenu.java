@@ -1515,16 +1515,16 @@ public class MainMenu extends javax.swing.JFrame {
         Customer newCustomer = new Customer();
         collectCustomerInformation(newCustomer);
         newCustomer.setDateOfCreation(Instant.now());
-        AddressPicker ohMyGod = new AddressPicker(this, false);
-        ohMyGod.setVisible(true);
-        ohMyGod.howHardCanItBe(newAddress -> {
+        AddressPicker addressPicker = new AddressPicker(this, false);
+        addressPicker.setVisible(true);
+        addressPicker.giveMeAddress(newAddress -> {
             try {
                 newCustomer.setBillingAddress(newAddress);
                 customerHandler.setEntity(newCustomer);
                 customerHandler.create();
                 loadCustomers();
-            } catch (InvoiceGeneratorException eee) {
-            eee.printStackTrace();
+            } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
             }
         });
     }
