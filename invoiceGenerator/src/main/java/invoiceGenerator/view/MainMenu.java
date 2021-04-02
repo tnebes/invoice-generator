@@ -97,14 +97,6 @@ public class MainMenu extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         tabController = new javax.swing.JTabbedPane();
         jpRegisterTab = new javax.swing.JPanel();
-        customerScrollPane = new javax.swing.JScrollPane();
-        customerTextArea = new javax.swing.JTextArea();
-        addCustomerButton = new javax.swing.JButton();
-        removeCustomerButton = new javax.swing.JButton();
-        shippingScrollPane = new javax.swing.JScrollPane();
-        shippingTextArea = new javax.swing.JTextArea();
-        addCustomerButton1 = new javax.swing.JButton();
-        removeCustomerButton1 = new javax.swing.JButton();
         printInvoiceButton = new javax.swing.JButton();
         jpAccountingTab = new javax.swing.JPanel();
         tpAccounting = new javax.swing.JTabbedPane();
@@ -222,44 +214,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpRegisterTab.setPreferredSize(new java.awt.Dimension(800, 500));
 
-        customerTextArea.setEditable(false);
-        customerTextArea.setColumns(20);
-        customerTextArea.setRows(5);
-        customerScrollPane.setViewportView(customerTextArea);
-
-        addCustomerButton.setText("Add Customer");
-        addCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCustomerButtonActionPerformed(evt);
-            }
-        });
-
-        removeCustomerButton.setText("Remove");
-        removeCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeCustomerButtonActionPerformed(evt);
-            }
-        });
-
-        shippingTextArea.setEditable(false);
-        shippingTextArea.setColumns(20);
-        shippingTextArea.setRows(5);
-        shippingScrollPane.setViewportView(shippingTextArea);
-
-        addCustomerButton1.setText("Add Shipping");
-        addCustomerButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCustomerButton1ActionPerformed(evt);
-            }
-        });
-
-        removeCustomerButton1.setText("Remove");
-        removeCustomerButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeCustomerButton1ActionPerformed(evt);
-            }
-        });
-
         printInvoiceButton.setText("Print Invoice");
         printInvoiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,45 +226,14 @@ public class MainMenu extends javax.swing.JFrame {
         jpRegisterTabLayout.setHorizontalGroup(
             jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(customerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                                .addComponent(addCustomerButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(removeCustomerButton)))
-                        .addGap(35, 35, 35)
-                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(shippingScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                                .addComponent(addCustomerButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(removeCustomerButton1))))
-                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                        .addGap(343, 343, 343)
-                        .addComponent(printInvoiceButton)))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(698, Short.MAX_VALUE)
+                .addComponent(printInvoiceButton)
+                .addContainerGap())
         );
         jpRegisterTabLayout.setVerticalGroup(
             jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                        .addComponent(customerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addCustomerButton)
-                            .addComponent(removeCustomerButton)))
-                    .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                        .addComponent(shippingScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addCustomerButton1)
-                            .addComponent(removeCustomerButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addContainerGap(479, Short.MAX_VALUE)
                 .addComponent(printInvoiceButton)
                 .addContainerGap())
         );
@@ -943,7 +866,7 @@ public class MainMenu extends javax.swing.JFrame {
                                         .addComponent(lblAddressStreetNumber)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtAddressStreetNumber)))))
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -993,7 +916,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(jspArticleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddressCustomerWAddress))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1120,22 +1043,6 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addCustomerButtonActionPerformed
-
-    private void removeCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCustomerButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_removeCustomerButtonActionPerformed
-
-    private void addCustomerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addCustomerButton1ActionPerformed
-
-    private void removeCustomerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCustomerButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_removeCustomerButton1ActionPerformed
 
     private void printInvoiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printInvoiceButtonActionPerformed
         // TODO add your handling code here:
@@ -1844,8 +1751,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addCustomerButton;
-    private javax.swing.JButton addCustomerButton1;
     private javax.swing.JPanel addressPanel;
     private javax.swing.JPanel articlePanel;
     private javax.swing.JButton btnAddressAdd;
@@ -1870,8 +1775,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCustomerShippingAddress;
     private javax.swing.JCheckBox cbAddressType;
     private javax.swing.JPanel customerPanel;
-    private javax.swing.JScrollPane customerScrollPane;
-    private javax.swing.JTextArea customerTextArea;
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
     private javax.swing.JPanel invoicePanel;
@@ -1931,10 +1834,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JList<Customer> lstCustomerList;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
-    private javax.swing.JButton removeCustomerButton;
-    private javax.swing.JButton removeCustomerButton1;
-    private javax.swing.JScrollPane shippingScrollPane;
-    private javax.swing.JTextArea shippingTextArea;
     private javax.swing.JTabbedPane tabController;
     private javax.swing.JTabbedPane tpAccounting;
     private javax.swing.JTextField txtAddressCity;
