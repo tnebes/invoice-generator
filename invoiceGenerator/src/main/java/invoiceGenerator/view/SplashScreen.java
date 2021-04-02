@@ -7,6 +7,9 @@ package invoiceGenerator.view;
 
 import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InitialFixtures;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
@@ -26,7 +29,7 @@ public class SplashScreen extends javax.swing.JFrame {
         Loading loading = new Loading();
         loading.start();
     }
-    
+
     private class Loading extends Thread {
 
         @Override
@@ -57,28 +60,37 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblLoading = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
 
-        jLabel1.setText("Loading Invoice Generator...");
+        lblLoading.setText("Loading Invoice Generator...");
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/drau_splash.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel1)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLoading)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblBackground)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel1)
-                .addContainerGap(149, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblBackground)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLoading)
+                .addContainerGap())
         );
 
         pack();
@@ -92,6 +104,7 @@ public class SplashScreen extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblLoading;
     // End of variables declaration//GEN-END:variables
 }

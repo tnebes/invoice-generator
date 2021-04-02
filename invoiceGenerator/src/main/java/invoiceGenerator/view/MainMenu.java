@@ -1837,6 +1837,7 @@ public class MainMenu extends javax.swing.JFrame {
         session.getTransaction().commit();
         // TODO this should be substantially improved.
         JOptionPane.showMessageDialog(rootPane, "Database purged. A new operator must now be added manually to database.");
+        // TODO temporary?
         System.exit(1);
 
 
