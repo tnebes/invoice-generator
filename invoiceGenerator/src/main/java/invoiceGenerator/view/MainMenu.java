@@ -15,6 +15,7 @@ import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.viewUtil.AddressPicker;
+import invoiceGenerator.view.viewUtil.AddressPicker.AddressReturner;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
@@ -1809,13 +1810,30 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void purgeDatabase() {
         // BUG for now does nothing as it does not account for foreign key constraints
+        if (JOptionPane.showConfirmDialog(rootPane, "Are you sure you wish to purge the database?\nThis action cannot be reversed.") != 0) {
+            return;
+        }
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         String hqlString;
-        for (EntityType tableName : session.getMetamodel().getEntities()) {
-            hqlString = "TRUNCATE TABLE ".concat(tableName.getName());
+        // manually add or remove table names here
+        String[] tableNames = {
+                "article_invoice",
+                "article",
+                "invoice",
+                "status",
+                "transaction_type",
+                "customer",
+                "address",
+                "operator"
+        };
+        // workaround for truncating tables with no regard to foreign key constraints
+        session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
+        for (String tableName : tableNames) {
+            hqlString = "TRUNCATE TABLE " + tableName;
             session.createSQLQuery(hqlString).executeUpdate();
         }
+        session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
         session.getTransaction().commit();
         // TODO this should be substantially improved.
         JOptionPane.showMessageDialog(rootPane, "Database purged. A new operator must now be added manually to database.");
