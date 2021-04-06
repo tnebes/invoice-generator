@@ -98,6 +98,17 @@ public class MainMenu extends javax.swing.JFrame {
         tabController = new javax.swing.JTabbedPane();
         jpRegisterTab = new javax.swing.JPanel();
         printInvoiceButton = new javax.swing.JButton();
+        pnlRegister = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblRegisterInvoice = new javax.swing.JTable();
+        pnlRegisterInformationPanel = new javax.swing.JPanel();
+        pnlRegisterCustomerInfo = new javax.swing.JPanel();
+        lblRegisterCustomer = new javax.swing.JLabel();
+        pnlRegisterAddressInfo = new javax.swing.JPanel();
+        lblRegisterBillingAddress = new javax.swing.JLabel();
+        lblRegisterBillingAddress1 = new javax.swing.JLabel();
+        pnlRegisterArticle = new javax.swing.JPanel();
+        lblRegisterArticle = new javax.swing.JLabel();
         jpAccountingTab = new javax.swing.JPanel();
         tpAccounting = new javax.swing.JTabbedPane();
         invoicePanel = new javax.swing.JPanel();
@@ -221,19 +232,149 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        pnlRegister.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tblRegisterInvoice.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tblRegisterInvoice);
+
+        pnlRegisterInformationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblRegisterCustomer.setText("Customer:");
+
+        javax.swing.GroupLayout pnlRegisterCustomerInfoLayout = new javax.swing.GroupLayout(pnlRegisterCustomerInfo);
+        pnlRegisterCustomerInfo.setLayout(pnlRegisterCustomerInfoLayout);
+        pnlRegisterCustomerInfoLayout.setHorizontalGroup(
+            pnlRegisterCustomerInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterCustomerInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterCustomer)
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+        pnlRegisterCustomerInfoLayout.setVerticalGroup(
+            pnlRegisterCustomerInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterCustomerInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterCustomer)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblRegisterBillingAddress.setText("Billing Address:");
+
+        lblRegisterBillingAddress1.setText("Shipping Address:");
+
+        javax.swing.GroupLayout pnlRegisterAddressInfoLayout = new javax.swing.GroupLayout(pnlRegisterAddressInfo);
+        pnlRegisterAddressInfo.setLayout(pnlRegisterAddressInfoLayout);
+        pnlRegisterAddressInfoLayout.setHorizontalGroup(
+            pnlRegisterAddressInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterAddressInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRegisterAddressInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegisterBillingAddress)
+                    .addComponent(lblRegisterBillingAddress1))
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+        pnlRegisterAddressInfoLayout.setVerticalGroup(
+            pnlRegisterAddressInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterAddressInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterBillingAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(lblRegisterBillingAddress1)
+                .addGap(69, 69, 69))
+        );
+
+        lblRegisterArticle.setText("Article:");
+
+        javax.swing.GroupLayout pnlRegisterArticleLayout = new javax.swing.GroupLayout(pnlRegisterArticle);
+        pnlRegisterArticle.setLayout(pnlRegisterArticleLayout);
+        pnlRegisterArticleLayout.setHorizontalGroup(
+            pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterArticle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRegisterArticleLayout.setVerticalGroup(
+            pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterArticle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlRegisterInformationPanelLayout = new javax.swing.GroupLayout(pnlRegisterInformationPanel);
+        pnlRegisterInformationPanel.setLayout(pnlRegisterInformationPanelLayout);
+        pnlRegisterInformationPanelLayout.setHorizontalGroup(
+            pnlRegisterInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterInformationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlRegisterCustomerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRegisterAddressInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlRegisterInformationPanelLayout.setVerticalGroup(
+            pnlRegisterInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterInformationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRegisterInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRegisterAddressInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRegisterCustomerInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlRegisterLayout = new javax.swing.GroupLayout(pnlRegister);
+        pnlRegister.setLayout(pnlRegisterLayout);
+        pnlRegisterLayout.setHorizontalGroup(
+            pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegisterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlRegisterLayout.setVerticalGroup(
+            pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterLayout.createSequentialGroup()
+                .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jpRegisterTabLayout = new javax.swing.GroupLayout(jpRegisterTab);
         jpRegisterTab.setLayout(jpRegisterTabLayout);
         jpRegisterTabLayout.setHorizontalGroup(
             jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                .addContainerGap(698, Short.MAX_VALUE)
-                .addComponent(printInvoiceButton)
+                .addContainerGap()
+                .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRegisterTabLayout.createSequentialGroup()
+                        .addGap(0, 692, Short.MAX_VALUE)
+                        .addComponent(printInvoiceButton)))
                 .addContainerGap())
         );
         jpRegisterTabLayout.setVerticalGroup(
             jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRegisterTabLayout.createSequentialGroup()
-                .addContainerGap(479, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(pnlRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(printInvoiceButton)
                 .addContainerGap())
         );
@@ -1798,6 +1939,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1841,15 +1983,25 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblFirstNameLabel;
     private javax.swing.JLabel lblLastNameLabel;
     private javax.swing.JLabel lblMiddleNameLabel;
+    private javax.swing.JLabel lblRegisterArticle;
+    private javax.swing.JLabel lblRegisterBillingAddress;
+    private javax.swing.JLabel lblRegisterBillingAddress1;
+    private javax.swing.JLabel lblRegisterCustomer;
     private javax.swing.JLabel lblTimeLabel;
     private javax.swing.JLabel lblVATIDLabel;
     private javax.swing.JList<Customer> lstAddressCustomerList;
     private javax.swing.JList<Address> lstAddressList;
     private javax.swing.JList<Article> lstArticleList;
     private javax.swing.JList<Customer> lstCustomerList;
+    private javax.swing.JPanel pnlRegister;
+    private javax.swing.JPanel pnlRegisterAddressInfo;
+    private javax.swing.JPanel pnlRegisterArticle;
+    private javax.swing.JPanel pnlRegisterCustomerInfo;
+    private javax.swing.JPanel pnlRegisterInformationPanel;
     private javax.swing.JButton printInvoiceButton;
     private javax.swing.JButton purgeDatabaseButton;
     private javax.swing.JTabbedPane tabController;
+    private javax.swing.JTable tblRegisterInvoice;
     private javax.swing.JTabbedPane tpAccounting;
     private javax.swing.JTextField txtAddressCity;
     private javax.swing.JTextField txtAddressCountry;
