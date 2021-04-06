@@ -1711,7 +1711,22 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     /* ************** */
-    
+
+    /* ******** */
+    /* Invoices */
+
+
+
+    /* ******** */
+
+    /* ******** */
+    /* Register */
+
+
+
+    /* ******** */
+
+
     /* ************** */
     /* ***Options**** */
 
