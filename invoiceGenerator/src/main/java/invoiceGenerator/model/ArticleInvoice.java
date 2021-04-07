@@ -24,7 +24,7 @@ public class ArticleInvoice extends Identity {
 
 	@NotNull(message = "A nonnegative discount must exist")
 	// TODO non-negative number
-	private Byte 		discount = 0;
+	private BigDecimal	discount = BigDecimal.ZERO;
 
 	@NotNull(message = "Quantity must be defined")
 	private Long 		quantity;
@@ -39,7 +39,7 @@ public class ArticleInvoice extends Identity {
 
 	@NotNull(message = "Tax rate must be defined.")
 	@Column(name = "tax_rate")
-	private Byte 		taxRate = 25;
+	private BigDecimal	taxRate = BigDecimal.valueOf(25);
 
 	@Column(columnDefinition = "text")
 	private String 		note;
@@ -49,8 +49,8 @@ public class ArticleInvoice extends Identity {
 	}
 
 	public ArticleInvoice(Instant dateOfCreation, Article article, Invoice invoice,
-						  Byte discount, Long quantity, BigDecimal wholesalePrice,
-						  BigDecimal retailPrice, Byte taxRate, String note) {
+						  BigDecimal discount, Long quantity, BigDecimal wholesalePrice,
+						  BigDecimal retailPrice, BigDecimal taxRate, String note) {
 		this();
 		this.dateOfCreation = dateOfCreation;
 		this.article = article;
@@ -81,10 +81,10 @@ public class ArticleInvoice extends Identity {
 	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
 	}
-	public Byte getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
-	public void setDiscount(Byte discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
 	public Long getQuantity() {
@@ -105,10 +105,10 @@ public class ArticleInvoice extends Identity {
 	public void setRetailPrice(BigDecimal retailPrice) {
 		this.retailPrice = retailPrice;
 	}
-	public Byte getTaxRate() {
+	public BigDecimal getTaxRate() {
 		return taxRate;
 	}
-	public void setTaxRate(Byte taxRate) {
+	public void setTaxRate(BigDecimal taxRate) {
 		this.taxRate = taxRate;
 	}
 	public String getNote() {
