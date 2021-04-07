@@ -24,8 +24,18 @@ public class ArticleHandler extends Handler<Article> {
     }
 
     @Override
-    protected List<Article> getData(String token) throws InvoiceGeneratorException {
-        return null;
+    public List<Article> getData(String token) throws InvoiceGeneratorException {
+        List<Article> articles0 = session.createQuery("from article where lower(long_description) like lower(:searchToken) " +
+                "or lower(long_name) like lower(:searchToken) " +
+                "or lower(short_description) like lower(:searchToken) " +
+                "or lower(short_name) like lower(:searchToken) " +
+                "or lower(warehouse_location) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
+        List<Article> articles1 = session.createQuery("from article where id = :searchToken").setParameter("searchToken", Long.parseLong(token)).list();
+        if (articles1.size() == 0) {
+            return articles0;
+        }
+        articles0.addAll(articles1);
+        return articles0;
     }
 
     @Override

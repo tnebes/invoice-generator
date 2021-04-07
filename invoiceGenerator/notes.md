@@ -9,5 +9,7 @@
 
 # Know bugs #
 
+* Register buttons do not register the returned object immediately
+  * Interface black magic
 
 
