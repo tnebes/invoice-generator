@@ -2086,6 +2086,7 @@ public class MainMenu extends javax.swing.JFrame {
         ArticlePicker articlePicker = new ArticlePicker();
         articlePicker.setVisible(true);
         articlePicker.giveMeCustomer(newArticle -> registerArticle = newArticle);
+        System.out.println(registerArticle);
         updateRegisterArticle();
     }
 
