@@ -22,7 +22,19 @@ public class AddressHandler extends Handler<Address> {
 
     @Override
     public List<Address> getData(String token) throws InvoiceGeneratorException {
-        return session.createQuery("from address where lower(country) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
+        List<Address> addresses0 = session.createQuery("from address where lower(country) like lower(:searchToken) " +
+                "or lower(zip_code) like lower(:searchToken) " +
+                "or lower(street) like lower(:searchToken) " +
+                "or lower(street_letter) like lower(:searchToken) " +
+                "or lower(street_number) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
+        List<Address> addresses1 = session.createQuery("from address where id = :searchToken").setParameter("searchToken", Long.parseLong(token)).list();
+        if (addresses1.size() == 0) {
+            return addresses0;
+        }
+        for (Address address : addresses1) {
+            addresses0.add(address);
+        }
+        return addresses0;
     }
 
     @Override
