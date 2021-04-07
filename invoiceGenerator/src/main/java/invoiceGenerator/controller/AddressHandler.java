@@ -31,9 +31,7 @@ public class AddressHandler extends Handler<Address> {
         if (addresses1.size() == 0) {
             return addresses0;
         }
-        for (Address address : addresses1) {
-            addresses0.add(address);
-        }
+        addresses0.addAll(addresses1);
         return addresses0;
     }
 

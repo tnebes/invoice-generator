@@ -22,8 +22,19 @@ public class CustomerHandler extends Handler<Customer> {
     }
 
     @Override
-    protected List<Customer> getData(String token) throws InvoiceGeneratorException {
-        return null;
+    public List<Customer> getData(String token) throws InvoiceGeneratorException {
+        List<Customer> customers0 = session.createQuery("from customer where lower(vatid) like lower(:searchToken) " +
+                "or lower(first_name) like lower(:searchToken) " +
+                "or lower(last_name) like lower(:searchToken) " +
+                "or lower(middle_name) like lower(:searchToken) " +
+                "or lower(name) like lower(:searchToken)" +
+                "or lower(national_id_number) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
+        List<Customer> customers1 = session.createQuery("from customer where id = :searchToken").setParameter("searchToken", Long.parseLong(token)).list();
+        if (customers1.size() == 0) {
+            return customers0;
+        }
+        customers0.addAll(customers1);
+        return customers0;
     }
 
     public List<Customer> getCustomersWithAddress(Address address) throws InvoiceGeneratorException {

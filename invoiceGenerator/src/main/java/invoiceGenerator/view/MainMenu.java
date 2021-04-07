@@ -16,6 +16,7 @@ import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.viewUtil.AddressPicker;
 import invoiceGenerator.view.viewUtil.AddressPicker.AddressReturner;
+import invoiceGenerator.view.viewUtil.CustomerPicker;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
@@ -266,6 +267,11 @@ public class MainMenu extends javax.swing.JFrame {
         lblRegisterCustomer.setText("Customer:");
 
         btnRegisterAddCustomer.setText("add");
+        btnRegisterAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterAddCustomerActionPerformed(evt);
+            }
+        });
 
         btnRegisterRemoveCustomer.setText("remove");
 
@@ -1582,6 +1588,10 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegisterSelectedArticleActionPerformed
 
+    private void btnRegisterAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAddCustomerActionPerformed
+        getNewRegisterCustomer();
+    }//GEN-LAST:event_btnRegisterAddCustomerActionPerformed
+
     /* Customer Panel */
     /* ************** */
 
@@ -1977,6 +1987,16 @@ public class MainMenu extends javax.swing.JFrame {
     /* ******** */
     /* Register */
 
+    private Customer registerCustomer;
+    private Address registerShippingAddress;
+
+    private void getNewRegisterCustomer() {
+        CustomerPicker customerPicker = new CustomerPicker();
+        customerPicker.setVisible(true);
+        // TODO ???
+        customerPicker.giveMeCustomer(e -> registerCustomer = e);
+        System.out.print(registerCustomer);
+    }
 
 
     /* ******** */
