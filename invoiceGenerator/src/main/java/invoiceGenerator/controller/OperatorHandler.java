@@ -35,12 +35,15 @@ public class OperatorHandler extends Handler<Operator> {
         }
         return BCrypt.checkpw(new String(password), operator.getPassword()) ? operator : null;
     }
-    
-    
-    
+
     @Override
     public List<Operator> getData() throws InvoiceGeneratorException {
         return session.createQuery("from operator").list();
+    }
+
+    @Override
+    public List<Operator> getData(String token) throws InvoiceGeneratorException {
+        return null;
     }
 
     @Override

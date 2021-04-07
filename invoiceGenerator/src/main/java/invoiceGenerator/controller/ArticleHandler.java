@@ -24,6 +24,11 @@ public class ArticleHandler extends Handler<Article> {
     }
 
     @Override
+    protected List<Article> getData(String token) throws InvoiceGeneratorException {
+        return null;
+    }
+
+    @Override
     protected void createValidation() throws InvoiceGeneratorException {
         priceCheck();
         warehouseCheck();

@@ -10,6 +10,7 @@ import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.MainMenu;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  *
@@ -41,6 +42,8 @@ public class AddressPicker extends javax.swing.JFrame {
         lstAddressList = new javax.swing.JList<>();
         btnChoose = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        txtAddressPickerSearch = new javax.swing.JTextField();
+        btnAddressPickerSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -67,6 +70,15 @@ public class AddressPicker extends javax.swing.JFrame {
             }
         });
 
+        txtAddressPickerSearch.setText("search...");
+
+        btnAddressPickerSearch.setText("Search!");
+        btnAddressPickerSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddressPickerSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,14 +90,22 @@ public class AddressPicker extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnChoose)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancel)))
+                        .addComponent(btnCancel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtAddressPickerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddressPickerSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAddressPickerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddressPickerSearch))
+                .addGap(3, 3, 3)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCancel)
@@ -110,15 +130,25 @@ public class AddressPicker extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lstAddressListComponentShown
 
+    private void btnAddressPickerSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddressPickerSearchActionPerformed
+        if (txtAddressPickerSearch.getText().isBlank()) {
+            initAddresses();
+            return;
+        }
+        updateAddressesList(txtAddressPickerSearch.getText());
+    }//GEN-LAST:event_btnAddressPickerSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddressPickerSearch;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnChoose;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Address> lstAddressList;
+    private javax.swing.JTextField txtAddressPickerSearch;
     // End of variables declaration//GEN-END:variables
 
     private void initAddresses() {
@@ -153,6 +183,17 @@ public class AddressPicker extends javax.swing.JFrame {
         btnChoose.addActionListener(e ->
             addressReturner.run(returnChosenAddress())
         );
+    }
+
+    private void updateAddressesList(String text) {
+        DefaultListModel<Address> listAddresses = new DefaultListModel<>();
+        try {
+            List<Address> searchResult = addressHandler.getData(text);
+            listAddresses.addAll(searchResult);
+            lstAddressList.setModel(listAddresses);
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 
 }

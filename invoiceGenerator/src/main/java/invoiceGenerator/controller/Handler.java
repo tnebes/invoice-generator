@@ -23,6 +23,7 @@ public abstract class Handler<E> {
     protected Validator validator;
 
     protected abstract List<E> getData() throws InvoiceGeneratorException;
+    protected abstract List<E> getData(String token) throws InvoiceGeneratorException;
     protected abstract void createValidation() throws InvoiceGeneratorException;
     protected abstract void updateValidation() throws InvoiceGeneratorException;
     protected abstract void deleteValidation() throws InvoiceGeneratorException;

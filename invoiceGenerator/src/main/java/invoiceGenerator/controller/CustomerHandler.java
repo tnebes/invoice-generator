@@ -21,6 +21,11 @@ public class CustomerHandler extends Handler<Customer> {
         return session.createQuery("from customer").list();
     }
 
+    @Override
+    protected List<Customer> getData(String token) throws InvoiceGeneratorException {
+        return null;
+    }
+
     public List<Customer> getCustomersWithAddress(Address address) throws InvoiceGeneratorException {
         Query query = session.createQuery("from customer where billingAddress_id = :i or shippingAddress_id = :i");
         query.setParameter("i", address.getId());

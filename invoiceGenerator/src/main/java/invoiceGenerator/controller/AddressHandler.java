@@ -21,6 +21,11 @@ public class AddressHandler extends Handler<Address> {
     }
 
     @Override
+    public List<Address> getData(String token) throws InvoiceGeneratorException {
+        return session.createQuery("from address where lower(country) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
+    }
+
+    @Override
     protected void createValidation() throws InvoiceGeneratorException {
 
     }

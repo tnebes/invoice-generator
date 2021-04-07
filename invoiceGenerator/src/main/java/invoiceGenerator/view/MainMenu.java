@@ -1872,7 +1872,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* ***Options**** */
 
     private void purgeDatabase() {
-        // BUG for now does nothing as it does not account for foreign key constraints
         if (JOptionPane.showConfirmDialog(rootPane, "Are you sure you wish to purge the database?\nThis action cannot be reversed.") != 0) {
             return;
         }

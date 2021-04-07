@@ -4,6 +4,8 @@
     * It's not a bug, it's a feature
 * Add ability to edit the address from the customer panel
     * Todo in the distant future.
+  
+* Addresses should display all their relevant properties, including ZIP code, country and city
 
 # Know bugs #
 
