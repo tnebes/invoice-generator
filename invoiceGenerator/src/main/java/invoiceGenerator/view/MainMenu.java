@@ -1391,6 +1391,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnStatusSave.setText("save");
+        btnStatusSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusSaveActionPerformed(evt);
+            }
+        });
 
         btnStatusRemove.setText("remove");
 
@@ -1984,6 +1989,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnStatusAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusAddActionPerformed
         addOptionsStatus(collectStatusInformation());
     }//GEN-LAST:event_btnStatusAddActionPerformed
+
+    private void btnStatusSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusSaveActionPerformed
+        triggerStatusSave();
+    }//GEN-LAST:event_btnStatusSaveActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2701,11 +2710,27 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void modifyOptionsStatus(Status status) {
-
+        status.setName(txtStatusName.getText());
+        status.setDescription(txtStatusDescription.getText());
+        status.setDescriptionLong(txtStatusLongDescription.getText());
+        statusHandler.setEntity(status);
+        try {
+            statusHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Status successfully modified!");
     }
 
     private void removeOptionsStatus(Status status) {
 
+    }
+
+    private void triggerStatusSave() {
+        if (cmbStatusChooser.getSelectedItem() == null) {
+            return;
+        }
+        modifyOptionsStatus((Status) cmbStatusChooser.getSelectedItem());
     }
 
     /* ******* */
