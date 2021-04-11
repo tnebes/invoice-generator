@@ -2450,8 +2450,10 @@ public class MainMenu extends javax.swing.JFrame {
         CustomerPicker customerPicker = new CustomerPicker();
         customerPicker.setVisible(true);
         // ???
-        customerPicker.giveMeCustomer(newCustomer -> registerCustomer = newCustomer);
-        registerUpdateTextBox();
+        customerPicker.giveMeCustomer(newCustomer -> {
+            registerCustomer = newCustomer;
+            registerUpdateTextBox();
+        });
     }
 
     private void removeRegisterCustomer() {
@@ -2462,8 +2464,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void getNewRegisterShippingAddress() {
         AddressPicker addressPicker = new AddressPicker();
         addressPicker.setVisible(true);
-        addressPicker.giveMeAddress(newAddress -> registerShippingAddress = newAddress);
-        registerUpdateTextBox();
+        addressPicker.giveMeAddress(newAddress -> {
+            registerShippingAddress = newAddress;
+            registerUpdateTextBox();
+        });
     }
 
     private void removeRegisterShippingAddress() {
@@ -2489,9 +2493,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void getNewRegisterArticle() {
         ArticlePicker articlePicker = new ArticlePicker();
         articlePicker.setVisible(true);
-        articlePicker.giveMeCustomer(newArticle -> registerArticle = newArticle);
-        System.out.println(registerArticle);
-        updateRegisterArticle();
+        articlePicker.giveMeCustomer(newArticle -> {
+            registerArticle = newArticle;
+            updateRegisterArticle();
+        });
     }
 
     private void updateRegisterArticle() {
