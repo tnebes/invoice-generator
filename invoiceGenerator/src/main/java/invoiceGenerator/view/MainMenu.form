@@ -2011,6 +2011,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="remove"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStatusRemoveActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnStatusClear">
                   <Properties>

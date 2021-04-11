@@ -1398,6 +1398,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnStatusRemove.setText("remove");
+        btnStatusRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusRemoveActionPerformed(evt);
+            }
+        });
 
         btnStatusClear.setText("clear");
         btnStatusClear.addActionListener(new java.awt.event.ActionListener() {
@@ -1993,6 +1998,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnStatusSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusSaveActionPerformed
         triggerStatusSave();
     }//GEN-LAST:event_btnStatusSaveActionPerformed
+
+    private void btnStatusRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusRemoveActionPerformed
+        triggerStatusRemoval();
+    }//GEN-LAST:event_btnStatusRemoveActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2709,6 +2718,13 @@ public class MainMenu extends javax.swing.JFrame {
         loadStatuses();
     }
 
+    private void triggerStatusSave() {
+        if (cmbStatusChooser.getSelectedItem() == null) {
+            return;
+        }
+        modifyOptionsStatus((Status) cmbStatusChooser.getSelectedItem());
+    }
+
     private void modifyOptionsStatus(Status status) {
         status.setName(txtStatusName.getText());
         status.setDescription(txtStatusDescription.getText());
@@ -2720,18 +2736,30 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         JOptionPane.showMessageDialog(rootPane, "Status successfully modified!");
+        loadStatuses();
     }
 
-    private void removeOptionsStatus(Status status) {
-
-    }
-
-    private void triggerStatusSave() {
+    private void triggerStatusRemoval() {
         if (cmbStatusChooser.getSelectedItem() == null) {
             return;
         }
-        modifyOptionsStatus((Status) cmbStatusChooser.getSelectedItem());
+        removeOptionsStatus((Status) cmbStatusChooser.getSelectedItem());
     }
+
+    private void removeOptionsStatus(Status status) {
+        // TODO add check for used statuses (fk constraints)
+        statusHandler.setEntity(status);
+        try {
+            statusHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Status successfully removed!");
+        clearOptionsStatusInfo();
+        loadStatuses();
+    }
+
+
 
     /* ******* */
 
