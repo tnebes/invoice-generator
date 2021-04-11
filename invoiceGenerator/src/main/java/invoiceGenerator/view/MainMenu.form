@@ -204,70 +204,16 @@
                     <Component class="javax.swing.JTable" name="tblRegisterInvoice">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="9" rowCount="5">
-                            <Column editable="true" title="#" type="java.lang.Object">
-                              <Data value="1"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Name" type="java.lang.Object">
-                              <Data value="test"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Location" type="java.lang.Object">
-                              <Data value="A1-A1"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Wholesale" type="java.lang.Object">
-                              <Data value="1"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Tax" type="java.lang.Object">
-                              <Data value="25"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Retail" type="java.lang.Object">
-                              <Data value="1.25"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Discount" type="java.lang.Object">
-                              <Data value="0"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Quantity" type="java.lang.Object">
-                              <Data value="2"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
-                            <Column editable="true" title="Total" type="java.lang.Object">
-                              <Data value="2.5"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                            </Column>
+                          <Table columnCount="9" rowCount="0">
+                            <Column editable="true" title="#" type="java.lang.Object"/>
+                            <Column editable="true" title="Name" type="java.lang.Object"/>
+                            <Column editable="true" title="Location" type="java.lang.Object"/>
+                            <Column editable="true" title="Wholesale" type="java.lang.Object"/>
+                            <Column editable="true" title="Tax" type="java.lang.Object"/>
+                            <Column editable="true" title="Retail" type="java.lang.Object"/>
+                            <Column editable="true" title="Discount" type="java.lang.Object"/>
+                            <Column editable="true" title="Quantity" type="java.lang.Object"/>
+                            <Column editable="true" title="Total" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -581,6 +527,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtRegisterQuantity">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="1"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblRegisterDiscount">
                           <Properties>
@@ -588,6 +537,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtRegisterDiscount">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtRegisterSelectedArticle">
                           <Properties>

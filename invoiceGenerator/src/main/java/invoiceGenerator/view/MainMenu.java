@@ -16,7 +16,6 @@ import invoiceGenerator.model.Customer;
 import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.viewUtil.AddressPicker;
-import invoiceGenerator.view.viewUtil.AddressPicker.AddressReturner;
 import invoiceGenerator.view.viewUtil.ArticlePicker;
 import invoiceGenerator.view.viewUtil.CustomerPicker;
 import org.hibernate.Session;
@@ -30,7 +29,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.metamodel.EntityType;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -56,6 +54,7 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
         loadFromDatabase();
         new MyTime().start();
+        registerTableModel = (DefaultTableModel) tblRegisterInvoice.getModel();
     }
 
     private void loadFromDatabase() {
@@ -263,11 +262,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         tblRegisterInvoice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "test", "A1-A1", "1", "25", "1.25", "0", "2", "2.5"},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "#", "Name", "Location", "Wholesale", "Tax", "Retail", "Discount", "Quantity", "Total"
@@ -366,7 +361,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblRegisterQuantity.setText("Quantity:");
 
+        txtRegisterQuantity.setText("1");
+
         lblRegisterDiscount.setText("Discount:");
+
+        txtRegisterDiscount.setText("0");
 
         txtRegisterSelectedArticle.setEditable(false);
         txtRegisterSelectedArticle.addActionListener(new java.awt.event.ActionListener() {
@@ -1698,6 +1697,11 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterClearArticleActionPerformed
 
     private void btnRegisterAddArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAddArticleActionPerformed
+        if (registerArticle == null) {
+            JOptionPane.showMessageDialog(rootPane, "No article selected.");
+            return;
+        }
+        addArticleToInvoice(registerArticle);
         refreshRegisterTable();
     }//GEN-LAST:event_btnRegisterAddArticleActionPerformed
 
@@ -2103,8 +2107,19 @@ public class MainMenu extends javax.swing.JFrame {
     private Customer registerCustomer;
     private Address registerShippingAddress;
     private Article registerArticle;
-    private List<ArticleInvoice> articleInvoices = new ArrayList<>();
-    private DefaultListModel<String> tableModelList = new DefaultListModel<>();
+    private final String[] registerColumnNames = {"#",
+        "Name",
+        "Location",
+        "Wholesale",
+        "Tax",
+        "Retail",
+        "Discount",
+        "Quantity",
+        "Total"
+    };
+    // to be filled out once the components are initialised.
+    private DefaultTableModel registerTableModel;
+    private List<ArticleInvoice> registerArticleInvoices = new ArrayList<>();
 
     private void getNewRegisterCustomer() {
         CustomerPicker customerPicker = new CustomerPicker();
@@ -2173,7 +2188,98 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void refreshRegisterTable() {
-        tblRegisterInvoice.setModel(new DefaultTableModel());
+
+    }
+
+    private void addArticleToInvoice(Article registerArticle) {
+        ArticleInvoice newArticleInvoice = collectRegisterArticleInformation(registerArticle);
+        if (newArticleInvoice == null) {
+            return;
+        }
+        // TODO improvement required.
+        registerArticleInvoices.add(newArticleInvoice);
+        addToRegisterTable(newArticleInvoice);
+        updateRegisterTextBoxes();
+
+    }
+
+    private void updateRegisterTextBoxes() {
+        txtRegisterSubtotal.setText(getRegisterInvoiceSubtotal().toString());
+        txtRegisterTax.setText(getRegisterInvoiceTax().toString());
+        txtRegisterInvoiceTotal.setText(getRegisterInvoiceTotal().toString());
+    }
+
+    private BigDecimal getRegisterInvoiceTotal() {
+        BigDecimal total = new BigDecimal(0l);
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            total = total.add(articleInvoice.getRetailPrice().multiply(BigDecimal.valueOf(articleInvoice.getQuantity())));
+        }
+        return total;
+    }
+
+    private BigDecimal getRegisterInvoiceTax() {
+        BigDecimal total = new BigDecimal(0l);
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            total = total.add(articleInvoice.getWholesalePrice().multiply(articleInvoice.getArticle().getCalculableTaxRate()));
+        }
+        return total;
+    }
+
+    private BigDecimal getRegisterInvoiceSubtotal() {
+        BigDecimal total = new BigDecimal(0l);
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            total = total.add(articleInvoice.getWholesalePrice());
+        }
+        return total;
+    }
+
+    private void addToRegisterTable(ArticleInvoice newArticleInvoice) {
+        registerTableModel.addRow(new String[] {
+                registerArticleInvoices.size() + "",
+                newArticleInvoice.getArticle().getShortName(),
+                newArticleInvoice.getArticle().getWarehouseLocation(),
+                newArticleInvoice.getArticle().getWholesalePrice().toString(),
+                newArticleInvoice.getArticle().getTaxRate().toString(),
+                newArticleInvoice.getArticle().getRetailPrice().toString(),
+                newArticleInvoice.getDiscount().toString(),
+                newArticleInvoice.getQuantity().toString(),
+                getArticleInvoiceTotal(newArticleInvoice).toString(),
+        });
+    }
+
+    private BigDecimal getArticleInvoiceTotal(ArticleInvoice newArticleInvoice) {
+        // TODO this may be buggy as I won't be implementing the halfway up multiplication
+        // TODO what about discount
+        BigDecimal total;
+        total = newArticleInvoice.getArticle().getRetailPrice().multiply(BigDecimal.valueOf(newArticleInvoice.getQuantity()));
+        return total;
+    }
+
+    private ArticleInvoice collectRegisterArticleInformation(Article registerArticle) {
+        ArticleInvoice articleInvoice = new ArticleInvoice();
+        articleInvoice.setDateOfCreation(Instant.now());
+        articleInvoice.setDiscount(getRegisterDiscount());
+        articleInvoice.setNote(getRegisterArticleNote());
+        articleInvoice.setQuantity(getRegisterArticleQuantity());
+        articleInvoice.setRetailPrice(registerArticle.getRetailPrice());
+        articleInvoice.setTaxRate(registerArticle.getTaxRate());
+        articleInvoice.setWholesalePrice(registerArticle.getWholesalePrice());
+        articleInvoice.setArticle(registerArticle);
+        // TODO invoice? for each loop?
+        return articleInvoice;
+    }
+
+    private long getRegisterArticleQuantity() {
+        return Long.parseLong(txtRegisterQuantity.getText());
+    }
+
+    private String getRegisterArticleNote() {
+        return txtRegisterArticleNote.getText();
+    }
+
+    private BigDecimal getRegisterDiscount() {
+        //TODO add check for invalid input
+        return BigDecimal.valueOf(Long.parseLong(txtRegisterDiscount.getText()));
     }
 
     private void clearRegisterTable() {
