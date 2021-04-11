@@ -70,11 +70,6 @@ public class Status extends Identity {
 
 	@Override
 	public String toString() {
-		return "Status{" +
-				"id=" + super.getId() +
-				", name='" + name + '\'' +
-				", description='" + description + '\'' +
-				", descriptionLong='" + descriptionLong + '\'' +
-				'}';
+		return this.getName();
 	}
 }

@@ -257,12 +257,9 @@ public class MainMenu extends javax.swing.JFrame {
         lblTransactionType = new javax.swing.JLabel();
         cmbTransactionTypeChooser = new javax.swing.JComboBox<>();
         lblTransactionTypeDescription = new javax.swing.JLabel();
-        lblTransactionTypeLongDescription = new javax.swing.JLabel();
         txtTransactionTypeName = new javax.swing.JTextField();
         lblTransactionTypeName = new javax.swing.JLabel();
         txtTransactionTypeDescription = new javax.swing.JTextField();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        txtTransactionTypeLongDescription1 = new javax.swing.JTextArea();
         btnTransactionTypeSave = new javax.swing.JButton();
         btnTransactionTypeRemove = new javax.swing.JButton();
         btnTransactionTypeAdd = new javax.swing.JButton();
@@ -1462,7 +1459,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(lblStatusLongDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btnStatusClear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1477,9 +1474,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblTransactionType.setText("Transaction Type");
 
-        lblTransactionTypeDescription.setText("Description");
+        cmbTransactionTypeChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTransactionTypeChooserActionPerformed(evt);
+            }
+        });
 
-        lblTransactionTypeLongDescription.setText("Long Description");
+        lblTransactionTypeDescription.setText("Description");
 
         lblTransactionTypeName.setText("Name");
 
@@ -1489,17 +1490,33 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        txtTransactionTypeLongDescription1.setColumns(20);
-        txtTransactionTypeLongDescription1.setRows(5);
-        jScrollPane7.setViewportView(txtTransactionTypeLongDescription1);
-
         btnTransactionTypeSave.setText("save");
+        btnTransactionTypeSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransactionTypeSaveActionPerformed(evt);
+            }
+        });
 
         btnTransactionTypeRemove.setText("remove");
+        btnTransactionTypeRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransactionTypeRemoveActionPerformed(evt);
+            }
+        });
 
         btnTransactionTypeAdd.setText("add");
+        btnTransactionTypeAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransactionTypeAddActionPerformed(evt);
+            }
+        });
 
         btnTransactionTypeClear.setText("clear");
+        btnTransactionTypeClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransactionTypeClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTransactionTypePanelLayout = new javax.swing.GroupLayout(pnlTransactionTypePanel);
         pnlTransactionTypePanel.setLayout(pnlTransactionTypePanelLayout);
@@ -1508,7 +1525,6 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                     .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
                         .addComponent(lblTransactionType)
                         .addGap(18, 18, 18)
@@ -1521,7 +1537,6 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
                         .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTransactionTypeDescription)
-                            .addComponent(lblTransactionTypeLongDescription)
                             .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
                                 .addComponent(btnTransactionTypeAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1530,7 +1545,7 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnTransactionTypeClear)
                                     .addComponent(btnTransactionTypeRemove))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlTransactionTypePanelLayout.setVerticalGroup(
@@ -1548,11 +1563,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(lblTransactionTypeDescription)
                 .addGap(5, 5, 5)
                 .addComponent(txtTransactionTypeDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblTransactionTypeLongDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTransactionTypeClear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2002,6 +2013,26 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnStatusRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusRemoveActionPerformed
         triggerStatusRemoval();
     }//GEN-LAST:event_btnStatusRemoveActionPerformed
+
+    private void btnTransactionTypeAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionTypeAddActionPerformed
+        addOptionsTransactionType(collectTransactionTypeInformation());
+    }//GEN-LAST:event_btnTransactionTypeAddActionPerformed
+
+    private void btnTransactionTypeSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionTypeSaveActionPerformed
+        triggerTransactionTypeSave();
+    }//GEN-LAST:event_btnTransactionTypeSaveActionPerformed
+
+    private void btnTransactionTypeRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionTypeRemoveActionPerformed
+        triggerTransactionTypeRemoval();
+    }//GEN-LAST:event_btnTransactionTypeRemoveActionPerformed
+
+    private void btnTransactionTypeClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionTypeClearActionPerformed
+        clearOptionsTransactionTypesInfo();
+    }//GEN-LAST:event_btnTransactionTypeClearActionPerformed
+
+    private void cmbTransactionTypeChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTransactionTypeChooserActionPerformed
+        loadOptionsTransactionTypesInfo();
+    }//GEN-LAST:event_cmbTransactionTypeChooserActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2766,6 +2797,7 @@ public class MainMenu extends javax.swing.JFrame {
     /* Transaction types */
 
     private void loadTransactionTypes() {
+        clearOptionsTransactionTypes();
         List<TransactionType> transactionTypes = new ArrayList<>();
         try {
             transactionTypes = transactionTypeHandler.getData();
@@ -2781,6 +2813,79 @@ public class MainMenu extends javax.swing.JFrame {
         cmbTransactionTypeChooser.removeAllItems();
     }
 
+    private void loadOptionsTransactionTypesInfo() {
+        if (cmbTransactionTypeChooser.getSelectedItem() == null) {
+            return;
+        }
+        TransactionType transactionType = (TransactionType) cmbTransactionTypeChooser.getSelectedItem();
+        txtTransactionTypeName.setText(transactionType.getName());
+        if (transactionType.getDescription() != null) {
+            txtTransactionTypeDescription.setText(transactionType.getDescription());
+        }
+    }
+
+    private void clearOptionsTransactionTypesInfo() {
+        txtTransactionTypeName.setText("");
+        txtTransactionTypeDescription.setText("");
+    }
+
+    private TransactionType collectTransactionTypeInformation() {
+        TransactionType transactionType = new TransactionType();
+        transactionType.setName(txtTransactionTypeName.getText());
+        transactionType.setDescription(txtTransactionTypeDescription.getText());
+        return transactionType;
+    }
+
+    private void addOptionsTransactionType(TransactionType transactionType) {
+        transactionTypeHandler.setEntity(transactionType);
+        try {
+            transactionTypeHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Transaction type successfully added!");
+        loadTransactionTypes();
+    }
+
+    private void triggerTransactionTypeSave() {
+        if (cmbTransactionTypeChooser.getSelectedItem() == null) {
+            return;
+        }
+        modifyOptionsTransactionType((TransactionType) cmbTransactionTypeChooser.getSelectedItem());
+    }
+
+    private void modifyOptionsTransactionType(TransactionType transactionType) {
+        transactionType.setName(txtTransactionTypeName.getText());
+        transactionType.setDescription(txtTransactionTypeDescription.getText());
+        transactionTypeHandler.setEntity(transactionType);
+        try {
+            transactionTypeHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Transaction type successfully modified!");
+        loadTransactionTypes();
+    }
+
+    private void triggerTransactionTypeRemoval() {
+        if (cmbTransactionTypeChooser.getSelectedItem() == null) {
+            return;
+        }
+        removeOptionsTransactionType((TransactionType) cmbTransactionTypeChooser.getSelectedItem());
+    }
+
+    private void removeOptionsTransactionType(TransactionType transactionType) {
+        // TODO add check for used transaction types (fk constraints)
+        transactionTypeHandler.setEntity(transactionType);
+        try {
+            transactionTypeHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Transaction type successfully removed!");
+        clearOptionsTransactionTypesInfo();
+        loadTransactionTypes();
+    }
     /* ***************** */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2840,7 +2945,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2901,7 +3005,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblTimeLabel;
     private javax.swing.JLabel lblTransactionType;
     private javax.swing.JLabel lblTransactionTypeDescription;
-    private javax.swing.JLabel lblTransactionTypeLongDescription;
     private javax.swing.JLabel lblTransactionTypeName;
     private javax.swing.JLabel lblVATIDLabel;
     private javax.swing.JList<Customer> lstAddressCustomerList;
@@ -2956,7 +3059,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextArea txtStatusLongDescription;
     private javax.swing.JTextField txtStatusName;
     private javax.swing.JTextField txtTransactionTypeDescription;
-    private javax.swing.JTextArea txtTransactionTypeLongDescription1;
     private javax.swing.JTextField txtTransactionTypeName;
     // End of variables declaration//GEN-END:variables
 }
