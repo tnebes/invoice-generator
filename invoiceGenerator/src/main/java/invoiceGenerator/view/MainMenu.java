@@ -233,6 +233,32 @@ public class MainMenu extends javax.swing.JFrame {
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
         purgeDatabaseButton = new javax.swing.JButton();
+        pnlStatusPanel = new javax.swing.JPanel();
+        lblStatus = new javax.swing.JLabel();
+        cmbStatusChooser = new javax.swing.JComboBox<>();
+        lblStatusName = new javax.swing.JLabel();
+        lblStatusDescription = new javax.swing.JLabel();
+        lblStatusLongDescription = new javax.swing.JLabel();
+        txtStatusName = new javax.swing.JTextField();
+        txtStatusDescription = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtStatusLongDescription = new javax.swing.JTextArea();
+        btnStatusAdd = new javax.swing.JButton();
+        btnStatusSave = new javax.swing.JButton();
+        btnStatusRemove = new javax.swing.JButton();
+        pnlTransactionTypePanel = new javax.swing.JPanel();
+        lblTransactionType = new javax.swing.JLabel();
+        cmbTransactionTypeChooser = new javax.swing.JComboBox<>();
+        lblTransactionTypeDescription = new javax.swing.JLabel();
+        lblTransactionTypeLongDescription = new javax.swing.JLabel();
+        txtTransactionTypeName = new javax.swing.JTextField();
+        lblTransactionTypeName = new javax.swing.JLabel();
+        txtTransactionTypeDescription = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtTransactionTypeLongDescription1 = new javax.swing.JTextArea();
+        btnTransactionTypeSave = new javax.swing.JButton();
+        btnTransactionTypeRemove = new javax.swing.JButton();
+        btnTransactionTypeAdd = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         lblTimeLabel = new javax.swing.JLabel();
         jmbFileInfoBar = new javax.swing.JMenuBar();
@@ -1285,6 +1311,7 @@ public class MainMenu extends javax.swing.JFrame {
         tabController.addTab("Accounting", jpAccountingTab);
 
         databasePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        databasePanel.setPreferredSize(new java.awt.Dimension(250, 250));
 
         databaseLabel.setText("Database");
 
@@ -1304,7 +1331,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(databasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(databaseLabel)
                     .addComponent(purgeDatabaseButton))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         databasePanelLayout.setVerticalGroup(
             databasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1312,7 +1339,179 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(databaseLabel)
                 .addGap(18, 18, 18)
                 .addComponent(purgeDatabaseButton)
-                .addGap(0, 164, Short.MAX_VALUE))
+                .addGap(0, 205, Short.MAX_VALUE))
+        );
+
+        pnlStatusPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlStatusPanel.setPreferredSize(new java.awt.Dimension(250, 250));
+
+        lblStatus.setText("Status");
+
+        cmbStatusChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblStatusName.setText("Name");
+
+        lblStatusDescription.setText("Description");
+
+        lblStatusLongDescription.setText("Long Description");
+
+        txtStatusDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStatusDescriptionActionPerformed(evt);
+            }
+        });
+
+        txtStatusLongDescription.setColumns(20);
+        txtStatusLongDescription.setRows(5);
+        jScrollPane6.setViewportView(txtStatusLongDescription);
+
+        btnStatusAdd.setText("add");
+
+        btnStatusSave.setText("save");
+
+        btnStatusRemove.setText("remove");
+
+        javax.swing.GroupLayout pnlStatusPanelLayout = new javax.swing.GroupLayout(pnlStatusPanel);
+        pnlStatusPanel.setLayout(pnlStatusPanelLayout);
+        pnlStatusPanelLayout.setHorizontalGroup(
+            pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtStatusDescription)
+                    .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                        .addComponent(lblStatus)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbStatusChooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                        .addComponent(lblStatusName)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtStatusName))
+                    .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                        .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStatusDescription)
+                            .addComponent(lblStatusLongDescription)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                                .addComponent(btnStatusAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStatusSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStatusRemove)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlStatusPanelLayout.setVerticalGroup(
+            pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStatusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbStatusChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatus))
+                .addGap(18, 18, 18)
+                .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStatusName)
+                    .addComponent(txtStatusName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblStatusDescription)
+                .addGap(5, 5, 5)
+                .addComponent(txtStatusDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblStatusLongDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStatusAdd)
+                    .addComponent(btnStatusSave)
+                    .addComponent(btnStatusRemove))
+                .addContainerGap())
+        );
+
+        pnlTransactionTypePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlTransactionTypePanel.setPreferredSize(new java.awt.Dimension(250, 250));
+
+        lblTransactionType.setText("Transaction Type");
+
+        cmbTransactionTypeChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblTransactionTypeDescription.setText("Description");
+
+        lblTransactionTypeLongDescription.setText("Long Description");
+
+        lblTransactionTypeName.setText("Name");
+
+        txtTransactionTypeDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTransactionTypeDescriptionActionPerformed(evt);
+            }
+        });
+
+        txtTransactionTypeLongDescription1.setColumns(20);
+        txtTransactionTypeLongDescription1.setRows(5);
+        jScrollPane7.setViewportView(txtTransactionTypeLongDescription1);
+
+        btnTransactionTypeSave.setText("save");
+
+        btnTransactionTypeRemove.setText("remove");
+
+        btnTransactionTypeAdd.setText("add");
+
+        javax.swing.GroupLayout pnlTransactionTypePanelLayout = new javax.swing.GroupLayout(pnlTransactionTypePanel);
+        pnlTransactionTypePanel.setLayout(pnlTransactionTypePanelLayout);
+        pnlTransactionTypePanelLayout.setHorizontalGroup(
+            pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                        .addComponent(lblTransactionType)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbTransactionTypeChooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                        .addComponent(lblTransactionTypeName)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTransactionTypeName))
+                    .addComponent(txtTransactionTypeDescription)
+                    .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                        .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTransactionTypeDescription)
+                            .addComponent(lblTransactionTypeLongDescription)
+                            .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                                .addComponent(btnTransactionTypeAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTransactionTypeSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTransactionTypeRemove)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlTransactionTypePanelLayout.setVerticalGroup(
+            pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTransactionTypePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTransactionType)
+                    .addComponent(cmbTransactionTypeChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTransactionTypeName)
+                    .addComponent(txtTransactionTypeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblTransactionTypeDescription)
+                .addGap(5, 5, 5)
+                .addComponent(txtTransactionTypeDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTransactionTypeLongDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTransactionTypeAdd)
+                    .addComponent(btnTransactionTypeSave)
+                    .addComponent(btnTransactionTypeRemove))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jpOptionsTabLayout = new javax.swing.GroupLayout(jpOptionsTab);
@@ -1321,15 +1520,23 @@ public class MainMenu extends javax.swing.JFrame {
             jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOptionsTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(568, Short.MAX_VALUE))
+                .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlStatusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlTransactionTypePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jpOptionsTabLayout.setVerticalGroup(
             jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOptionsTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGroup(jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(databasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pnlTransactionTypePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                        .addComponent(pnlStatusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         tabController.addTab("Options", jpOptionsTab);
@@ -1714,6 +1921,14 @@ public class MainMenu extends javax.swing.JFrame {
     private void jmiExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExitButtonActionPerformed
         System.exit(1);
     }//GEN-LAST:event_jmiExitButtonActionPerformed
+
+    private void txtStatusDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStatusDescriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStatusDescriptionActionPerformed
+
+    private void txtTransactionTypeDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransactionTypeDescriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTransactionTypeDescriptionActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2406,7 +2621,15 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnRegisterRemoveArticle;
     private javax.swing.JButton btnRegisterRemoveCustomer;
     private javax.swing.JButton btnRegisterRemoveShipping;
+    private javax.swing.JButton btnStatusAdd;
+    private javax.swing.JButton btnStatusRemove;
+    private javax.swing.JButton btnStatusSave;
+    private javax.swing.JButton btnTransactionTypeAdd;
+    private javax.swing.JButton btnTransactionTypeRemove;
+    private javax.swing.JButton btnTransactionTypeSave;
     private javax.swing.JCheckBox cbAddressType;
+    private javax.swing.JComboBox<String> cmbStatusChooser;
+    private javax.swing.JComboBox<String> cmbTransactionTypeChooser;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
@@ -2420,6 +2643,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2473,7 +2698,15 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegisterSubtotal;
     private javax.swing.JLabel lblRegisterTax;
     private javax.swing.JLabel lblRegisterTax1;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblStatusDescription;
+    private javax.swing.JLabel lblStatusLongDescription;
+    private javax.swing.JLabel lblStatusName;
     private javax.swing.JLabel lblTimeLabel;
+    private javax.swing.JLabel lblTransactionType;
+    private javax.swing.JLabel lblTransactionTypeDescription;
+    private javax.swing.JLabel lblTransactionTypeLongDescription;
+    private javax.swing.JLabel lblTransactionTypeName;
     private javax.swing.JLabel lblVATIDLabel;
     private javax.swing.JList<Customer> lstAddressCustomerList;
     private javax.swing.JList<Address> lstAddressList;
@@ -2483,6 +2716,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlRegisterArticle;
     private javax.swing.JPanel pnlRegisterCustomerInfo;
     private javax.swing.JPanel pnlRegisterInformationPanel;
+    private javax.swing.JPanel pnlStatusPanel;
+    private javax.swing.JPanel pnlTransactionTypePanel;
     private javax.swing.JButton purgeDatabaseButton;
     private javax.swing.JTabbedPane tabController;
     private javax.swing.JTable tblRegisterInvoice;
@@ -2521,5 +2756,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtRegisterSelectedArticle;
     private javax.swing.JTextField txtRegisterSubtotal;
     private javax.swing.JTextField txtRegisterTax;
+    private javax.swing.JTextField txtStatusDescription;
+    private javax.swing.JTextArea txtStatusLongDescription;
+    private javax.swing.JTextField txtStatusName;
+    private javax.swing.JTextField txtTransactionTypeDescription;
+    private javax.swing.JTextArea txtTransactionTypeLongDescription1;
+    private javax.swing.JTextField txtTransactionTypeName;
     // End of variables declaration//GEN-END:variables
 }
