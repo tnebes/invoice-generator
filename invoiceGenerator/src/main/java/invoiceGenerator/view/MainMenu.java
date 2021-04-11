@@ -36,6 +36,8 @@ public class MainMenu extends javax.swing.JFrame {
     ArticleHandler articleHandler;
     AddressHandler addressHandler;
     ArticleInvoiceHandler articleInvoiceHandler;
+    StatusHandler statusHandler;
+    TransactionTypeHandler transactionTypeHandler;
 
     /**
      * Creates new form MainMenu
@@ -46,6 +48,8 @@ public class MainMenu extends javax.swing.JFrame {
         this.articleHandler = new ArticleHandler();
         this.addressHandler = new AddressHandler();
         this.articleInvoiceHandler = new ArticleInvoiceHandler();
+        this.statusHandler = new StatusHandler();
+        this.transactionTypeHandler = new TransactionTypeHandler();
         initComponents();
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
         loadFromDatabase();
@@ -58,6 +62,8 @@ public class MainMenu extends javax.swing.JFrame {
         loadAddresses();
         loadCustomers();
         loadArticles();
+        loadStatuses();
+        loadTransactionTypes();
     }
 
     private class MyTime extends Thread {
@@ -246,6 +252,7 @@ public class MainMenu extends javax.swing.JFrame {
         btnStatusAdd = new javax.swing.JButton();
         btnStatusSave = new javax.swing.JButton();
         btnStatusRemove = new javax.swing.JButton();
+        btnStatusClear = new javax.swing.JButton();
         pnlTransactionTypePanel = new javax.swing.JPanel();
         lblTransactionType = new javax.swing.JLabel();
         cmbTransactionTypeChooser = new javax.swing.JComboBox<>();
@@ -259,6 +266,7 @@ public class MainMenu extends javax.swing.JFrame {
         btnTransactionTypeSave = new javax.swing.JButton();
         btnTransactionTypeRemove = new javax.swing.JButton();
         btnTransactionTypeAdd = new javax.swing.JButton();
+        btnTransactionTypeClear = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         lblTimeLabel = new javax.swing.JLabel();
         jmbFileInfoBar = new javax.swing.JMenuBar();
@@ -1310,6 +1318,12 @@ public class MainMenu extends javax.swing.JFrame {
 
         tabController.addTab("Accounting", jpAccountingTab);
 
+        jpOptionsTab.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jpOptionsTabComponentShown(evt);
+            }
+        });
+
         databasePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         databasePanel.setPreferredSize(new java.awt.Dimension(250, 250));
 
@@ -1347,7 +1361,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblStatus.setText("Status");
 
-        cmbStatusChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbStatusChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStatusChooserActionPerformed(evt);
+            }
+        });
 
         lblStatusName.setText("Name");
 
@@ -1366,10 +1384,22 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane6.setViewportView(txtStatusLongDescription);
 
         btnStatusAdd.setText("add");
+        btnStatusAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusAddActionPerformed(evt);
+            }
+        });
 
         btnStatusSave.setText("save");
 
         btnStatusRemove.setText("remove");
+
+        btnStatusClear.setText("clear");
+        btnStatusClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlStatusPanelLayout = new javax.swing.GroupLayout(pnlStatusPanel);
         pnlStatusPanel.setLayout(pnlStatusPanelLayout);
@@ -1397,7 +1427,9 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnStatusSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnStatusRemove)))
+                                .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnStatusClear)
+                                    .addComponent(btnStatusRemove))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1421,6 +1453,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnStatusClear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStatusAdd)
                     .addComponent(btnStatusSave)
@@ -1432,8 +1466,6 @@ public class MainMenu extends javax.swing.JFrame {
         pnlTransactionTypePanel.setPreferredSize(new java.awt.Dimension(250, 250));
 
         lblTransactionType.setText("Transaction Type");
-
-        cmbTransactionTypeChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblTransactionTypeDescription.setText("Description");
 
@@ -1456,6 +1488,8 @@ public class MainMenu extends javax.swing.JFrame {
         btnTransactionTypeRemove.setText("remove");
 
         btnTransactionTypeAdd.setText("add");
+
+        btnTransactionTypeClear.setText("clear");
 
         javax.swing.GroupLayout pnlTransactionTypePanelLayout = new javax.swing.GroupLayout(pnlTransactionTypePanel);
         pnlTransactionTypePanel.setLayout(pnlTransactionTypePanelLayout);
@@ -1483,7 +1517,9 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTransactionTypeSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTransactionTypeRemove)))
+                                .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnTransactionTypeClear)
+                                    .addComponent(btnTransactionTypeRemove))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1506,7 +1542,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(lblTransactionTypeLongDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnTransactionTypeClear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTransactionTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTransactionTypeAdd)
                     .addComponent(btnTransactionTypeSave)
@@ -1929,6 +1967,23 @@ public class MainMenu extends javax.swing.JFrame {
     private void txtTransactionTypeDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransactionTypeDescriptionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTransactionTypeDescriptionActionPerformed
+
+    private void jpOptionsTabComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jpOptionsTabComponentShown
+        loadStatuses();
+        loadTransactionTypes();
+    }//GEN-LAST:event_jpOptionsTabComponentShown
+
+    private void cmbStatusChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusChooserActionPerformed
+        loadOptionsStatusInfo();
+    }//GEN-LAST:event_cmbStatusChooserActionPerformed
+
+    private void btnStatusClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusClearActionPerformed
+        clearOptionsStatusInfo();
+    }//GEN-LAST:event_btnStatusClearActionPerformed
+
+    private void btnStatusAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusAddActionPerformed
+        addOptionsStatus(collectStatusInformation());
+    }//GEN-LAST:event_btnStatusAddActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2585,9 +2640,95 @@ public class MainMenu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Database purged. A new operator must now be added manually to database.");
         // TODO temporary?
         System.exit(1);
+    }
 
+    /* Options */
+
+    private void loadStatuses() {
+        clearOptionsStatuses();
+        List<Status> statuses = new ArrayList<>();
+        try {
+            statuses = statusHandler.getData();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        for (Status status : statuses) {
+            cmbStatusChooser.addItem(status);
+        }
+    }
+
+    private void clearOptionsStatuses() {
+        cmbStatusChooser.removeAllItems();
+    }
+
+    private void loadOptionsStatusInfo() {
+        if (cmbStatusChooser.getSelectedItem() == null) {
+            return;
+        }
+        Status selectedStatus = (Status) cmbStatusChooser.getSelectedItem();
+        txtStatusName.setText(selectedStatus.getName());
+        if (selectedStatus.getDescription() != null) {
+            txtStatusDescription.setText(selectedStatus.getDescription());
+        }
+        if (selectedStatus.getDescriptionLong() != null) {
+            txtStatusLongDescription.setText(selectedStatus.getDescriptionLong());
+        }
+    }
+
+    private void clearOptionsStatusInfo() {
+        txtStatusName.setText("");
+        txtStatusDescription.setText("");
+        txtStatusLongDescription.setText("");
+    }
+
+    private Status collectStatusInformation() {
+        Status status = new Status();
+        status.setName(txtStatusName.getText());
+        status.setDescription(txtStatusDescription.getText());
+        status.setDescriptionLong(txtStatusLongDescription.getText());
+        return status;
+    }
+
+    private void addOptionsStatus(Status status) {
+        statusHandler.setEntity(status);
+        try {
+            statusHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(rootPane, "Status successfully added!");
+        loadStatuses();
+    }
+
+    private void modifyOptionsStatus(Status status) {
 
     }
+
+    private void removeOptionsStatus(Status status) {
+
+    }
+
+    /* ******* */
+
+    /* Transaction types */
+
+    private void loadTransactionTypes() {
+        List<TransactionType> transactionTypes = new ArrayList<>();
+        try {
+            transactionTypes = transactionTypeHandler.getData();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        for (TransactionType transactionType : transactionTypes) {
+            cmbTransactionTypeChooser.addItem(transactionType);
+        }
+    }
+
+    private void clearOptionsTransactionTypes() {
+        cmbTransactionTypeChooser.removeAllItems();
+    }
+
+    /* ***************** */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addressPanel;
@@ -2622,14 +2763,16 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnRegisterRemoveCustomer;
     private javax.swing.JButton btnRegisterRemoveShipping;
     private javax.swing.JButton btnStatusAdd;
+    private javax.swing.JButton btnStatusClear;
     private javax.swing.JButton btnStatusRemove;
     private javax.swing.JButton btnStatusSave;
     private javax.swing.JButton btnTransactionTypeAdd;
+    private javax.swing.JButton btnTransactionTypeClear;
     private javax.swing.JButton btnTransactionTypeRemove;
     private javax.swing.JButton btnTransactionTypeSave;
     private javax.swing.JCheckBox cbAddressType;
-    private javax.swing.JComboBox<String> cmbStatusChooser;
-    private javax.swing.JComboBox<String> cmbTransactionTypeChooser;
+    private javax.swing.JComboBox<Status> cmbStatusChooser;
+    private javax.swing.JComboBox<TransactionType> cmbTransactionTypeChooser;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JLabel databaseLabel;
     private javax.swing.JPanel databasePanel;
