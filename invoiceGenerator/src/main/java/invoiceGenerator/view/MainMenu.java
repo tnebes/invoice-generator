@@ -237,7 +237,7 @@ public class MainMenu extends javax.swing.JFrame {
         lblTimeLabel = new javax.swing.JLabel();
         jmbFileInfoBar = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
-        jmiExampleItem = new javax.swing.JMenuItem();
+        jmiExitButton = new javax.swing.JMenuItem();
         jmInfo = new javax.swing.JMenu();
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -264,6 +264,7 @@ public class MainMenu extends javax.swing.JFrame {
                 "#", "Name", "Location", "Wholesale", "Tax", "Retail", "Discount", "Quantity", "Total"
             }
         ));
+        tblRegisterInvoice.setEnabled(false);
         jScrollPane4.setViewportView(tblRegisterInvoice);
 
         pnlRegisterInformationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1340,8 +1341,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         jmFile.setText("File");
 
-        jmiExampleItem.setText("Example");
-        jmFile.add(jmiExampleItem);
+        jmiExitButton.setText("Exit");
+        jmiExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiExitButtonActionPerformed(evt);
+            }
+        });
+        jmFile.add(jmiExitButton);
 
         jmbFileInfoBar.add(jmFile);
 
@@ -1704,6 +1710,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnIssueInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueInvoiceActionPerformed
         issueInvoice();
     }//GEN-LAST:event_btnIssueInvoiceActionPerformed
+
+    private void jmiExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExitButtonActionPerformed
+        System.exit(1);
+    }//GEN-LAST:event_jmiExitButtonActionPerformed
 
     /* Customer Panel */
     /* ************** */
@@ -2306,10 +2316,10 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         createArticleInvoices(invoice);
-
         // clearing stuff we will not need anymore.
         clearRegisterTable();
         registerArticleInvoices = new ArrayList<>();
+        JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
     }
 
     private void createArticleInvoices(Invoice invoice) {
@@ -2418,7 +2428,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jmFile;
     private javax.swing.JMenu jmInfo;
     private javax.swing.JMenuBar jmbFileInfoBar;
-    private javax.swing.JMenuItem jmiExampleItem;
+    private javax.swing.JMenuItem jmiExitButton;
     private javax.swing.JPanel jpAccountingTab;
     private javax.swing.JPanel jpOptionsTab;
     private javax.swing.JPanel jpRegisterTab;
