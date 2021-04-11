@@ -31,10 +31,6 @@ public class Invoice extends Identity {
 	@ManyToOne
 	private Status				status; // not null
 
-	@NotNull(message = "An invoice must have a not null value for discount.")
-	@Column(name = "invoice_discount_percent")
-	private Byte 				invoiceDiscountPercent = 0;
-
 	@NotNull(message = "An invoice must have a subtotal (total - tax)")
 	@Column
 	private BigDecimal			subtotal;
@@ -71,7 +67,6 @@ public class Invoice extends Identity {
 		this.customer = customer;
 		this.transactionType = transactionType;
 		this.status = status;
-		this.invoiceDiscountPercent = invoiceDiscountPercent;
 		this.subtotal = subtotal;
 		this.total = total;
 		this.amountDue = amountDue;
@@ -103,12 +98,6 @@ public class Invoice extends Identity {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public Byte getInvoiceDiscountPercent() {
-		return invoiceDiscountPercent;
-	}
-	public void setInvoiceDiscountPercent(Byte invoiceDiscountPercent) {
-		this.invoiceDiscountPercent = invoiceDiscountPercent;
-	}
 	public BigDecimal getSubtotal() {
 		return subtotal;
 	}
@@ -139,6 +128,13 @@ public class Invoice extends Identity {
 	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
+	public List<ArticleInvoice> getArticleInvoice() {
+		return articleInvoice;
+	}
+
+	public void setArticleInvoice(List<ArticleInvoice> articleInvoice) {
+		this.articleInvoice = articleInvoice;
+	}
 
 
 	@Override
@@ -148,7 +144,6 @@ public class Invoice extends Identity {
 				", customer=" + customer +
 				", transactionType=" + transactionType +
 				", status=" + status +
-				", invoiceDiscountPercent=" + invoiceDiscountPercent +
 				", subtotal=" + subtotal +
 				", total=" + total +
 				", amountDue=" + amountDue +

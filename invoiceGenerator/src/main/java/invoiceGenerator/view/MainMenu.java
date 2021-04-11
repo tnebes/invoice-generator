@@ -5,14 +5,8 @@
  */
 package invoiceGenerator.view;
 
-import invoiceGenerator.controller.AddressHandler;
-import invoiceGenerator.controller.ArticleHandler;
-import invoiceGenerator.controller.CustomerHandler;
-import invoiceGenerator.controller.InvoiceHandler;
-import invoiceGenerator.model.Address;
-import invoiceGenerator.model.Article;
-import invoiceGenerator.model.ArticleInvoice;
-import invoiceGenerator.model.Customer;
+import invoiceGenerator.controller.*;
+import invoiceGenerator.model.*;
 import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
 import invoiceGenerator.view.viewUtil.AddressPicker;
@@ -41,6 +35,7 @@ public class MainMenu extends javax.swing.JFrame {
     CustomerHandler customerHandler;
     ArticleHandler articleHandler;
     AddressHandler addressHandler;
+    ArticleInvoiceHandler articleInvoiceHandler;
 
     /**
      * Creates new form MainMenu
@@ -50,6 +45,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.customerHandler = new CustomerHandler();
         this.articleHandler = new ArticleHandler();
         this.addressHandler = new AddressHandler();
+        this.articleInvoiceHandler = new ArticleInvoiceHandler();
         initComponents();
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
         loadFromDatabase();
@@ -1706,7 +1702,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterAddArticleActionPerformed
 
     private void btnIssueInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueInvoiceActionPerformed
-        // TODO add your handling code here:
+        issueInvoice();
     }//GEN-LAST:event_btnIssueInvoiceActionPerformed
 
     /* Customer Panel */
@@ -2284,6 +2280,48 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void clearRegisterTable() {
         tblRegisterInvoice.setModel(new DefaultTableModel());
+    }
+
+    private void issueInvoice() {
+        Invoice invoice = new Invoice();
+        invoice.setArticleInvoice(registerArticleInvoices);
+        invoice.setAmountDue(getRegisterInvoiceTotal());
+        invoice.setAmountPaid(BigDecimal.ZERO);
+        invoice.setDateOfCreation(Instant.now());
+        invoice.setSubtotal(getRegisterInvoiceSubtotal());
+        invoice.setTotal(getRegisterInvoiceTotal());
+        //TODO set customer ID
+        //TODO set shipping address
+        //TODO change this from the fixture
+        try {
+            invoice.setStatus(new StatusHandler().getData().get(0));
+            invoice.setTransactionType(new TransactionTypeHandler().getData().get(0));
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        invoiceHandler.setEntity(invoice);
+        try {
+            invoiceHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        createArticleInvoices(invoice);
+
+        // clearing stuff we will not need anymore.
+        clearRegisterTable();
+        registerArticleInvoices = new ArrayList<>();
+    }
+
+    private void createArticleInvoices(Invoice invoice) {
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            articleInvoice.setInvoice(invoice);
+            articleInvoiceHandler.setEntity(articleInvoice);
+            try {
+                articleInvoiceHandler.create();
+            } catch (InvoiceGeneratorException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /* ******** */
