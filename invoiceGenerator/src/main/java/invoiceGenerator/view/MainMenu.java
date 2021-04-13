@@ -2605,8 +2605,17 @@ public class MainMenu extends javax.swing.JFrame {
 
     private BigDecimal getRegisterInvoiceTotal() {
         BigDecimal total = new BigDecimal(0L);
+        BigDecimal articlePrice = new BigDecimal(0L);
+        long articleDiscount;
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            total = total.add(articleInvoice.getRetailPrice().multiply(BigDecimal.valueOf(articleInvoice.getQuantity())));
+            articlePrice = articleInvoice
+                    .getRetailPrice().multiply(
+                            BigDecimal.valueOf(articleInvoice.getQuantity()));
+            articleDiscount = Long.parseLong(txtRegisterDiscount.getText());
+            if (articleDiscount != 0) {
+                articlePrice = articlePrice.divide()
+            }
+            total = total.add(articlePrice);
         }
         return total;
     }
@@ -2659,7 +2668,6 @@ public class MainMenu extends javax.swing.JFrame {
         articleInvoice.setTaxRate(registerArticle.getTaxRate());
         articleInvoice.setWholesalePrice(registerArticle.getWholesalePrice());
         articleInvoice.setArticle(registerArticle);
-        // TODO invoice? for each loop?
         return articleInvoice;
     }
 
@@ -2694,13 +2702,8 @@ public class MainMenu extends javax.swing.JFrame {
         if (registerShippingAddress != null) {
             invoice.setShippingAddress(registerShippingAddress);
         }
-        //TODO change this from the fixture
-        try {
-            invoice.setStatus(new StatusHandler().getData().get(0));
-            invoice.setTransactionType(new TransactionTypeHandler().getData().get(0));
-        } catch (InvoiceGeneratorException e) {
-            e.printStackTrace();
-        }
+        invoice.setStatus((Status) cmbStatusChooser.getSelectedItem());
+        invoice.setTransactionType((TransactionType) cmbTransactionTypeChooser.getSelectedItem());
         invoiceHandler.setEntity(invoice);
         try {
             invoiceHandler.create();
@@ -2709,10 +2712,16 @@ public class MainMenu extends javax.swing.JFrame {
         }
         createArticleInvoices(invoice);
         // clearing stuff we will not need anymore.
+        clearRegisterTemporaryInformation();
+        JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
+    }
+
+    private void clearRegisterTemporaryInformation() {
+        registerCustomer = null;
+        registerShippingAddress = null;
         clearRegisterTable();
         clearRegisterMoneyInfo();
         registerArticleInvoices = new ArrayList<>();
-        JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
     }
 
     private void clearRegisterMoneyInfo() {
