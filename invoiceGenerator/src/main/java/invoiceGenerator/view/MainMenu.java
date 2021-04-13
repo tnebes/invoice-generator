@@ -54,7 +54,6 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle(Application.APPLICATION_TITLE + " " + Application.operator.getFirstLastName());
         loadFromDatabase();
         new MyTime().start();
-        registerTableModel = (DefaultTableModel) tblRegisterInvoice.getModel();
     }
 
     private void loadFromDatabase() {
@@ -62,8 +61,9 @@ public class MainMenu extends javax.swing.JFrame {
         loadAddresses();
         loadCustomers();
         loadArticles();
-        loadStatuses();
-        loadTransactionTypes();
+//        loadStatuses();
+//        loadTransactionTypes();
+        loadOptionsStatusesTransactions();
     }
 
     private class MyTime extends Thread {
@@ -138,6 +138,12 @@ public class MainMenu extends javax.swing.JFrame {
         lblRegisterTax1 = new javax.swing.JLabel();
         lblRegisterInvoiceTotal = new javax.swing.JLabel();
         txtRegisterInvoiceTotal = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        cmbRegisterTransactionType = new javax.swing.JComboBox<>();
+        cmbRegisterStatus = new javax.swing.JComboBox<>();
+        lblRegisterStatus = new javax.swing.JLabel();
+        lblRegisterTransactionType = new javax.swing.JLabel();
         btnIssueInvoice = new javax.swing.JButton();
         jpAccountingTab = new javax.swing.JPanel();
         tpAccounting = new javax.swing.JTabbedPane();
@@ -279,6 +285,11 @@ public class MainMenu extends javax.swing.JFrame {
         tabController.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jpRegisterTab.setPreferredSize(new java.awt.Dimension(800, 500));
+        jpRegisterTab.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jpRegisterTabComponentShown(evt);
+            }
+        });
 
         btnPrintInvoice.setText("Print invoice");
         btnPrintInvoice.addActionListener(new java.awt.event.ActionListener() {
@@ -461,7 +472,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
                         .addComponent(btnRegisterAddArticle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                         .addComponent(btnRegisterClearArticle)
                         .addGap(18, 18, 18)
                         .addComponent(btnRegisterRemoveArticle)))
@@ -502,8 +513,8 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnlRegisterInformationPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlRegisterCustomerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlRegisterInformationPanelLayout.setVerticalGroup(
@@ -524,6 +535,51 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblRegisterInvoiceTotal.setText("Total");
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        lblRegisterStatus.setText("Status:");
+
+        lblRegisterTransactionType.setText("Transaction:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbRegisterStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRegisterStatus)
+                            .addComponent(lblRegisterTransactionType))
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addComponent(cmbRegisterTransactionType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegisterStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbRegisterStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(lblRegisterTransactionType)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbRegisterTransactionType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnlRegisterLayout = new javax.swing.GroupLayout(pnlRegister);
         pnlRegister.setLayout(pnlRegisterLayout);
         pnlRegisterLayout.setHorizontalGroup(
@@ -531,24 +587,30 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnlRegisterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
                     .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlRegisterLayout.createSequentialGroup()
-                        .addComponent(lblRegisterSubtotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtRegisterSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlRegisterLayout.createSequentialGroup()
+                                .addComponent(lblRegisterSubtotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRegisterSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRegisterTax)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRegisterTax, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRegisterTax1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRegisterInvoiceDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblRegisterInvoiceTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRegisterInvoiceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblRegisterTax)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtRegisterTax, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblRegisterTax1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtRegisterInvoiceDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblRegisterInvoiceTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegisterInvoiceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlRegisterLayout.setVerticalGroup(
@@ -556,7 +618,10 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterLayout.createSequentialGroup()
                 .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRegisterSubtotal)
@@ -584,7 +649,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jpRegisterTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpRegisterTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 843, Short.MAX_VALUE)
                     .addGroup(jpRegisterTabLayout.createSequentialGroup()
                         .addComponent(btnIssueInvoice)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -775,7 +840,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
                         .addComponent(lblCustomerDateAddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addComponent(txtCustomerDateAdded, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(customerPanelLayout.createSequentialGroup()
                         .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1005,7 +1070,7 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addComponent(lblArticleShortDescriptionLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtArticleWholesalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 61, Short.MAX_VALUE))
+                        .addGap(0, 116, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1231,7 +1296,7 @@ public class MainMenu extends javax.swing.JFrame {
                                         .addComponent(lblAddressStreetNumber)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtAddressStreetNumber)))))
-                        .addGap(0, 26, Short.MAX_VALUE)))
+                        .addGap(0, 81, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1584,7 +1649,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(pnlStatusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlTransactionTypePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jpOptionsTabLayout.setVerticalGroup(
             jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1990,8 +2055,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTransactionTypeDescriptionActionPerformed
 
     private void jpOptionsTabComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jpOptionsTabComponentShown
-        loadStatuses();
-        loadTransactionTypes();
+        loadOptionsStatusesTransactions();
     }//GEN-LAST:event_jpOptionsTabComponentShown
 
     private void cmbStatusChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusChooserActionPerformed
@@ -2033,6 +2097,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void cmbTransactionTypeChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTransactionTypeChooserActionPerformed
         loadOptionsTransactionTypesInfo();
     }//GEN-LAST:event_cmbTransactionTypeChooserActionPerformed
+
+    private void jpRegisterTabComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jpRegisterTabComponentShown
+        populateRegisterStatusesTransactions();
+    }//GEN-LAST:event_jpRegisterTabComponentShown
 
     /* Customer Panel */
     /* ************** */
@@ -2443,7 +2511,6 @@ public class MainMenu extends javax.swing.JFrame {
         "Total"
     };
     // to be filled out once the components are initialised.
-    private DefaultTableModel registerTableModel;
     private List<ArticleInvoice> registerArticleInvoices = new ArrayList<>();
 
     private void getNewRegisterCustomer() {
@@ -2523,9 +2590,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void addArticleToInvoice(Article registerArticle) {
         ArticleInvoice newArticleInvoice = collectRegisterArticleInformation(registerArticle);
-        if (newArticleInvoice == null) {
-            return;
-        }
         // TODO improvement required.
         registerArticleInvoices.add(newArticleInvoice);
         addToRegisterTable(newArticleInvoice);
@@ -2540,7 +2604,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private BigDecimal getRegisterInvoiceTotal() {
-        BigDecimal total = new BigDecimal(0l);
+        BigDecimal total = new BigDecimal(0L);
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
             total = total.add(articleInvoice.getRetailPrice().multiply(BigDecimal.valueOf(articleInvoice.getQuantity())));
         }
@@ -2564,7 +2628,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void addToRegisterTable(ArticleInvoice newArticleInvoice) {
-        registerTableModel.addRow(new String[] {
+        ((DefaultTableModel)tblRegisterInvoice.getModel()).addRow(new String[] {
                 registerArticleInvoices.size() + "",
                 newArticleInvoice.getArticle().getShortName(),
                 newArticleInvoice.getArticle().getWarehouseLocation(),
@@ -2613,7 +2677,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void clearRegisterTable() {
-        tblRegisterInvoice.setModel(new DefaultTableModel());
+        ( (DefaultTableModel) tblRegisterInvoice.getModel()).setRowCount(0);
     }
 
     private void issueInvoice() {
@@ -2624,8 +2688,12 @@ public class MainMenu extends javax.swing.JFrame {
         invoice.setDateOfCreation(Instant.now());
         invoice.setSubtotal(getRegisterInvoiceSubtotal());
         invoice.setTotal(getRegisterInvoiceTotal());
-        //TODO set customer ID
-        //TODO set shipping address
+        if (registerCustomer != null) {
+            invoice.setCustomer(registerCustomer);
+        }
+        if (registerShippingAddress != null) {
+            invoice.setShippingAddress(registerShippingAddress);
+        }
         //TODO change this from the fixture
         try {
             invoice.setStatus(new StatusHandler().getData().get(0));
@@ -2642,8 +2710,16 @@ public class MainMenu extends javax.swing.JFrame {
         createArticleInvoices(invoice);
         // clearing stuff we will not need anymore.
         clearRegisterTable();
+        clearRegisterMoneyInfo();
         registerArticleInvoices = new ArrayList<>();
         JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
+    }
+
+    private void clearRegisterMoneyInfo() {
+        txtRegisterSubtotal.setText("");
+        txtRegisterTax.setText("");
+        txtRegisterDiscount.setText("");
+        txtRegisterInvoiceTotal.setText("");
     }
 
     private void createArticleInvoices(Invoice invoice) {
@@ -2656,6 +2732,11 @@ public class MainMenu extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void populateRegisterStatusesTransactions() {
+        loadStatuses(cmbRegisterStatus);
+        loadTransactionTypes(cmbRegisterTransactionType);
     }
 
     /* ******** */
@@ -2698,8 +2779,17 @@ public class MainMenu extends javax.swing.JFrame {
 
     /* Options */
 
-    private void loadStatuses() {
-        clearOptionsStatuses();
+    /* Statuses */
+
+    private void loadOptionsStatusesTransactions() {
+        loadStatuses(cmbStatusChooser);
+        loadTransactionTypes(cmbTransactionTypeChooser);
+    }
+
+    /* ******** */
+
+    private void loadStatuses(JComboBox<Status> comboBox) {
+        clearOptionsStatuses(comboBox);
         List<Status> statuses = new ArrayList<>();
         try {
             statuses = statusHandler.getData();
@@ -2707,12 +2797,12 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         for (Status status : statuses) {
-            cmbStatusChooser.addItem(status);
+            comboBox.addItem(status);
         }
     }
 
-    private void clearOptionsStatuses() {
-        cmbStatusChooser.removeAllItems();
+    private void clearOptionsStatuses(JComboBox<Status> comboBox) {
+        comboBox.removeAllItems();
     }
 
     private void loadOptionsStatusInfo() {
@@ -2751,7 +2841,7 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         JOptionPane.showMessageDialog(rootPane, "Status successfully added!");
-        loadStatuses();
+        loadStatuses(cmbStatusChooser);
     }
 
     private void triggerStatusSave() {
@@ -2772,7 +2862,7 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         JOptionPane.showMessageDialog(rootPane, "Status successfully modified!");
-        loadStatuses();
+        loadStatuses(cmbStatusChooser);
     }
 
     private void triggerStatusRemoval() {
@@ -2792,7 +2882,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(rootPane, "Status successfully removed!");
         clearOptionsStatusInfo();
-        loadStatuses();
+        loadStatuses(cmbStatusChooser);
     }
 
 
@@ -2801,8 +2891,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     /* Transaction types */
 
-    private void loadTransactionTypes() {
-        clearOptionsTransactionTypes();
+    private void loadTransactionTypes(JComboBox<TransactionType> transactionTypeComboBox) {
+        clearOptionsTransactionTypes(transactionTypeComboBox);
         List<TransactionType> transactionTypes = new ArrayList<>();
         try {
             transactionTypes = transactionTypeHandler.getData();
@@ -2810,12 +2900,12 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         for (TransactionType transactionType : transactionTypes) {
-            cmbTransactionTypeChooser.addItem(transactionType);
+            transactionTypeComboBox.addItem(transactionType);
         }
     }
 
-    private void clearOptionsTransactionTypes() {
-        cmbTransactionTypeChooser.removeAllItems();
+    private void clearOptionsTransactionTypes(JComboBox<TransactionType> transactionTypeComboBox) {
+        transactionTypeComboBox.removeAllItems();
     }
 
     private void loadOptionsTransactionTypesInfo() {
@@ -2849,7 +2939,7 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         JOptionPane.showMessageDialog(rootPane, "Transaction type successfully added!");
-        loadTransactionTypes();
+        loadTransactionTypes(cmbTransactionTypeChooser);
     }
 
     private void triggerTransactionTypeSave() {
@@ -2869,7 +2959,7 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         JOptionPane.showMessageDialog(rootPane, "Transaction type successfully modified!");
-        loadTransactionTypes();
+        loadTransactionTypes(cmbTransactionTypeChooser);
     }
 
     private void triggerTransactionTypeRemoval() {
@@ -2889,7 +2979,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(rootPane, "Transaction type successfully removed!");
         clearOptionsTransactionTypesInfo();
-        loadTransactionTypes();
+        loadTransactionTypes(cmbTransactionTypeChooser);
     }
     /* ***************** */
 
@@ -2934,6 +3024,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnTransactionTypeRemove;
     private javax.swing.JButton btnTransactionTypeSave;
     private javax.swing.JCheckBox cbAddressType;
+    private javax.swing.JComboBox<Status> cmbRegisterStatus;
+    private javax.swing.JComboBox<TransactionType> cmbRegisterTransactionType;
     private javax.swing.JComboBox<Status> cmbStatusChooser;
     private javax.swing.JComboBox<TransactionType> cmbTransactionTypeChooser;
     private javax.swing.JPanel customerPanel;
@@ -2943,6 +3035,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -3000,9 +3094,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegisterInvoiceTotal;
     private javax.swing.JLabel lblRegisterNote;
     private javax.swing.JLabel lblRegisterQuantity;
+    private javax.swing.JLabel lblRegisterStatus;
     private javax.swing.JLabel lblRegisterSubtotal;
     private javax.swing.JLabel lblRegisterTax;
     private javax.swing.JLabel lblRegisterTax1;
+    private javax.swing.JLabel lblRegisterTransactionType;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStatusDescription;
     private javax.swing.JLabel lblStatusLongDescription;

@@ -47,6 +47,7 @@ public class Authorisation extends javax.swing.JFrame {
         btnLoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Authorisation menu");
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/authorisation_image.png"))); // NOI18N
