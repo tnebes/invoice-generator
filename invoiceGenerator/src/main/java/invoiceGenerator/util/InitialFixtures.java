@@ -10,6 +10,7 @@ import java.math.RoundingMode;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class InitialFixtures {
@@ -42,7 +43,7 @@ public class InitialFixtures {
             testAddress.setCountry(faker.country().name());
             testAddress.setStreet(faker.address().streetName());
             testAddress.setStreetNumber(faker.address().streetAddressNumber());
-            testAddress.setStreetLetter(faker.letterify("?"));
+            testAddress.setStreetLetter(faker.letterify("?").toUpperCase(Locale.ROOT));
             testAddress.setType(rng.nextBoolean());
             AddressHandler addressHandler = new AddressHandler();
             try {
@@ -121,9 +122,9 @@ public class InitialFixtures {
         // status check
         Status testStatus = new Status();
         StatusHandler statusHandler = new StatusHandler();
-        testStatus.setName("Cash");
-        testStatus.setDescription("Paid in cash");
-        testStatus.setDescriptionLong("When a customer comes in and pays in cash.");
+        testStatus.setName("Processing");
+        testStatus.setDescription("Paid, being processed.");
+        testStatus.setDescriptionLong("Order paid, not processed or shipped.");
         try {
             statusHandler.setEntity(testStatus);
             statusHandler.create();
@@ -134,8 +135,8 @@ public class InitialFixtures {
         // transaction type check
         TransactionType transactionType = new TransactionType();
         TransactionTypeHandler transactionTypeHandler = new TransactionTypeHandler();
-        transactionType.setName("Processing");
-        transactionType.setDescription("Paid, being processed.");
+        transactionType.setName("Cash");
+        transactionType.setDescription("Customer pays by cash in the shop.");
         try {
             transactionTypeHandler.setEntity(transactionType);
             transactionTypeHandler.create();
