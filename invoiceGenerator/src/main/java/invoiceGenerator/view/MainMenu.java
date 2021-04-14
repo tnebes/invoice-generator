@@ -2586,7 +2586,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void refreshRegisterTable() {
-
+        // TODO is this necessary?
     }
 
     private void addArticleToInvoice(Article registerArticle) {
@@ -2608,14 +2608,16 @@ public class MainMenu extends javax.swing.JFrame {
 
     private BigDecimal getRegisterInvoiceTotal() {
         BigDecimal total = new BigDecimal(0L);
-        BigDecimal articlePrice = new BigDecimal(0L);
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            total = total.add(articleInvoice.getTotal());
+        }
         return total;
     }
 
     private BigDecimal getRegisterInvoiceTax() {
         BigDecimal total = new BigDecimal(0l);
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            total = total.add(articleInvoice.getWholesalePrice().multiply(articleInvoice.getArticle().getCalculableTaxRate()));
+            total = total.add(articleInvoice.getWholesalePrice().multiply(articleInvoice.getArticle().getCalculableTaxRate())).setScale(2, RoundingMode.HALF_UP);
         }
         return total;
     }
@@ -2709,9 +2711,26 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         createArticleInvoices(invoice);
+        deductArticlesFromInvoice(invoice);
         // clearing stuff we will not need anymore.
         clearRegisterTemporaryInformation();
         JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
+    }
+
+    private void deductArticlesFromInvoice(Invoice invoice) {
+        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+        for (ArticleInvoice articleInvoice : articleInvoices) {
+            Article article = articleInvoice.getArticle();
+            article.setWarehouseQuantity(article.getWarehouseQuantity() - articleInvoice.getQuantity());
+        }
+        for (ArticleInvoice articleInvoice : articleInvoices) {
+            articleHandler.setEntity(articleInvoice.getArticle());
+            try {
+                articleHandler.update();
+            } catch (InvoiceGeneratorException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void clearRegisterTemporaryInformation() {

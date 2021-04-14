@@ -6,12 +6,11 @@
 * Add ability to edit the address from the customer panel
     * Todo in the distant future.
   
-* Invoice discount must be accounted for
-* Invoice should include the customer and the shipping address if applicable
-* 
+* Each issued invoice should deduct the quantity of the given article
+* Something goes wrong when discount is 100%
+* Invoices can contain negative quantities
 
-# Know bugs #
+# Known bugs #
 
-* Processing window exhibits badness
 
 
