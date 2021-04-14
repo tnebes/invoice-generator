@@ -14,7 +14,7 @@ public class TransactionTypeHandler extends Handler<TransactionType> {
     }
 
     @Override
-    protected List<TransactionType> getData(String token) throws InvoiceGeneratorException {
+    public List<TransactionType> getData(String token) throws InvoiceGeneratorException {
         return null;
     }
 

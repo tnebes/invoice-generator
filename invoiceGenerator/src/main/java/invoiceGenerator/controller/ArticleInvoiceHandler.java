@@ -22,7 +22,7 @@ public class ArticleInvoiceHandler extends Handler<ArticleInvoice> {
     }
 
     @Override
-    protected List<ArticleInvoice> getData(String token) throws InvoiceGeneratorException {
+    public List<ArticleInvoice> getData(String token) throws InvoiceGeneratorException {
         return null;
     }
 

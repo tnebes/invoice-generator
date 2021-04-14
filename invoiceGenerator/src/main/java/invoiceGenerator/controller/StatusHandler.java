@@ -14,7 +14,7 @@ public class StatusHandler extends Handler<Status> {
     }
 
     @Override
-    protected List<Status> getData(String token) throws InvoiceGeneratorException {
+    public List<Status> getData(String token) throws InvoiceGeneratorException {
         return null;
     }
 

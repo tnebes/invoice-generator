@@ -15,7 +15,7 @@ public class InvoiceHandler extends Handler<Invoice> {
     }
 
     @Override
-    protected List<Invoice> getData(String token) throws InvoiceGeneratorException {
+    public List<Invoice> getData(String token) throws InvoiceGeneratorException {
         return null;
     }
 
