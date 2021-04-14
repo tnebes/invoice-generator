@@ -27,7 +27,13 @@ public class AddressHandler extends Handler<Address> {
                 "or lower(street) like lower(:searchToken) " +
                 "or lower(street_letter) like lower(:searchToken) " +
                 "or lower(street_number) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
-        List<Address> addresses1 = session.createQuery("from address where id = :searchToken").setParameter("searchToken", Long.parseLong(token)).list();
+        Long tokenID;
+        try {
+            tokenID = Long.parseLong(token);
+        } catch (NumberFormatException e) {
+            return addresses0;
+        }
+        List<Address> addresses1 = session.createQuery("from address where id = :searchToken").setParameter("searchToken", tokenID).list();
         if (addresses1.size() == 0) {
             return addresses0;
         }

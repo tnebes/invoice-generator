@@ -29,7 +29,14 @@ public class CustomerHandler extends Handler<Customer> {
                 "or lower(middle_name) like lower(:searchToken) " +
                 "or lower(name) like lower(:searchToken)" +
                 "or lower(national_id_number) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
-        List<Customer> customers1 = session.createQuery("from customer where id = :searchToken").setParameter("searchToken", Long.parseLong(token)).list();
+        // TODO this is badness.
+        Long tokenID;
+        try {
+            tokenID = Long.parseLong(token);
+        } catch (NumberFormatException e) {
+            return customers0;
+        }
+        List<Customer> customers1 = session.createQuery("from customer where id = :searchToken").setParameter("searchToken", tokenID).list();
         if (customers1.size() == 0) {
             return customers0;
         }
