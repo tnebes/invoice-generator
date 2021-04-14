@@ -6,9 +6,11 @@
 * Add ability to edit the address from the customer panel
     * Todo in the distant future.
   
-* Each issued invoice should deduct the quantity of the given article
 * Something goes wrong when discount is 100%
-* Invoices can contain negative quantities
+* Deleting invoices returns items back to stock?
+* Invoices need their own accounting tab where the invoice and the articleInvoice 
+be inspected and edited.
+* Invoices must be printed.  
 
 # Known bugs #
 
