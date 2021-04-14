@@ -3,6 +3,7 @@ package invoiceGenerator.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Instant;
 
 @Entity(name = "article_invoice")
@@ -36,6 +37,10 @@ public class ArticleInvoice extends Identity {
 	@NotNull(message = "Retail price must be defined.")
 	@Column(name = "retail_price")
 	private BigDecimal 	retailPrice;
+
+	@NotNull(message = "Total price including discount must be defined.")
+	@Column(name = "total")
+	private BigDecimal total;
 
 	@NotNull(message = "Tax rate must be defined.")
 	@Column(name = "tax_rate")
@@ -105,6 +110,13 @@ public class ArticleInvoice extends Identity {
 	public void setRetailPrice(BigDecimal retailPrice) {
 		this.retailPrice = retailPrice;
 	}
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
 	public BigDecimal getTaxRate() {
 		return taxRate;
 	}
@@ -116,6 +128,12 @@ public class ArticleInvoice extends Identity {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public BigDecimal getCalculableTaxRate() {
+		return this.getTaxRate().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP).add(BigDecimal.ONE);
+	}
+	public BigDecimal getCalculableDiscount() {
+		return (this.getDiscount().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP)).add(BigDecimal.ONE);
 	}
 	
 	

@@ -2035,6 +2035,7 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         addArticleToInvoice(registerArticle);
+        // TODO does this do anything at all?
         refreshRegisterTable();
     }//GEN-LAST:event_btnRegisterAddArticleActionPerformed
 
@@ -2548,10 +2549,10 @@ public class MainMenu extends javax.swing.JFrame {
         if (registerCustomer != null) {
             sb.append("Customer:\t");
             sb.append(registerCustomer).append("\n");
-            sb.append("Billing address:\t").append(registerCustomer.getBillingAddress().toString()).append("\n");
+            sb.append("Billing:\t").append(registerCustomer.getBillingAddress().toString()).append("\n");
         }
         if (registerShippingAddress != null) {
-            sb.append("Shipping address:\t");
+            sb.append("Shipping:\t");
             sb.append(registerShippingAddress).append("\n");
         }
         txtCustomerShippingInformation.setText(sb.toString());
@@ -2589,12 +2590,14 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void addArticleToInvoice(Article registerArticle) {
-        ArticleInvoice newArticleInvoice = collectRegisterArticleInformation(registerArticle);
-        // TODO improvement required.
-        registerArticleInvoices.add(newArticleInvoice);
-        addToRegisterTable(newArticleInvoice);
-        updateRegisterTextBoxes();
-
+        try {
+            ArticleInvoice newArticleInvoice = collectRegisterArticleInformation(registerArticle);
+            registerArticleInvoices.add(newArticleInvoice);
+            addToRegisterTable(newArticleInvoice);
+            updateRegisterTextBoxes();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateRegisterTextBoxes() {
@@ -2606,17 +2609,6 @@ public class MainMenu extends javax.swing.JFrame {
     private BigDecimal getRegisterInvoiceTotal() {
         BigDecimal total = new BigDecimal(0L);
         BigDecimal articlePrice = new BigDecimal(0L);
-        long articleDiscount;
-        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            articlePrice = articleInvoice
-                    .getRetailPrice().multiply(
-                            BigDecimal.valueOf(articleInvoice.getQuantity()));
-            articleDiscount = Long.parseLong(txtRegisterDiscount.getText());
-            if (articleDiscount != 0) {
-                articlePrice = articlePrice.divide()
-            }
-            total = total.add(articlePrice);
-        }
         return total;
     }
 
@@ -2651,23 +2643,26 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private BigDecimal getArticleInvoiceTotal(ArticleInvoice newArticleInvoice) {
-        // TODO this may be buggy as I won't be implementing the halfway up multiplication
-        // TODO what about discount
         BigDecimal total;
         total = newArticleInvoice.getArticle().getRetailPrice().multiply(BigDecimal.valueOf(newArticleInvoice.getQuantity()));
-        return total;
+        System.out.println(newArticleInvoice.getCalculableDiscount());
+        if (newArticleInvoice.getCalculableDiscount().equals(BigDecimal.ONE)) {
+            return total;
+        }
+        return total.divide(newArticleInvoice.getCalculableDiscount(), 2, RoundingMode.HALF_UP);
     }
 
-    private ArticleInvoice collectRegisterArticleInformation(Article registerArticle) {
+    private ArticleInvoice collectRegisterArticleInformation(Article registerArticle) throws InvoiceGeneratorException {
         ArticleInvoice articleInvoice = new ArticleInvoice();
+        articleInvoice.setArticle(registerArticle);
         articleInvoice.setDateOfCreation(Instant.now());
         articleInvoice.setDiscount(getRegisterDiscount());
         articleInvoice.setNote(getRegisterArticleNote());
         articleInvoice.setQuantity(getRegisterArticleQuantity());
         articleInvoice.setRetailPrice(registerArticle.getRetailPrice());
+        articleInvoice.setTotal(getArticleInvoiceTotal(articleInvoice));
         articleInvoice.setTaxRate(registerArticle.getTaxRate());
         articleInvoice.setWholesalePrice(registerArticle.getWholesalePrice());
-        articleInvoice.setArticle(registerArticle);
         return articleInvoice;
     }
 
@@ -2679,8 +2674,11 @@ public class MainMenu extends javax.swing.JFrame {
         return txtRegisterArticleNote.getText();
     }
 
-    private BigDecimal getRegisterDiscount() {
-        //TODO add check for invalid input
+    private BigDecimal getRegisterDiscount() throws InvoiceGeneratorException {
+        String registerDiscount = txtRegisterDiscount.getText();
+        if (registerDiscount.isBlank()) {
+            return BigDecimal.ZERO;
+        }
         return BigDecimal.valueOf(Long.parseLong(txtRegisterDiscount.getText()));
     }
 
