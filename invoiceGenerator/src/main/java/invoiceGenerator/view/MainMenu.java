@@ -748,8 +748,18 @@ public class MainMenu extends javax.swing.JFrame {
         txtInvoiceSearchBar.setText("search...");
 
         btnInvoiceFilterSearch.setText("Search!");
+        btnInvoiceFilterSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoiceFilterSearchActionPerformed(evt);
+            }
+        });
 
         btnInvoiceClearSearchFilters.setText("Clear");
+        btnInvoiceClearSearchFilters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoiceClearSearchFiltersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlInvoiceFiltersPanelLayout = new javax.swing.GroupLayout(pnlInvoiceFiltersPanel);
         pnlInvoiceFiltersPanel.setLayout(pnlInvoiceFiltersPanelLayout);
@@ -806,8 +816,8 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnlInvoicesLayout.createSequentialGroup()
                 .addComponent(pnlInvoiceFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7)
-                .addContainerGap())
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlInvoiceArticleInformation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -2562,10 +2572,22 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void invoicePanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_invoicePanelComponentShown
         loadInvoices();
+        loadInvoiceStatusesTransactions();
     }//GEN-LAST:event_invoicePanelComponentShown
+
+    private void btnInvoiceClearSearchFiltersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceClearSearchFiltersActionPerformed
+        resetInvoiceSearchFilters();
+    }//GEN-LAST:event_btnInvoiceClearSearchFiltersActionPerformed
+
+    private void btnInvoiceFilterSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceFilterSearchActionPerformed
+        invoiceSearchDecider();
+    }//GEN-LAST:event_btnInvoiceFilterSearchActionPerformed
 
     /* Invoice Panel */
     /* ************* */
+
+    private final String invoiceSearchFilter = "search...";
+    private final String invoiceStatusTransactionTypeDefaultFilter = "All";
 
     private void loadInvoices() {
         DefaultListModel<Invoice> invoices = new DefaultListModel<>();
@@ -2585,6 +2607,52 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         lstInvoiceList.setModel(invoices);
+    }
+
+    private void invoiceSearchDecider() {
+        if (isInvoiceTextFilterEmpty()) {
+            if (areInvoiceSearchFiltersEmpty()) {
+                loadInvoices();
+                return;
+            }
+            if (isInvoiceStatusFilterEmpty()) {
+                // do something
+            }
+            if (isInvoiceTransactionTypeFilterEmpty()) {
+                // do something
+            }
+        }
+    }
+
+    private boolean isInvoiceTextFilterEmpty() {
+        return txtInvoiceSearchBar.getText().equals(invoiceSearchFilter) || txtInvoiceSearchBar.getText().isBlank();
+    }
+
+    private boolean areInvoiceSearchFiltersEmpty() {
+        return ((Status)cmbInvoiceStatusFilter.getSelectedItem()).getName().equals(invoiceStatusTransactionTypeDefaultFilter)
+                && ((TransactionType)cmbInvoiceTransactionFilter.getSelectedItem()).getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+    }
+
+    private void loadInvoiceStatusesTransactions() {
+        Status status = new Status();
+        TransactionType transactionType = new TransactionType();
+        status.setName(invoiceStatusTransactionTypeDefaultFilter);
+        transactionType.setName(invoiceStatusTransactionTypeDefaultFilter);
+        // temporary files for choosing stuff.
+        // TODO this is absolutely terrible.
+        loadStatuses(cmbInvoiceStatusFilter);
+        loadTransactionTypes(cmbInvoiceTransactionFilter);
+        cmbInvoiceStatusFilter.addItem(status);
+        cmbInvoiceTransactionFilter.addItem(transactionType);
+        // end of cursed code
+        cmbInvoiceStatusFilter.setSelectedItem(status);
+        cmbInvoiceTransactionFilter.setSelectedItem(transactionType);
+    }
+
+    private void resetInvoiceSearchFilters() {
+        txtInvoiceSearchBar.setText(invoiceSearchFilter);
+        loadInvoiceStatusesTransactions();
+        loadInvoices();
     }
 
     /* ************* */
@@ -3551,7 +3619,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbAddressType;
     private javax.swing.JComboBox<Status> cmbInvoiceStatus;
     private javax.swing.JComboBox<Status> cmbInvoiceStatusFilter;
-    private javax.swing.JComboBox<Status> cmbInvoiceTransaction;
+    private javax.swing.JComboBox<TransactionType> cmbInvoiceTransaction;
     private javax.swing.JComboBox<TransactionType> cmbInvoiceTransactionFilter;
     private javax.swing.JComboBox<Status> cmbRegisterStatus;
     private javax.swing.JComboBox<TransactionType> cmbRegisterTransactionType;

@@ -60,7 +60,7 @@ public class Invoice extends Identity {
 	}
 
 	public Invoice(Instant dateOfCreation, Customer customer, TransactionType transactionType,
-				   Status status, Byte invoiceDiscountPercent, BigDecimal subtotal, BigDecimal total,
+				   Status status, BigDecimal subtotal, BigDecimal total,
 				   BigDecimal amountDue, BigDecimal amountPaid, Address shippingAddress) {
 		this();
 		this.dateOfCreation = dateOfCreation;
@@ -136,19 +136,8 @@ public class Invoice extends Identity {
 		this.articleInvoice = articleInvoice;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Invoice{" +
-				"dateOfCreation=" + dateOfCreation +
-				", customer=" + customer +
-				", transactionType=" + transactionType +
-				", status=" + status +
-				", subtotal=" + subtotal +
-				", total=" + total +
-				", amountDue=" + amountDue +
-				", amountPaid=" + amountPaid +
-				", shippingAddress=" + shippingAddress +
-				'}';
+		return this.getId() + "";
 	}
 }
