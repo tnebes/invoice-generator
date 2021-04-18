@@ -2609,28 +2609,102 @@ public class MainMenu extends javax.swing.JFrame {
         lstInvoiceList.setModel(invoices);
     }
 
+    private void loadInvoicesStatus(Status status) {
+
+    }
+
+    private void loadInvoicesTransaction(TransactionType transactionType) {
+
+    }
+
+    private void loadInvoicesStatusTransaction(Status status, TransactionType transactionType) {
+
+    }
+
+    private void loadInvoicesStatusTransactionToken(Status status, TransactionType transactionType, String token) {
+
+    }
+
+    private void loadInvoicesTransactionToken(TransactionType transactionType, String token) {
+
+    }
+
+    private void loadInvoicesStatusToken(Status status, String token) {
+
+    }
+
+
     private void invoiceSearchDecider() {
+        // cursed branched programming.
+
+        // no text
         if (isInvoiceTextFilterEmpty()) {
+            // no filters
             if (areInvoiceSearchFiltersEmpty()) {
                 loadInvoices();
                 return;
             }
-            if (isInvoiceStatusFilterEmpty()) {
-                // do something
+            // all filters
+            if (areInvoiceSearchFiltersFilled()) {
+                loadInvoicesStatusTransaction(getInvoiceStatusFilter(), getInvoiceTransactionTypeFilter());
+                return;
             }
-            if (isInvoiceTransactionTypeFilterEmpty()) {
-                // do something
+
+            // some filters
+            if (isInvoiceStatusSearchEmpty()) {
+                loadInvoicesTransaction(getInvoiceTransactionTypeFilter());
+                return;
+            } else {
+                loadInvoicesStatus(getInvoiceStatusFilter());
+            }
+        // text
+        } else {
+            // no filters
+            if (areInvoiceSearchFiltersEmpty()) {
+                loadInvoices(txtInvoiceSearchBar.getText());
+                return;
+            }
+            // all filters
+            if (areInvoiceSearchFiltersFilled()) {
+                loadInvoicesStatusTransactionToken(getInvoiceStatusFilter(), getInvoiceTransactionTypeFilter(), txtInvoiceSearchBar.getText());
+                return;
+            }
+            // some filters
+            if (isInvoiceStatusSearchEmpty()) {
+                loadInvoicesTransactionToken(getInvoiceTransactionTypeFilter(), txtInvoiceSearchBar.getText());
+                return;
+            } else {
+                loadInvoicesStatusToken(getInvoiceStatusFilter(), txtInvoiceSearchBar.getText());
             }
         }
+    }
+
+    private Status getInvoiceStatusFilter() {
+        return ((Status)cmbInvoiceStatusFilter.getSelectedItem());
+    }
+
+    private TransactionType getInvoiceTransactionTypeFilter() {
+        return ((TransactionType)cmbInvoiceTransactionFilter.getSelectedItem());
     }
 
     private boolean isInvoiceTextFilterEmpty() {
         return txtInvoiceSearchBar.getText().equals(invoiceSearchFilter) || txtInvoiceSearchBar.getText().isBlank();
     }
 
+    private boolean isInvoiceStatusSearchEmpty() {
+        return getInvoiceTransactionTypeFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+    }
+
+    private boolean isInvoiceTransactionSearchEmpty() {
+        return getInvoiceStatusFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+    }
+
     private boolean areInvoiceSearchFiltersEmpty() {
-        return ((Status)cmbInvoiceStatusFilter.getSelectedItem()).getName().equals(invoiceStatusTransactionTypeDefaultFilter)
-                && ((TransactionType)cmbInvoiceTransactionFilter.getSelectedItem()).getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+        return isInvoiceStatusSearchEmpty() && isInvoiceTransactionSearchEmpty();
+    }
+
+    private boolean areInvoiceSearchFiltersFilled() {
+        return !isInvoiceStatusSearchEmpty() && !isInvoiceTransactionSearchEmpty();
     }
 
     private void loadInvoiceStatusesTransactions() {
