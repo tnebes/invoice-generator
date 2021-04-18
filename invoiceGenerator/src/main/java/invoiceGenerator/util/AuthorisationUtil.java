@@ -13,6 +13,7 @@ import invoiceGenerator.view.MainMenu;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.persistence.NoResultException;
 import javax.swing.*;
 
 /**
@@ -38,8 +39,14 @@ public class AuthorisationUtil {
             authorisation.handleError(usernameTextField, "password is required.");
             return false;
         }
-        Operator operator =
-                new OperatorHandler().getOperator(usernameTextField.getText(), passwordTextField.getPassword());
+        Operator operator = null;
+        try {
+            operator =
+                    new OperatorHandler().getOperator(usernameTextField.getText(), passwordTextField.getPassword());
+        } catch (NoResultException e) {
+            JOptionPane.showMessageDialog(null,"No such user found.");
+            return false;
+        }
 
         if (operator == null) {
             authorisation.handleError(usernameTextField, "username or password is invalid.");

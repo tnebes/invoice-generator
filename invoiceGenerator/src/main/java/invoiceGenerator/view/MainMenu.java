@@ -21,10 +21,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.validation.groups.Default;
 
 /**
  * @author tnebes
@@ -2231,7 +2233,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmInfoMouseClicked
 
     private void btnArticleDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleDeleteActionPerformed
-        // TODO add your handling code here:
+        deleteArticle();
     }//GEN-LAST:event_btnArticleDeleteActionPerformed
 
     private void btnArticleAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticleAddActionPerformed
@@ -2375,6 +2377,8 @@ public class MainMenu extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == 0) {
             Customer customer = lstCustomerList.getSelectedValue();
             deleteCustomer(customer);
+            loadCustomers();
+            clearCustomerInformation();
         }
     }//GEN-LAST:event_btnCustomerDeleteButtonActionPerformed
 
@@ -2975,6 +2979,23 @@ public class MainMenu extends javax.swing.JFrame {
         lstArticleList.setModel(articles);
     }
 
+    private void deleteArticle() {
+        Article article = lstArticleList.getSelectedValue();
+        if (article == null) {
+            JOptionPane.showMessageDialog(rootPane, "An article must be selected.");
+            return;
+        }
+        articleHandler.setEntity(article);
+        try {
+            articleHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting article.");
+            return;
+        }
+        JOptionPane.showMessageDialog(rootPane, "Article successfully deleted!");
+        loadArticles();
+    }
+
     private void updateArticleInformation(Article article) {
         clearArticleInformation();
         txtArticleID.setText(article.getId().toString());
@@ -3029,6 +3050,13 @@ public class MainMenu extends javax.swing.JFrame {
         textFieldList.add(txtArticleRetailPrice);
         textFieldList.add(txtArticleWholesalePrice);
         textFieldList.add(txtArticleTaxRate);
+        for (JTextField textField : textFieldList) {
+            if (textField.getText().toLowerCase().matches("/[^0-9]/g")) {
+                System.out.println(textField.getText());
+                JOptionPane.showMessageDialog(rootPane, "Please enter numbers exclusively in the calculator.");
+                return;
+            }
+        }
         int counter = 0;
         for (JTextField textField : textFieldList) {
             if (textField.getText().isBlank()) {
@@ -3441,17 +3469,37 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
         createArticleInvoices(invoice);
-        deductArticlesFromInvoice(invoice);
+        try {
+            deductArticlesFromInvoice(invoice);
+        } catch (InvoiceGeneratorException ignored) {
+            return;
+        }
         // clearing stuff we will not need anymore.
         clearRegisterTemporaryInformation();
         JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
     }
 
-    private void deductArticlesFromInvoice(Invoice invoice) {
+    private void deductArticlesFromInvoice(Invoice invoice) throws InvoiceGeneratorException {
         List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+        List<String> warningMessages = new ArrayList<>();
         for (ArticleInvoice articleInvoice : articleInvoices) {
             Article article = articleInvoice.getArticle();
             article.setWarehouseQuantity(article.getWarehouseQuantity() - articleInvoice.getQuantity());
+            if (article.getWarehouseQuantity() < 0) {
+                warningMessages.add(article.toString());
+            }
+        }
+        if (warningMessages.size() > 0) {
+            StringBuilder sb = new StringBuilder();
+            for (String myString : warningMessages) {
+                sb.append(warningMessages).append("\n");
+            }
+            if (JOptionPane.showConfirmDialog
+                    (rootPane,
+                    "Issuing this invoice will deplete warehouse supplies for:\n" + sb.toString() + "\nDo you wish to continue?")
+                    != 0) {
+                throw new InvoiceGeneratorException("Invoice has not been issued.");
+            }
         }
         for (ArticleInvoice articleInvoice : articleInvoices) {
             articleHandler.setEntity(articleInvoice.getArticle());

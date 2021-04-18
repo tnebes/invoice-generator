@@ -97,7 +97,7 @@ public class CustomerHandler extends Handler<Customer> {
                     if (entity.getVATID().equals(legalCustomer.getVATID()) && !(entity.equals(legalCustomer))) {
                         String message = "Customer cannot have the VATID " + entity.getVATID() +
                                 " as used by customer " +
-                                legalCustomer.getId();
+                                legalCustomer.toString();
                         throw new InvoiceGeneratorException(message);
                     }
                 }
