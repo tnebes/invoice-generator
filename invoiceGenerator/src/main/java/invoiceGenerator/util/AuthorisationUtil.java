@@ -10,6 +10,7 @@ import invoiceGenerator.model.Operator;
 import invoiceGenerator.view.Application;
 import invoiceGenerator.view.Authorisation;
 import invoiceGenerator.view.MainMenu;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -21,8 +22,32 @@ import javax.swing.*;
  * @author tnebes
  */
 public class AuthorisationUtil {
+
+    public static void createDefaultOperator() {
+        Operator operator = new Operator();
+        operator.setEmail("tnebes@drau.de");
+        operator.setPassword(BCrypt.hashpw("edunova", BCrypt.gensalt()));
+        operator.setFirstName("Tomislav");
+        operator.setLastName("Nebes");
+        OperatorHandler operatorHandler = new OperatorHandler();
+        try {
+            operatorHandler.setEntity(operator);
+            operatorHandler.create();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+    }
     
     public static boolean login(Authorisation authorisation, JTextField usernameTextField, JPasswordField passwordTextField) {
+        OperatorHandler operatorHandler = new OperatorHandler();
+        try {
+            if (operatorHandler.getData().size() == 0) {
+                createDefaultOperator();
+            }
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+
         if(usernameTextField.getText().isEmpty()) {
             authorisation.handleError(usernameTextField, "email is required.");
             return false;
