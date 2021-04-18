@@ -9,6 +9,7 @@ import invoiceGenerator.controller.*;
 import invoiceGenerator.model.*;
 import invoiceGenerator.util.HibernateUtil;
 import invoiceGenerator.util.InvoiceGeneratorException;
+import invoiceGenerator.util.InvoicePrinter;
 import invoiceGenerator.view.viewUtil.AddressPicker;
 import invoiceGenerator.view.viewUtil.ArticlePicker;
 import invoiceGenerator.view.viewUtil.CustomerPicker;
@@ -2221,7 +2222,7 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInvoiceActionPerformed
-        // TODO add your handling code here:
+        printIssueInvoice();
     }//GEN-LAST:event_btnPrintInvoiceActionPerformed
 
     private void purgeDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purgeDatabaseButtonActionPerformed
@@ -2547,7 +2548,12 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterAddArticleActionPerformed
 
     private void btnIssueInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueInvoiceActionPerformed
-        issueInvoice();
+        try {
+            issueInvoice();
+        } catch (InvoiceGeneratorException e) {
+            // TODO handle this
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnIssueInvoiceActionPerformed
 
     private void jmiExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExitButtonActionPerformed
@@ -3452,7 +3458,7 @@ public class MainMenu extends javax.swing.JFrame {
         ( (DefaultTableModel) tblRegisterInvoice.getModel()).setRowCount(0);
     }
 
-    private void issueInvoice() {
+    private Invoice issueInvoice() throws InvoiceGeneratorException {
         Invoice invoice = new Invoice();
         invoice.setArticleInvoice(registerArticleInvoices);
         invoice.setAmountDue(getRegisterInvoiceTotal());
@@ -3473,16 +3479,13 @@ public class MainMenu extends javax.swing.JFrame {
             invoiceHandler.create();
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
+            return null;
         }
         createArticleInvoices(invoice);
-        try {
-            deductArticlesFromInvoice(invoice);
-        } catch (InvoiceGeneratorException ignored) {
-            return;
-        }
         // clearing stuff we will not need anymore.
         clearRegisterTemporaryInformation();
         JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
+        return invoice;
     }
 
     private void deductArticlesFromInvoice(Invoice invoice) throws InvoiceGeneratorException {
@@ -3557,6 +3560,18 @@ public class MainMenu extends javax.swing.JFrame {
     private void removeLastRowRegisterTable() {
         DefaultTableModel registerTableModel = ((DefaultTableModel)tblRegisterInvoice.getModel());
         registerTableModel.setRowCount(registerTableModel.getRowCount() - 1);
+    }
+
+    private void printIssueInvoice() {
+        Invoice invoice = null;
+        try {
+            invoice = issueInvoice();
+        } catch (InvoiceGeneratorException e) {
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while issuing invoice.");
+            return;
+        }
+        InvoicePrinter invoicePrinter = new InvoicePrinter(invoice);
+        invoice = newInvoice -> invoicePrinter.invoice();
     }
 
     /* ******** */
