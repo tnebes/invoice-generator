@@ -5,7 +5,9 @@
  */
 package invoiceGenerator.view;
 
+import invoiceGenerator.controller.OperatorHandler;
 import invoiceGenerator.util.AuthorisationUtil;
+import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -21,9 +23,18 @@ public class Authorisation extends javax.swing.JFrame {
     /**
      * Creates new form Authorisation
      */
-    public Authorisation() {      
+    public Authorisation() {
         initComponents();
-        // TODO remove this
+        // TODO TEMP handles the creation of operator if no operators are there.
+        OperatorHandler operatorHandler = new OperatorHandler();
+        try {
+            if (operatorHandler.getData().size() == 0) {
+                return;
+            }
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        // TODO operator creation on beginning of program should be read from file. FIXME
         txtUsernameTextField.setText("tnebes@drau.de");
         // TODO really remove this
         pswPasswordTextField.setText("edunova");
