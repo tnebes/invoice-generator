@@ -3026,7 +3026,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void updateArticle(Article article) {
-        collectArticleInformation(article);
+        if (!collectArticleInformation(article)) {
+                return;
+            }
         try {
             articleHandler.setEntity(article);
             articleHandler.update();
@@ -3035,7 +3037,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
 
-    private void collectArticleInformation(Article article) {
+    private boolean collectArticleInformation(Article article) {
         article.setLongDescription(txtArticleLongDescription.getText());
         article.setLongName(txtArticleLongName.getText());
         try {
@@ -3045,11 +3047,13 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(rootPane, "Please enter digits for tax rate, wholesale and retail price.");
             e.printStackTrace();
+            return false;
         }
         article.setShortDescription(txtArticleShortDescription.getText());
         article.setShortName(txtArticleShortName.getText());
         article.setWarehouseLocation(txtArticleWarehouseLocation.getText());
         article.setWarehouseQuantity(Long.parseLong(txtArticleWarehouseQuantity.getText()));
+        return true;
     }
 
     private void calculateArticlePriceDetails() {
@@ -3122,7 +3126,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void saveNewArticle() {
         Article newArticle = new Article();
-        collectArticleInformation(newArticle);
+        if (!collectArticleInformation(newArticle)) {
+            return;
+        }
         try {
             articleHandler.setEntity(newArticle);
             articleHandler.create();
