@@ -3057,14 +3057,6 @@ public class MainMenu extends javax.swing.JFrame {
         textFieldList.add(txtArticleRetailPrice);
         textFieldList.add(txtArticleWholesalePrice);
         textFieldList.add(txtArticleTaxRate);
-        for (JTextField textField : textFieldList) {
-            // FIXME this doesn't work.
-            if (textField.getText().toLowerCase().matches("/[^0-9]/g")) {
-                System.out.println(textField.getText());
-                JOptionPane.showMessageDialog(rootPane, "Please enter numbers exclusively in the calculator.");
-                return;
-            }
-        }
         int counter = 0;
         for (JTextField textField : textFieldList) {
             if (textField.getText().isBlank()) {
