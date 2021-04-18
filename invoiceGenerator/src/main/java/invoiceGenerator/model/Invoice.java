@@ -86,7 +86,7 @@ public class Invoice extends Identity {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public TransactionType getTransactionTypeId() {
+	public TransactionType getTransactionType() {
 		return transactionType;
 	}
 	public void setTransactionType(TransactionType transactionType) {

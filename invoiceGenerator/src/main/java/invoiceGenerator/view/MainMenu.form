@@ -38,6 +38,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="null"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jmbFileInfoBar"/>
@@ -828,7 +831,7 @@
                                   <Component id="pnlInvoiceFiltersPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jScrollPane7" min="-2" pref="277" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="19" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -971,8 +974,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="pnlInvoiceArticleInformation" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlInvoiceInformation" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pnlInvoiceInformation" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1028,16 +1031,18 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="txtInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="btnInvoiceRemoveArticle" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btnInvoiceSaveArticle" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane9" min="-2" pref="173" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="btnInvoiceRemoveArticle" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="btnInvoiceSaveArticle" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jScrollPane9" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1051,9 +1056,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblInvoiceArticleInformation" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane8" min="-2" pref="211" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
@@ -1092,14 +1096,15 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="btnInvoiceSaveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="jScrollPane8" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="13" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1219,65 +1224,16 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblInvoiceInvoiceInformation" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblInvoiceAmountDue" max="32767" attributes="0"/>
-                                                          <Component id="lblInvoiceAmountPaid" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="lblInvoiceSubtotal" alignment="0" pref="58" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="txtInvoiceAmountDue" alignment="0" pref="100" max="32767" attributes="0"/>
-                                                          <Component id="txtInvoiceAmountPaid" alignment="0" pref="100" max="32767" attributes="0"/>
-                                                          <Component id="txtInvoiceSubtotal" alignment="0" pref="100" max="32767" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lblInvoiceSubtotal1" min="-2" pref="58" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceTotal" pref="100" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lblInvoiceTransaction" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="cmbInvoiceTransaction" min="-2" pref="72" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lblInvoiceCustomer" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btnInvoiceGotoCustomer" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btnInvoiceCustomerChange" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="lblInvoiceStatus" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="lblInvoiceShipping" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="btnInvoiceGotoShipping" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="btnInvoiceShippingChange" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="cmbInvoiceStatus" min="-2" pref="72" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="btnInvoiceSaveInvoice" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="btnInvoiceDeleteInvoice" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblInvoiceInvoiceInformation" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jPanel6" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -1288,42 +1244,14 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblInvoiceInvoiceInformation" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblInvoiceAmountDue" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtInvoiceAmountDue" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblInvoiceCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInvoiceGotoCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInvoiceCustomerChange" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblInvoiceShipping" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInvoiceGotoShipping" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInvoiceShippingChange" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblInvoiceSubtotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtInvoiceSubtotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblInvoiceStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cmbInvoiceStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnInvoiceDeleteInvoice" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnInvoiceSaveInvoice" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblInvoiceSubtotal1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtInvoiceTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblInvoiceTransaction" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cmbInvoiceTransaction" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="27" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnInvoiceSaveInvoice" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInvoiceDeleteInvoice" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="10" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1333,103 +1261,6 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Invoice information"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceAmountDue">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Due:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceAmountDue">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceAmountPaid">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Paid:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceAmountPaid">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceSubtotal">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Subtotal:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceSubtotal">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceSubtotal1">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Total:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceTotal">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceCustomer">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Customer:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="btnInvoiceGotoCustomer">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Goto"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceGotoCustomerActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="btnInvoiceCustomerChange">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Change"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceShipping">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Shipping:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="btnInvoiceGotoShipping">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Goto"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceGotoShippingActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="btnInvoiceShippingChange">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Change"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceStatus">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Status:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="cmbInvoiceStatus">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="0"/>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Status&gt;"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceTransaction">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Transaction:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="cmbInvoiceTransaction">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="0"/>
-                                </Property>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbInvoiceTransactionActionPerformed"/>
-                              </Events>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TransactionType&gt;"/>
-                              </AuxValues>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnInvoiceSaveInvoice">
                               <Properties>
@@ -1441,6 +1272,268 @@
                                 <Property name="text" type="java.lang.String" value="Delete"/>
                               </Properties>
                             </Component>
+                            <Container class="javax.swing.JPanel" name="jPanel6">
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jPanel5" max="32767" attributes="0"/>
+                                              <Component id="jPanel3" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Container class="javax.swing.JPanel" name="jPanel5">
+
+                                  <Layout>
+                                    <DimensionLayout dim="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblInvoiceTransaction" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="cmbInvoiceTransaction" min="-2" pref="72" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblInvoiceCustomer" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnInvoiceGotoCustomer" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnInvoiceCustomerChange" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="lblInvoiceStatus" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                                          <Component id="lblInvoiceShipping" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="btnInvoiceGotoShipping" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="btnInvoiceShippingChange" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="cmbInvoiceStatus" min="-2" pref="72" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                    <DimensionLayout dim="1">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoiceGotoCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoiceCustomerChange" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceShipping" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoiceGotoShipping" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoiceShippingChange" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cmbInvoiceStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceTransaction" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cmbInvoiceTransaction" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                  </Layout>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="btnInvoiceShippingChange">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Change"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="cmbInvoiceTransaction">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="0"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbInvoiceTransactionActionPerformed"/>
+                                      </Events>
+                                      <AuxValues>
+                                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TransactionType&gt;"/>
+                                      </AuxValues>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="cmbInvoiceStatus">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="0"/>
+                                        </Property>
+                                      </Properties>
+                                      <AuxValues>
+                                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Status&gt;"/>
+                                      </AuxValues>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="btnInvoiceCustomerChange">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Change"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceCustomer">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Customer:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceShipping">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Shipping:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceStatus">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Status:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceTransaction">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Transaction:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="btnInvoiceGotoShipping">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Goto"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceGotoShippingActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="btnInvoiceGotoCustomer">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Goto"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceGotoCustomerActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                                <Container class="javax.swing.JPanel" name="jPanel3">
+
+                                  <Layout>
+                                    <DimensionLayout dim="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="lblInvoiceAmountDue" max="32767" attributes="0"/>
+                                                          <Component id="lblInvoiceAmountPaid" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="lblInvoiceSubtotal" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="txtInvoiceAmountDue" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="txtInvoiceAmountPaid" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="txtInvoiceSubtotal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblInvoiceSubtotal1" min="-2" pref="58" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="txtInvoiceTotal" min="-2" pref="100" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                    <DimensionLayout dim="1">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceAmountDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtInvoiceAmountDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceSubtotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtInvoiceSubtotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceSubtotal1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtInvoiceTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                  </Layout>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JTextField" name="txtInvoiceAmountDue">
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceAmountDue">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Due:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceSubtotal1">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Total:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceAmountPaid">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Paid:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JTextField" name="txtInvoiceAmountPaid">
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="lblInvoiceSubtotal">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="Subtotal:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JTextField" name="txtInvoiceTotal">
+                                    </Component>
+                                    <Component class="javax.swing.JTextField" name="txtInvoiceSubtotal">
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                              </SubComponents>
+                            </Container>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1467,17 +1560,6 @@
                               <Component id="jspCustomerScrollPane" min="-2" pref="238" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnCustomerSaveButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnCustomerRevertButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnCustomerClear" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnCustomerAddCustomer" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnCustomerDeleteButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -1548,6 +1630,18 @@
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnCustomerSaveButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCustomerRevertButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnCustomerClear" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCustomerAddCustomer" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnCustomerDeleteButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1556,75 +1650,74 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCustomerIDLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCustomerDateAddedLabel" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="txtCustomerDateAdded" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCustomerNationalIDNumberLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerNationalIDNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblFirstNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMiddleNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblLastNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCustomerNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerLegalName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblVATIDLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerVATID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCustomerTypeLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="jcbCustomerTypeCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCustomerIDLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCustomerDateAddedLabel" alignment="3" max="32767" attributes="0"/>
-                                          <Component id="txtCustomerDateAdded" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCustomerNationalIDNumberLabel" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerNationalIDNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblFirstNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblMiddleNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblLastNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCustomerNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerLegalName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblVATIDLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerVATID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCustomerTypeLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="jcbCustomerTypeCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCustomerAddress" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnChangeCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnChangeCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnCustomerDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerRevertButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerAddCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCustomerClear" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jspCustomerScrollPane" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCustomerAddress" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnChangeCustomerBillingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnChangeCustomerShippingAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnCustomerSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerRevertButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerAddCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCustomerDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jspCustomerScrollPane" min="-2" pref="451" max="-2" attributes="0"/>
+                              <EmptySpace pref="17" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1856,9 +1949,12 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jspArticleScrollPane" pref="462" max="32767" attributes="0"/>
-                                  <Component id="jPanel1" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1992,7 +2088,7 @@
                                       <Component id="lblArticleWarehouseLocationLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="txtArticleWarehouseLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" pref="27" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" pref="23" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblArticleLongNameLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="txtArticleLongName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2005,7 +2101,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="lblArticleShortDescriptionLabel1" pref="59" max="32767" attributes="0"/>
+                                          <Component id="lblArticleShortDescriptionLabel1" pref="54" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2221,17 +2317,17 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel2" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="jspArticleScrollPane1" min="-2" pref="351" max="-2" attributes="0"/>
+                                      <Component id="jspArticleScrollPane1" min="-2" pref="339" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblAddressCustomerWAddress" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" pref="83" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2392,7 +2488,7 @@
                                       <Component id="lblAddressCountry" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="txtAddressCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="278" max="32767" attributes="0"/>
+                                  <EmptySpace pref="270" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddressDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAddressSave" alignment="3" min="-2" max="-2" attributes="0"/>
