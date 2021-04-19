@@ -3571,7 +3571,7 @@ public class MainMenu extends javax.swing.JFrame {
             return;
         }
         InvoicePrinter invoicePrinter = new InvoicePrinter(invoice);
-        invoice = newInvoice -> invoicePrinter.invoice();
+
     }
 
     /* ******** */

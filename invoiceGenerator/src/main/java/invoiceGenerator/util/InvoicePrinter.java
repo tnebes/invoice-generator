@@ -7,19 +7,8 @@ public class InvoicePrinter {
     private Invoice invoice = null;
 
     public InvoicePrinter(Invoice invoice) {
-
+        this.invoice = invoice;
     }
 
-    public interface ReturnInvoice {
-        void run(Invoice invoice);
-    }
-
-    public void invoice(ReturnInvoice returnInvoice) {
-        returnInvoice.run(pullInvoice());
-    }
-
-    public Invoice pullInvoice() {
-        return invoice;
-    }
 
 }
