@@ -2778,7 +2778,7 @@ public class MainMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No article in invoice selected.");
             return;
         }
-        deleteArticleInvoice(articleInvoice);
+        deleteArticleInvoiceUpdate(articleInvoice);
     }//GEN-LAST:event_btnInvoiceRemoveArticleActionPerformed
 
     private void btnInvoiceDeleteInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceDeleteInvoiceActionPerformed
@@ -3070,23 +3070,33 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void deleteArticleInvoice(ArticleInvoice articleInvoice) {
         articleInvoiceHandler.setEntity(articleInvoice);
-        invoiceHandler.setEntity(articleInvoice.getInvoice());
-        invoiceHandler.getEntity().getArticleInvoice().remove(articleInvoice);
+        Invoice invoice = articleInvoice.getInvoice();
+        invoiceHandler.setEntity(invoice);
+        invoice.getArticleInvoice().remove(articleInvoice);
         try {
-            articleInvoiceHandler.delete();
             invoiceHandler.update();
         } catch (InvoiceGeneratorException e) {
-            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting article in invoice.");
             e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while updating invoice.");
             return;
         }
-        showInvoiceInformation(invoiceHandler.getEntity());
-        updateInvoiceArticles(invoiceHandler.getEntity());
-        // TODO invoice must be calculated
-        // TODO ???
+        try {
+            articleInvoiceHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting article in invoice.");
+            return;
+        }
+    }
+
+    private void deleteArticleInvoiceUpdate(ArticleInvoice articleInvoice) {
+        deleteArticleInvoice(articleInvoice);
+        showInvoiceInformation(articleInvoice.getInvoice());
+        updateInvoiceArticles(articleInvoice.getInvoice());
     }
 
     private void deleteInvoice(Invoice invoice) {
+
     }
 
     /* ************* */
@@ -3790,13 +3800,12 @@ public class MainMenu extends javax.swing.JFrame {
             articleInvoiceHandler.setEntity(articleInvoice);
             try {
                 articleInvoiceHandler.create();
-                return true;
             } catch (InvoiceGeneratorException e) {
                 e.printStackTrace();
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void populateRegisterStatusesTransactions() {
