@@ -3055,7 +3055,19 @@ public class MainMenu extends javax.swing.JFrame {
         articleInvoice.setTaxRate(new BigDecimal(txtInvoiceArticleTaxRate.getText()));
         articleInvoice.setRetailPrice(new BigDecimal(txtInvoiceArticleRetail.getText()));
         articleInvoice.setDiscount(new BigDecimal(txtInvoiceArticleQuantity.getText()));
-        // TODO quantity must be deducted or added to the stockpile!!!
+        // quantity must be deducted or added to the stockpile
+        Long articleQuantityDifference = Long.parseLong(txtInvoiceArticleQuantity.getText()) - articleInvoice.getQuantity();
+        articleInvoice.getArticle().setWarehouseQuantity(
+                articleInvoice.getArticle().getWarehouseQuantity() - articleQuantityDifference
+        );
+        // TODO temp code looks horrible but works
+        try {
+            articleHandler.setEntity(articleInvoice.getArticle());
+            articleHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+        }
+        // end of terrible code
         articleInvoice.setQuantity(Long.parseLong(txtInvoiceArticleQuantity.getText()));
         articleInvoice.setTotal(new BigDecimal(txtInvoiceArticleTotal.getText()));
         articleInvoiceHandler.setEntity(articleInvoice);
@@ -3105,6 +3117,7 @@ public class MainMenu extends javax.swing.JFrame {
 //            return;
 //        }
         loadInvoices();
+        JOptionPane.showMessageDialog(rootPane, "Invoice successfully deleted!");
     }
 
     private void deleteArticlesFromInvoices(Invoice invoice) {
