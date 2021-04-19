@@ -2062,10 +2062,9 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblInvoiceArticleInformation" min="-2" pref="258" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jScrollPane8" min="-2" pref="252" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2095,6 +2094,11 @@
                                                       <Component id="txtInvoiceArticleDiscount" min="-2" pref="100" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblInvoiceArticleQuantity" min="-2" pref="100" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="txtInvoiceArticleQuantity" min="-2" pref="100" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lblInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="txtInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
@@ -2112,6 +2116,10 @@
                                                       <Component id="jScrollPane9" min="-2" pref="173" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                              <Component id="lblInvoiceArticleInformation" min="-2" pref="258" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -2152,22 +2160,27 @@
                                                           <Component id="lblInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="txtInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="txtInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="btnInvoiceSaveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="btnInvoiceSaveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                      <Component id="lblInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Component id="jScrollPane8" max="32767" attributes="0"/>
@@ -2276,11 +2289,24 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Remove"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceRemoveArticleActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnInvoiceSaveArticle">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Save"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceSaveArticleActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleQuantity">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Quantity:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleQuantity">
                             </Component>
                           </SubComponents>
                         </Container>
@@ -2349,6 +2375,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Delete"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceDeleteInvoiceActionPerformed"/>
+                              </Events>
                             </Component>
                             <Container class="javax.swing.JPanel" name="jPanel6">
 
@@ -2584,6 +2613,9 @@
                                   </Layout>
                                   <SubComponents>
                                     <Component class="javax.swing.JTextField" name="txtInvoiceAmountDue">
+                                      <Properties>
+                                        <Property name="editable" type="boolean" value="false"/>
+                                      </Properties>
                                     </Component>
                                     <Component class="javax.swing.JLabel" name="lblInvoiceAmountDue">
                                       <Properties>
@@ -2608,8 +2640,14 @@
                                       </Properties>
                                     </Component>
                                     <Component class="javax.swing.JTextField" name="txtInvoiceTotal">
+                                      <Properties>
+                                        <Property name="editable" type="boolean" value="false"/>
+                                      </Properties>
                                     </Component>
                                     <Component class="javax.swing.JTextField" name="txtInvoiceSubtotal">
+                                      <Properties>
+                                        <Property name="editable" type="boolean" value="false"/>
+                                      </Properties>
                                     </Component>
                                     <Component class="javax.swing.JButton" name="btnInvoicePaid">
                                       <Properties>

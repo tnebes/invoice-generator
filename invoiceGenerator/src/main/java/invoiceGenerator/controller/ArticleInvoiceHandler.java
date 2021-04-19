@@ -2,9 +2,11 @@ package invoiceGenerator.controller;
 
 import invoiceGenerator.model.Article;
 import invoiceGenerator.model.ArticleInvoice;
+import invoiceGenerator.model.Invoice;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleInvoiceHandler extends Handler<ArticleInvoice> {
@@ -43,7 +45,7 @@ public class ArticleInvoiceHandler extends Handler<ArticleInvoice> {
 
     @Override
     protected void updateValidation() throws InvoiceGeneratorException {
-
+        checkPrice();
     }
 
     @Override

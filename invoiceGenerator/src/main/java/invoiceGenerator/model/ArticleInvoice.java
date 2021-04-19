@@ -136,6 +136,16 @@ public class ArticleInvoice extends Identity {
 		return (this.getDiscount().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP)).add(BigDecimal.ONE);
 	}
 
+	private void setArticleInvoiceTotal() {
+		BigDecimal tempTotal;
+		tempTotal = this.getArticle().getRetailPrice().multiply(BigDecimal.valueOf(this.getQuantity()));
+		if (this.getCalculableDiscount().equals(BigDecimal.ONE)) {
+			this.total = tempTotal;
+		}
+		this.total = tempTotal.divide(this.getCalculableDiscount(), 2, RoundingMode.HALF_UP);
+	}
+
+
 	@Override
 	public String toString() {
 		return this.getId() + " - " + this.getArticle().getShortName() + " : " + this.getQuantity();
