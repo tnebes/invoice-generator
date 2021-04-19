@@ -52,7 +52,7 @@ public class Invoice extends Identity {
 
 	// TODO delete this?
 	@Column(name = "article_invoice")
-	@OneToMany(mappedBy = "invoice")
+	@OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL)
 	List<ArticleInvoice> articleInvoice = new ArrayList<>();
 
 	public Invoice() {

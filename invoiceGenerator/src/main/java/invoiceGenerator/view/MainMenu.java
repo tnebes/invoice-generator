@@ -3095,25 +3095,39 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void deleteInvoice(Invoice invoice) {
         deleteArticlesFromInvoices(invoice);
-        invoiceHandler.setEntity(invoice);
-        try {
-            invoiceHandler.update();
-            invoiceHandler.delete();
-        } catch (InvoiceGeneratorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting invoice.");
-            return;
-        }
+//        invoiceHandler.setEntity(invoice);
+//        try {
+//            invoiceHandler.update();
+//            invoiceHandler.delete();
+//        } catch (InvoiceGeneratorException e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting invoice.");
+//            return;
+//        }
         loadInvoices();
     }
 
     private void deleteArticlesFromInvoices(Invoice invoice) {
-        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
-        if (articleInvoices.size() == 0) {
-            return;
-        }
-        for (ArticleInvoice articleInvoice : articleInvoices) {
-            deleteArticleInvoice(articleInvoice);
+//        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+//        if (articleInvoices.size() == 0) {
+//            return;
+//        }
+//        invoice.setArticleInvoice(null);
+//        for (ArticleInvoice articleInvoice : articleInvoices) {
+////            deleteArticleInvoice(articleInvoice);
+//            articleInvoice.setInvoice(null);
+//            try {
+//                articleInvoiceHandler.setEntity(articleInvoice);
+//                articleInvoiceHandler.delete();
+//            } catch (InvoiceGeneratorException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        try {
+            invoiceHandler.setEntity(invoice);
+            invoiceHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
         }
     }
 
@@ -3729,6 +3743,9 @@ public class MainMenu extends javax.swing.JFrame {
     private Invoice issueInvoice() throws InvoiceGeneratorException {
         Invoice invoice = new Invoice();
         invoice.setArticleInvoice(registerArticleInvoices);
+        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+            articleInvoice.setInvoice(invoice);
+        }
         invoice.setAmountDue(getRegisterInvoiceTotal());
         invoice.setAmountPaid(BigDecimal.ZERO);
         invoice.setDateOfCreation(Instant.now());
@@ -3813,16 +3830,16 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private boolean createArticleInvoices(Invoice invoice) {
-        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            articleInvoice.setInvoice(invoice);
-            articleInvoiceHandler.setEntity(articleInvoice);
-            try {
-                articleInvoiceHandler.create();
-            } catch (InvoiceGeneratorException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
+//        for (ArticleInvoice articleInvoice : registerArticleInvoices) {
+//            articleInvoice.setInvoice(invoice);
+//            articleInvoiceHandler.setEntity(articleInvoice);
+//            try {
+//                articleInvoiceHandler.create();
+//            } catch (InvoiceGeneratorException e) {
+//                e.printStackTrace();
+//                return false;
+//            }
+//        }
         return true;
     }
 
