@@ -2033,7 +2033,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pnlInvoiceArticleInformation" max="32767" attributes="0"/>
+                              <Component id="pnlInvoiceArticleInformation" pref="663" max="32767" attributes="0"/>
                               <Component id="pnlInvoiceInformation" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -2063,64 +2063,26 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jScrollPane8" min="-2" pref="252" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleDate" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleDate" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleWholesale" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleWholesale" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleTaxRate" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleTaxRate" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleRetail" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleRetail" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleDiscount" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleDiscount" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleQuantity" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleQuantity" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="btnInvoiceRemoveArticle" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="btnInvoiceSaveArticle" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jScrollPane9" min="-2" pref="173" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                               <Component id="lblInvoiceArticleInformation" min="-2" pref="258" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jPanel7" min="-2" pref="218" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnInvoiceRemoveArticle" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnInvoiceSaveArticle" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane9" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -2128,64 +2090,30 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblInvoiceArticleInformation" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jScrollPane9" min="-2" pref="142" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleWholesale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleWholesale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleTaxRate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleTaxRate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="lblInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="txtInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lblInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="txtInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblInvoiceArticleInformation" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblInvoiceArticleNote" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="btnInvoiceSaveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jScrollPane9" min="-2" pref="111" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="btnInvoiceRemoveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="btnInvoiceSaveArticle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                      <Component id="lblInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="jScrollPane8" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="jScrollPane8" max="32767" attributes="0"/>
+                                          <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2219,51 +2147,6 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleDate">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Date:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleDate">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleWholesale">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Wholesale:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleWholesale">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleTaxRate">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleTaxRate">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Tax rate:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleRetail">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Retail:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleRetail">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleDiscount">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Discount:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleDiscount">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleTotal">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Total:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleTotal">
-                            </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane9">
                               <AuxValues>
                                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -2301,13 +2184,142 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoiceSaveArticleActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblInvoiceArticleQuantity">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Quantity:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtInvoiceArticleQuantity">
-                            </Component>
+                            <Container class="javax.swing.JPanel" name="jPanel7">
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="lblInvoiceArticleTotal" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleDiscount" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleQuantity" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleRetail" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleTaxRate" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleWholesale" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="lblInvoiceArticleDate" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtInvoiceArticleDate" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleDiscount" min="-2" pref="99" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleTotal" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleQuantity" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleRetail" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleTaxRate" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleWholesale" min="-2" pref="100" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleWholesale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleWholesale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleTaxRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleTaxRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleRetail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleDiscount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceArticleTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleRetail">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleDate">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleTaxRate">
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleWholesale">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Wholesale:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleTaxRate">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Tax rate:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleWholesale">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleDiscount">
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleRetail">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Retail:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleTotal">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="txtInvoiceArticleQuantity">
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleTotal">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Total:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleDate">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Date:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleQuantity">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Quantity:"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblInvoiceArticleDiscount">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="Discount:"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="pnlInvoiceInformation">
@@ -2352,7 +2364,7 @@
                                           <Component id="btnInvoiceDeleteInvoice" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnInvoiceSaveInvoice" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                                      <EmptySpace pref="36" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
