@@ -3620,9 +3620,8 @@ public class MainMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Invoice could not be issued.");
             return null;
         }
-        if (createArticleInvoices(invoice)) {
-            JOptionPane.showMessageDialog(rootPane, "Invoice could not be issued.");
-            return null;
+        if (!createArticleInvoices(invoice)) {
+            JOptionPane.showMessageDialog(rootPane, "An empty invoice has been issued.");
         }
         deductArticlesFromInvoice(invoice);
         // clearing stuff we will not need anymore.
