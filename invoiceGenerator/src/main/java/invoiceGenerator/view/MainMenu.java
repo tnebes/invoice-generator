@@ -3078,14 +3078,12 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(rootPane, "Something went wrong while updating invoice.");
-            return;
         }
         try {
             articleInvoiceHandler.delete();
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting article in invoice.");
-            return;
         }
     }
 
@@ -3096,7 +3094,27 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void deleteInvoice(Invoice invoice) {
+        deleteArticlesFromInvoices(invoice);
+        invoiceHandler.setEntity(invoice);
+        try {
+            invoiceHandler.update();
+            invoiceHandler.delete();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting invoice.");
+            return;
+        }
+        loadInvoices();
+    }
 
+    private void deleteArticlesFromInvoices(Invoice invoice) {
+        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+        if (articleInvoices.size() == 0) {
+            return;
+        }
+        for (ArticleInvoice articleInvoice : articleInvoices) {
+            deleteArticleInvoice(articleInvoice);
+        }
     }
 
     /* ************* */
