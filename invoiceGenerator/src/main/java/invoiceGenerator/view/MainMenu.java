@@ -1598,7 +1598,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(txtInvoiceArticleRetail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInvoiceArticleTaxRate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInvoiceArticleWholesale, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1638,16 +1638,13 @@ public class MainMenu extends javax.swing.JFrame {
         pnlInvoiceArticleInformationLayout.setHorizontalGroup(
             pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
-                .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblInvoiceArticleInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblInvoiceArticleInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
                         .addComponent(btnInvoiceRemoveArticle)
@@ -1655,7 +1652,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(btnInvoiceSaveArticle))
                     .addComponent(lblInvoiceArticleNote)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         pnlInvoiceArticleInformationLayout.setVerticalGroup(
             pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1908,7 +1905,7 @@ public class MainMenu extends javax.swing.JFrame {
         pnlInvoiceArticleInvoiceInformation.setLayout(pnlInvoiceArticleInvoiceInformationLayout);
         pnlInvoiceArticleInvoiceInformationLayout.setHorizontalGroup(
             pnlInvoiceArticleInvoiceInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlInvoiceArticleInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 663, Short.MAX_VALUE)
+            .addComponent(pnlInvoiceArticleInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlInvoiceInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlInvoiceArticleInvoiceInformationLayout.setVerticalGroup(
@@ -2947,11 +2944,11 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private boolean isInvoiceStatusSearchEmpty() {
-        return getInvoiceTransactionTypeFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+        return getInvoiceStatusFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
     }
 
     private boolean isInvoiceTransactionSearchEmpty() {
-        return getInvoiceStatusFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
+        return getInvoiceTransactionTypeFilter().getName().equals(invoiceStatusTransactionTypeDefaultFilter);
     }
 
     private boolean areInvoiceSearchFiltersEmpty() {

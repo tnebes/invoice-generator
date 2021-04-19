@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "transaction_type")
 public class TransactionType extends Identity {
@@ -44,15 +45,23 @@ public class TransactionType extends Identity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-//	public List<Invoice> getInvoices() {
-//		return invoices;
-//	}
-//	public void setInvoices(List<Invoice> invoices) {
-//		this.invoices = invoices;
-//	}
 
 	@Override
 	public String toString() {
 		return this.getName();
+	}
+
+	// absolutely cursed
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		TransactionType that = (TransactionType) o;
+		return Objects.equals(name, that.name) && Objects.equals(description, that.description);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, description);
 	}
 }
