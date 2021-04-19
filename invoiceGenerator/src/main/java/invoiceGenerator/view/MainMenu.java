@@ -300,6 +300,7 @@ public class MainMenu extends javax.swing.JFrame {
         lblInvoiceSubtotal = new javax.swing.JLabel();
         txtInvoiceTotal = new javax.swing.JTextField();
         txtInvoiceSubtotal = new javax.swing.JTextField();
+        btnInvoicePaid = new javax.swing.JButton();
         jpOptionsTab = new javax.swing.JPanel();
         databasePanel = new javax.swing.JPanel();
         databaseLabel = new javax.swing.JLabel();
@@ -1491,6 +1492,11 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         lstInvoiceList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstInvoiceList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstInvoiceListValueChanged(evt);
+            }
+        });
         jScrollPane7.setViewportView(lstInvoiceList);
 
         javax.swing.GroupLayout pnlInvoicesLayout = new javax.swing.GroupLayout(pnlInvoices);
@@ -1517,9 +1523,17 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblInvoiceArticleInformation.setText("Article information");
 
+        lstInvoiceArticle.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstInvoiceArticle.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstInvoiceArticleValueChanged(evt);
+            }
+        });
         jScrollPane8.setViewportView(lstInvoiceArticle);
 
         lblInvoiceArticleDate.setText("Date:");
+
+        txtInvoiceArticleDate.setEditable(false);
 
         lblInvoiceArticleWholesale.setText("Wholesale:");
 
@@ -1551,8 +1565,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInvoiceArticleInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
                                 .addComponent(lblInvoiceArticleDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1597,11 +1611,11 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlInvoiceArticleInformationLayout.createSequentialGroup()
-                        .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlInvoiceArticleInformationLayout.createSequentialGroup()
                                 .addComponent(lblInvoiceArticleNote)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane9))
+                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlInvoiceArticleInformationLayout.createSequentialGroup()
                                 .addGroup(pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblInvoiceArticleDate)
@@ -1681,10 +1695,10 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addComponent(lblInvoiceTransaction)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbInvoiceTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbInvoiceTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblInvoiceCustomer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1701,8 +1715,8 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addComponent(btnInvoiceGotoShipping)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnInvoiceShippingChange))
-                            .addComponent(cmbInvoiceStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addComponent(cmbInvoiceStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1736,6 +1750,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         lblInvoiceSubtotal.setText("Subtotal:");
 
+        btnInvoicePaid.setText("paid");
+        btnInvoicePaid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoicePaidActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -1757,7 +1778,9 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(lblInvoiceSubtotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtInvoiceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInvoicePaid)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1769,7 +1792,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblInvoiceAmountPaid)
-                    .addComponent(txtInvoiceAmountPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtInvoiceAmountPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInvoicePaid))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblInvoiceSubtotal)
@@ -1788,7 +1812,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2662,6 +2686,37 @@ public class MainMenu extends javax.swing.JFrame {
         invoiceSearchDecider();
     }//GEN-LAST:event_btnInvoiceFilterSearchActionPerformed
 
+    private void lstInvoiceListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInvoiceListValueChanged
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        Invoice invoice = lstInvoiceList.getSelectedValue();
+        if (invoice == null) {
+            return;
+        }
+        showInvoiceInformation(invoice);
+        updateInvoiceArticles(invoice);
+    }//GEN-LAST:event_lstInvoiceListValueChanged
+
+    private void lstInvoiceArticleValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInvoiceArticleValueChanged
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        ArticleInvoice articleInvoice = lstInvoiceArticle.getSelectedValue();
+        if (articleInvoice == null) {
+            return;
+        }
+        updateInvoiceArticleInformation(articleInvoice);
+    }//GEN-LAST:event_lstInvoiceArticleValueChanged
+
+    private void btnInvoicePaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoicePaidActionPerformed
+        if (lstInvoiceList.getSelectedValue() == null) {
+            return;
+        }
+        setInvoiceAsPaid(lstInvoiceList.getSelectedValue());
+        JOptionPane.showMessageDialog(rootPane, "Invoice set as paid!");
+    }//GEN-LAST:event_btnInvoicePaidActionPerformed
+
     /* Invoice Panel */
     /* ************* */
 
@@ -2843,6 +2898,62 @@ public class MainMenu extends javax.swing.JFrame {
         txtInvoiceSearchBar.setText(invoiceSearchFilter);
         loadInvoiceStatusesTransactions();
         loadInvoices();
+    }
+
+    private void updateInvoiceArticles(Invoice invoice) {
+        DefaultListModel<ArticleInvoice> articleInvoicesModel = new DefaultListModel<>();
+        articleInvoicesModel.addAll(invoice.getArticleInvoice());
+        lstInvoiceArticle.setModel(articleInvoicesModel);
+    }
+
+    private void showInvoiceInformation(Invoice invoice) {
+        refreshInvoiceInformation();
+        txtInvoiceAmountDue.setText(invoice.getAmountDue().toString());
+        txtInvoiceAmountPaid.setText(invoice.getAmountPaid().toString());
+        txtInvoiceSubtotal.setText(invoice.getSubtotal().toString());
+        txtInvoiceTotal.setText(invoice.getTotal().toString());
+        cmbInvoiceStatus.setSelectedItem(invoice.getStatus());
+        cmbInvoiceTransaction.setSelectedItem(invoice.getTransactionType());
+    }
+
+    private void refreshInvoiceInformation() {
+        txtInvoiceAmountDue.setText("");
+        txtInvoiceAmountPaid.setText("");
+        txtInvoiceSubtotal.setText("");
+        txtInvoiceTotal.setText("");
+        loadInvoiceInformationStatusTransaction();
+    }
+
+    private void loadInvoiceInformationStatusTransaction() {
+        loadStatuses(cmbInvoiceStatus);
+        loadTransactionTypes(cmbInvoiceTransaction);
+    }
+
+    private void updateInvoiceArticleInformation(ArticleInvoice articleInvoice) {
+        refreshInvoiceArticleInformation();
+        txtInvoiceArticleDate.setText(articleInvoice.getDateOfCreation().toString());
+        txtInvoiceArticleWholesale.setText(articleInvoice.getWholesalePrice().toString());
+        txtInvoiceArticleTaxRate.setText(articleInvoice.getTaxRate().toString());
+        txtInvoiceArticleRetail.setText(articleInvoice.getRetailPrice().toString());
+        txtInvoiceArticleDiscount.setText(articleInvoice.getDiscount().toString());
+        txtInvoiceArticleTotal.setText(articleInvoice.getTotal().toString());
+        if (articleInvoice.getNote() != null) {
+            txtInvoiceArticleNote.setText(articleInvoice.getNote());
+        }
+    }
+
+    private void refreshInvoiceArticleInformation() {
+        txtInvoiceArticleDate.setText("");
+        txtInvoiceArticleWholesale.setText("");
+        txtInvoiceArticleTaxRate.setText("");
+        txtInvoiceArticleRetail.setText("");
+        txtInvoiceArticleDiscount.setText("");
+        txtInvoiceArticleTotal.setText("");
+        txtInvoiceArticleNote.setText("");
+    }
+
+    private void setInvoiceAsPaid(Invoice invoice) {
+        txtInvoiceAmountPaid.setText(invoice.getAmountDue().toString());
     }
 
     /* ************* */
@@ -3139,9 +3250,11 @@ public class MainMenu extends javax.swing.JFrame {
             articleHandler.setEntity(newArticle);
             articleHandler.create();
             loadArticles();
+            JOptionPane.showMessageDialog(rootPane, "Article successfully added!");
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
+
     }
 
     /* ************* */
@@ -3846,6 +3959,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnInvoiceFilterSearch;
     private javax.swing.JButton btnInvoiceGotoCustomer;
     private javax.swing.JButton btnInvoiceGotoShipping;
+    private javax.swing.JButton btnInvoicePaid;
     private javax.swing.JButton btnInvoiceRemoveArticle;
     private javax.swing.JButton btnInvoiceSaveArticle;
     private javax.swing.JButton btnInvoiceSaveInvoice;

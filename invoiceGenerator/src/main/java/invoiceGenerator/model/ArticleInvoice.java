@@ -135,7 +135,9 @@ public class ArticleInvoice extends Identity {
 	public BigDecimal getCalculableDiscount() {
 		return (this.getDiscount().divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP)).add(BigDecimal.ONE);
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return this.getId() + " - " + this.getArticle().getShortName() + " : " + this.getQuantity();
+	}
 }

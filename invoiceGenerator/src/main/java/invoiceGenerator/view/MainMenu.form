@@ -2017,6 +2017,9 @@
                                 </Property>
                                 <Property name="selectionMode" type="int" value="0"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstInvoiceListValueChanged"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Invoice&gt;"/>
                               </AuxValues>
@@ -2061,10 +2064,10 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblInvoiceArticleInformation" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lblInvoiceArticleInformation" min="-2" pref="258" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jScrollPane8" min="-2" pref="252" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lblInvoiceArticleDate" min="-2" pref="100" max="-2" attributes="0"/>
@@ -2123,11 +2126,11 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lblInvoiceArticleNote" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jScrollPane9" max="32767" attributes="0"/>
+                                                      <Component id="jScrollPane9" min="-2" pref="142" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2192,7 +2195,11 @@
                                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                                       <StringArray count="0"/>
                                     </Property>
+                                    <Property name="selectionMode" type="int" value="0"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstInvoiceArticleValueChanged"/>
+                                  </Events>
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ArticleInvoice&gt;"/>
                                   </AuxValues>
@@ -2205,6 +2212,9 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtInvoiceArticleDate">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                              </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblInvoiceArticleWholesale">
                               <Properties>
@@ -2345,7 +2355,7 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
@@ -2373,10 +2383,10 @@
                                           <Group type="102" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lblInvoiceTransaction" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="cmbInvoiceTransaction" min="-2" pref="72" max="-2" attributes="0"/>
+                                                      <Component id="cmbInvoiceTransaction" min="-2" pref="131" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Component id="lblInvoiceCustomer" min="-2" max="-2" attributes="0"/>
@@ -2392,16 +2402,16 @@
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
+                                                          <Group type="102" attributes="0">
                                                               <Component id="btnInvoiceGotoShipping" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Component id="btnInvoiceShippingChange" min="-2" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Component id="cmbInvoiceStatus" min="-2" pref="72" max="-2" attributes="0"/>
+                                                          <Component id="cmbInvoiceStatus" min="-2" pref="131" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -2535,6 +2545,8 @@
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnInvoicePaid" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="33" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -2550,6 +2562,7 @@
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="lblInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="txtInvoiceAmountPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoicePaid" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2594,6 +2607,14 @@
                                     <Component class="javax.swing.JTextField" name="txtInvoiceTotal">
                                     </Component>
                                     <Component class="javax.swing.JTextField" name="txtInvoiceSubtotal">
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="btnInvoicePaid">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="paid"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvoicePaidActionPerformed"/>
+                                      </Events>
                                     </Component>
                                   </SubComponents>
                                 </Container>

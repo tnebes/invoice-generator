@@ -138,6 +138,10 @@ public class Invoice extends Identity {
 
 	@Override
 	public String toString() {
-		return this.getId() + "";
+		String customer = "";
+		if (this.getCustomer() != null) {
+			customer = this.getCustomer().toString();
+		}
+		return this.getId() + " - " + customer + " " + this.getAmountPaid() + " / " + this.getAmountDue();
 	}
 }

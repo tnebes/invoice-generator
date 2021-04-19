@@ -4,6 +4,7 @@ import invoiceGenerator.model.Article;
 import invoiceGenerator.model.ArticleInvoice;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ArticleInvoiceHandler extends Handler<ArticleInvoice> {
@@ -28,7 +29,16 @@ public class ArticleInvoiceHandler extends Handler<ArticleInvoice> {
 
     @Override
     protected void createValidation() throws InvoiceGeneratorException {
+        checkPrice();
+    }
 
+    private void checkPrice() throws InvoiceGeneratorException {
+        if (entity.getDiscount().compareTo(BigDecimal.ZERO) < 0) {
+            throw new InvoiceGeneratorException("Discount cannot be negative.");
+        }
+        if (entity.getDiscount().compareTo(BigDecimal.valueOf(100L)) > 0) {
+            throw new InvoiceGeneratorException("Discount cannot be above 100%.");
+        }
     }
 
     @Override

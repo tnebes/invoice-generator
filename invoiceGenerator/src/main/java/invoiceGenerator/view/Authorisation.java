@@ -37,7 +37,7 @@ public class Authorisation extends javax.swing.JFrame {
         // TODO operator creation on beginning of program should be read from file. FIXME
         txtUsernameTextField.setText("tnebes@drau.de");
         // TODO really remove this
-        pswPasswordTextField.setText("edunova");
+        pswPasswordTextField.setText("");
         
     }
 
