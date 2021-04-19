@@ -5,6 +5,7 @@ import invoiceGenerator.model.Status;
 import invoiceGenerator.model.TransactionType;
 import invoiceGenerator.util.InvoiceGeneratorException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class InvoiceHandler extends Handler<Invoice> {
@@ -64,34 +65,21 @@ public class InvoiceHandler extends Handler<Invoice> {
 
     @Override
     protected void createValidation() throws InvoiceGeneratorException {
-        
+        checkAmounts();
     }
 
     @Override
     protected void updateValidation() throws InvoiceGeneratorException {
+        checkAmounts();
+    }
 
+    private void checkAmounts() throws InvoiceGeneratorException {
+        // TODO
     }
 
     @Override
     protected void deleteValidation() throws InvoiceGeneratorException {
 
     }
-    
-    
-    
-    /*
-     * article_invoice goes here
-    // TODO
-     * before saving invoice save each article_invoice
-     * @override create
-    */
 
-    // TODO add the getter for article_invoice
-    // inverse relationship?
-    /*
-    @Override
-    public Invoice create() throws InvoiceGeneratorException {
-        // for (ArticleInvoice articleInvoice :  ) 
-    }
-    */
 }

@@ -64,8 +64,6 @@ public class MainMenu extends javax.swing.JFrame {
         loadAddresses();
         loadCustomers();
         loadArticles();
-//        loadStatuses();
-//        loadTransactionTypes();
         loadOptionsStatusesTransactions();
     }
 
@@ -1653,6 +1651,11 @@ public class MainMenu extends javax.swing.JFrame {
         lblInvoiceInvoiceInformation.setText("Invoice information");
 
         btnInvoiceSaveInvoice.setText("Save");
+        btnInvoiceSaveInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoiceSaveInvoiceActionPerformed(evt);
+            }
+        });
 
         btnInvoiceDeleteInvoice.setText("Delete");
 
@@ -2711,11 +2714,21 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnInvoicePaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoicePaidActionPerformed
         if (lstInvoiceList.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(rootPane, "No invoice selected.");
             return;
         }
         setInvoiceAsPaid(lstInvoiceList.getSelectedValue());
         JOptionPane.showMessageDialog(rootPane, "Invoice set as paid!");
     }//GEN-LAST:event_btnInvoicePaidActionPerformed
+
+    private void btnInvoiceSaveInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceSaveInvoiceActionPerformed
+        Invoice invoice = lstInvoiceList.getSelectedValue();
+        if (invoice == null) {
+            JOptionPane.showMessageDialog(rootPane, "No invoice selected.");
+            return;
+        }
+        saveInvoice(invoice);
+    }//GEN-LAST:event_btnInvoiceSaveInvoiceActionPerformed
 
     /* Invoice Panel */
     /* ************* */
@@ -2954,6 +2967,25 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void setInvoiceAsPaid(Invoice invoice) {
         txtInvoiceAmountPaid.setText(invoice.getAmountDue().toString());
+    }
+    
+    
+    private void saveInvoice(Invoice invoice) {
+        invoice.setAmountDue(new BigDecimal(txtInvoiceAmountDue.getText()));
+        invoice.setAmountPaid(new BigDecimal(txtInvoiceAmountPaid.getText()));
+        invoice.setSubtotal(new BigDecimal(txtInvoiceSubtotal.getText()));
+        invoice.setTotal(new BigDecimal(txtInvoiceTotal.getText()));
+        invoice.setStatus((Status) cmbInvoiceStatus.getSelectedItem());
+        invoice.setTransactionType((TransactionType) cmbInvoiceTransaction.getSelectedItem());
+        invoiceHandler.setEntity(invoice);
+        try {
+            invoiceHandler.update();
+            JOptionPane.showMessageDialog(rootPane, "Invoice successfully saved!");
+        } catch (InvoiceGeneratorException e) {
+            JOptionPane.showMessageDialog(rootPane, "Invoice could not be saved.");
+            return;
+        }
+        loadInvoices();
     }
 
     /* ************* */
@@ -3373,13 +3405,6 @@ public class MainMenu extends javax.swing.JFrame {
     /* ************** */
 
     /* ******** */
-    /* Invoices */
-
-
-
-    /* ******** */
-
-    /* ******** */
     /* Register */
 
     private Customer registerCustomer;
@@ -3592,9 +3617,14 @@ public class MainMenu extends javax.swing.JFrame {
             invoiceHandler.create();
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Invoice could not be issued.");
             return null;
         }
-        createArticleInvoices(invoice);
+        if (createArticleInvoices(invoice)) {
+            JOptionPane.showMessageDialog(rootPane, "Invoice could not be issued.");
+            return null;
+        }
+        deductArticlesFromInvoice(invoice);
         // clearing stuff we will not need anymore.
         clearRegisterTemporaryInformation();
         JOptionPane.showMessageDialog(rootPane, "Invoice successfully issued!");
@@ -3614,7 +3644,7 @@ public class MainMenu extends javax.swing.JFrame {
         if (warningMessages.size() > 0) {
             StringBuilder sb = new StringBuilder();
             for (String myString : warningMessages) {
-                sb.append(warningMessages).append("\n");
+                sb.append(myString).append("\n");
             }
             if (JOptionPane.showConfirmDialog
                     (rootPane,
@@ -3653,16 +3683,19 @@ public class MainMenu extends javax.swing.JFrame {
         txtRegisterInvoiceTotal.setText("");
     }
 
-    private void createArticleInvoices(Invoice invoice) {
+    private boolean createArticleInvoices(Invoice invoice) {
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
             articleInvoice.setInvoice(invoice);
             articleInvoiceHandler.setEntity(articleInvoice);
             try {
                 articleInvoiceHandler.create();
+                return true;
             } catch (InvoiceGeneratorException e) {
                 e.printStackTrace();
+                return false;
             }
         }
+        return false;
     }
 
     private void populateRegisterStatusesTransactions() {
