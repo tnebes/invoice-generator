@@ -29,7 +29,7 @@ public class Authorisation extends javax.swing.JFrame {
         OperatorHandler operatorHandler = new OperatorHandler();
         try {
             if (operatorHandler.getData().size() == 0) {
-                return;
+                AuthorisationUtil.createDefaultOperator();
             }
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
