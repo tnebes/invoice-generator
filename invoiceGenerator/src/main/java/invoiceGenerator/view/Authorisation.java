@@ -25,7 +25,7 @@ public class Authorisation extends javax.swing.JFrame {
      */
     public Authorisation() {
         initComponents();
-        // TODO TEMP handles the creation of operator if no operators are there.
+        // TEMP handles the creation of operator if no operators are there.
         OperatorHandler operatorHandler = new OperatorHandler();
         try {
             if (operatorHandler.getData().size() == 0) {
@@ -34,9 +34,7 @@ public class Authorisation extends javax.swing.JFrame {
         } catch (InvoiceGeneratorException e) {
             e.printStackTrace();
         }
-        // TODO operator creation on beginning of program should be read from file. FIXME
-        txtUsernameTextField.setText("tnebes@drau.de");
-        // TODO really remove this
+        txtUsernameTextField.setText("");
         pswPasswordTextField.setText("");
         
     }
@@ -137,7 +135,6 @@ public class Authorisation extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // TODO fix the double enter thing.
     private void btnLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginButtonActionPerformed
         if (AuthorisationUtil.login(this, txtUsernameTextField, pswPasswordTextField)) {
             AuthorisationUtil.createMainMenu();

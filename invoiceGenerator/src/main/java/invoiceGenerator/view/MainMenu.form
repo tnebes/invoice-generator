@@ -134,9 +134,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane4" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="pnlRegisterInformationPanel" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="pnlRegisterInformationPanel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel4" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -149,7 +149,7 @@
                                   <Component id="txtRegisterTax" min="-2" pref="70" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                                   <Component id="btnIssueInvoice" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="317" max="32767" attributes="0"/>
                                   <Component id="lblRegisterInvoiceTotal" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtRegisterInvoiceTotal" min="-2" pref="87" max="-2" attributes="0"/>
@@ -283,9 +283,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlRegisterCustomerInfo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="103" max="32767" attributes="0"/>
-                              <Component id="pnlRegisterArticle" min="-2" pref="330" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlRegisterArticle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -434,48 +434,38 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblRegisterNote" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnRegisterAddArticle" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblRegisterNote" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnRegisterAddArticle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblRegisterDiscount" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="lblRegisterQuantity" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="txtRegisterDiscount" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="lblRegisterQuantity" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblRegisterArticle" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtRegisterSelectedArticle" max="32767" attributes="0"/>
-                                                      <Component id="txtRegisterQuantity" max="32767" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="lblRegisterArticle" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtRegisterSelectedArticle" max="32767" attributes="0"/>
+                                              <Component id="txtRegisterQuantity" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblRegisterDiscount" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtRegisterDiscount" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jScrollPane3" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="6" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton1" max="32767" attributes="0"/>
+                                      <Component id="btnRegisterRemoveArticle" pref="79" max="32767" attributes="0"/>
                                       <Component id="btnRegisterClearArticle" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnRegisterRemoveArticle" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -619,9 +609,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtRegisterSubtotalMouseClicked"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRegisterTax">
                   <Properties>
@@ -632,9 +619,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtRegisterTaxMouseClicked"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRegisterInvoiceTotal">
                   <Properties>
@@ -645,9 +629,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtRegisterInvoiceTotalMouseClicked"/>
-                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel4">
                   <Properties>
@@ -671,7 +652,7 @@
                                           <Component id="lblRegisterStatus" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblRegisterTransactionType" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -991,7 +972,7 @@
                                           <Component id="btnAddressSave" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnAddressAdd" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="110" max="32767" attributes="0"/>
+                                          <EmptySpace pref="149" max="32767" attributes="0"/>
                                           <Component id="btnAddressRevert" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnAddressClear" min="-2" max="-2" attributes="0"/>
@@ -1070,7 +1051,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
-                                                          <Component id="lblAddressId" pref="140" max="32767" attributes="0"/>
+                                                          <Component id="lblAddressId" pref="179" max="32767" attributes="0"/>
                                                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" attributes="0">
@@ -1245,7 +1226,7 @@
                                       <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2150,14 +2131,14 @@
                                                       <Component id="txtArticleID" min="-2" pref="80" max="-2" attributes="0"/>
                                                       <Component id="txtArticleWarehouseQuantity" min="-2" pref="80" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace pref="159" max="32767" attributes="0"/>
+                                                  <EmptySpace pref="179" max="32767" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="lblArticleShortNameLabel" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                                                       <Component id="lblArticleWarehouseLocationLabel" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtArticleShortName" pref="215" max="32767" attributes="0"/>
+                                                      <Component id="txtArticleShortName" pref="234" max="32767" attributes="0"/>
                                                       <Component id="txtArticleWarehouseLocation" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -2568,7 +2549,7 @@
                                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel20" min="-2" pref="144" max="-2" attributes="0"/>
-                                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                                      <EmptySpace pref="156" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2854,7 +2835,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jPanel26" min="-2" pref="358" max="-2" attributes="0"/>
+                                      <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel5" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3171,18 +3152,12 @@
                                                   <Component id="txtInvoiceSubtotal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="btnInvoicePaid" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      <Component id="lblInvoiceSubtotal1" min="-2" pref="58" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtInvoiceTotal" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="lblInvoiceSubtotal1" min="-2" pref="58" max="-2" attributes="0"/>
+                                                  <Component id="btnInvoicePaid" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtInvoiceTotal" pref="86" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -3295,7 +3270,7 @@
                       <Component id="pnlStatusPanel" min="-2" pref="248" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlTransactionTypePanel" min="-2" pref="242" max="-2" attributes="0"/>
-                      <EmptySpace pref="370" max="32767" attributes="0"/>
+                      <EmptySpace pref="409" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

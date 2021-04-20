@@ -525,36 +525,30 @@ public class MainMenu extends javax.swing.JFrame {
             pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
-                        .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRegisterNote)
-                            .addComponent(btnRegisterAddArticle))
-                        .addGap(180, 180, 180))
-                    .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
-                        .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
-                                .addComponent(lblRegisterDiscount)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRegisterDiscount))
-                            .addComponent(jScrollPane3)
-                            .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
-                                .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterArticleLayout.createSequentialGroup()
-                                        .addComponent(lblRegisterQuantity)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
-                                        .addComponent(lblRegisterArticle)
-                                        .addGap(30, 30, 30)))
-                                .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRegisterSelectedArticle)
-                                    .addComponent(txtRegisterQuantity))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRegisterNote)
+                    .addComponent(btnRegisterAddArticle)
+                    .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
+                        .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterArticleLayout.createSequentialGroup()
+                                .addComponent(lblRegisterQuantity)
+                                .addGap(18, 18, 18))
+                            .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
+                                .addComponent(lblRegisterArticle)
+                                .addGap(30, 30, 30)))
+                        .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRegisterSelectedArticle)
+                            .addComponent(txtRegisterQuantity)))
+                    .addGroup(pnlRegisterArticleLayout.createSequentialGroup()
+                        .addComponent(lblRegisterDiscount)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRegisterDiscount))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRegisterRemoveArticle, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                     .addComponent(btnRegisterClearArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegisterRemoveArticle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(7, 7, 7))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlRegisterArticleLayout.setVerticalGroup(
             pnlRegisterArticleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,9 +589,9 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(pnlRegisterInformationPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlRegisterCustomerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRegisterArticle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlRegisterInformationPanelLayout.setVerticalGroup(
             pnlRegisterInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,29 +606,14 @@ public class MainMenu extends javax.swing.JFrame {
         lblRegisterSubtotal.setText("Subtotal");
 
         txtRegisterSubtotal.setEditable(false);
-        txtRegisterSubtotal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtRegisterSubtotalMouseClicked(evt);
-            }
-        });
 
         lblRegisterTax.setText("Tax");
 
         txtRegisterTax.setEditable(false);
-        txtRegisterTax.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtRegisterTaxMouseClicked(evt);
-            }
-        });
 
         lblRegisterInvoiceTotal.setText("Total");
 
         txtRegisterInvoiceTotal.setEditable(false);
-        txtRegisterInvoiceTotal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtRegisterInvoiceTotalMouseClicked(evt);
-            }
-        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -655,7 +634,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRegisterStatus)
                             .addComponent(lblRegisterTransactionType))
-                        .addGap(0, 139, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -695,8 +674,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
                     .addGroup(pnlRegisterLayout.createSequentialGroup()
-                        .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlRegisterInformationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterLayout.createSequentialGroup()
                         .addComponent(lblRegisterSubtotal)
@@ -708,7 +687,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(txtRegisterTax, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(143, 143, 143)
                         .addComponent(btnIssueInvoice)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
                         .addComponent(lblRegisterInvoiceTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtRegisterInvoiceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -866,7 +845,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(btnAddressSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddressAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(btnAddressRevert)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddressClear)
@@ -915,7 +894,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(lblAddressId, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(lblAddressId, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                 .addGap(76, 76, 76))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1432,7 +1411,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 151, Short.MAX_VALUE)))
+                        .addGap(0, 190, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         customerPanelLayout.setVerticalGroup(
@@ -1629,13 +1608,13 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtArticleID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtArticleWarehouseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblArticleShortNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblArticleWarehouseLocationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtArticleShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(txtArticleShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                             .addComponent(txtArticleWarehouseLocation)))
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addComponent(lblArticleLongNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2016,7 +1995,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         pnlInvoiceArticleInformationLayout.setVerticalGroup(
             pnlInvoiceArticleInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2240,15 +2219,11 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(txtInvoiceAmountPaid)
                     .addComponent(txtInvoiceSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnInvoicePaid)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblInvoiceSubtotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInvoiceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblInvoiceSubtotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInvoicePaid))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtInvoiceTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -2299,7 +2274,7 @@ public class MainMenu extends javax.swing.JFrame {
             pnlInvoiceInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInvoiceInformationLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2640,7 +2615,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(pnlStatusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTransactionTypePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         jpOptionsTabLayout.setVerticalGroup(
             jpOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2764,7 +2739,6 @@ public class MainMenu extends javax.swing.JFrame {
         try {
             issueInvoice();
         } catch (InvoiceGeneratorException e) {
-            // TODO handle this
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnIssueInvoiceActionPerformed
@@ -2837,18 +2811,6 @@ public class MainMenu extends javax.swing.JFrame {
         removeLastRowRegisterTable();
         updateRegisterTextBoxes();
     }//GEN-LAST:event_btnRegisterRemoveLastArticleActionPerformed
-
-    private void txtRegisterSubtotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterSubtotalMouseClicked
-        // TODO copy to clipboard
-    }//GEN-LAST:event_txtRegisterSubtotalMouseClicked
-
-    private void txtRegisterTaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterTaxMouseClicked
-        // TODO copy to clipboard
-    }//GEN-LAST:event_txtRegisterTaxMouseClicked
-
-    private void txtRegisterInvoiceTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterInvoiceTotalMouseClicked
-        // TODO copy to clipboard
-    }//GEN-LAST:event_txtRegisterInvoiceTotalMouseClicked
 
     private void invoicePanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_invoicePanelComponentShown
         loadInvoices();
@@ -3449,7 +3411,6 @@ public class MainMenu extends javax.swing.JFrame {
         status.setName(invoiceStatusTransactionTypeDefaultFilter);
         transactionType.setName(invoiceStatusTransactionTypeDefaultFilter);
         // temporary files for choosing stuff.
-        // TODO this is absolutely terrible.
         loadStatuses(cmbInvoiceStatusFilter);
         loadTransactionTypes(cmbInvoiceTransactionFilter);
         cmbInvoiceStatusFilter.addItem(status);
@@ -3554,7 +3515,7 @@ public class MainMenu extends javax.swing.JFrame {
         articleInvoice.getArticle().setWarehouseQuantity(
                 articleInvoice.getArticle().getWarehouseQuantity() - articleQuantityDifference
         );
-        // TODO temp code looks horrible but works
+        // temp code looks horrible but works
         try {
             articleHandler.setEntity(articleInvoice.getArticle());
             articleHandler.update();
@@ -3591,12 +3552,52 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(rootPane, "Something went wrong while deleting article in invoice.");
         }
+        // temp deduction from stockpile.
+        Article articleFromInvoice = articleInvoice.getArticle();
+        articleFromInvoice.setWarehouseQuantity(articleFromInvoice.getWarehouseQuantity() + articleInvoice.getQuantity());
+        try {
+            articleHandler.setEntity(articleFromInvoice);
+            articleHandler.update();
+        } catch (InvoiceGeneratorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong while updating article quantity in warehouse.");
+        }
     }
 
     private void deleteArticleInvoiceUpdate(ArticleInvoice articleInvoice) {
+        Invoice invoice = articleInvoice.getInvoice();
         deleteArticleInvoice(articleInvoice);
-        showInvoiceInformation(articleInvoice.getInvoice());
-        updateInvoiceArticles(articleInvoice.getInvoice());
+        updateInvoicePrice(invoice);
+        showInvoiceInformation(invoice);
+        updateInvoiceArticles(invoice);
+    }
+
+    private void updateInvoicePrice(Invoice invoice) {
+        calculateInvoiceTotal(invoice);
+        calculateInvoiceSubtotal(invoice);
+        setInvoiceAmountPaid(invoice);
+    }
+
+    private void setInvoiceAmountPaid(Invoice invoice) {
+        invoice.setAmountDue(invoice.getTotal());
+    }
+
+    private void calculateInvoiceSubtotal(Invoice invoice) {
+        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+        BigDecimal subtotal = BigDecimal.ZERO;
+        for (ArticleInvoice articleInvoice : articleInvoices) {
+            subtotal = subtotal.add(articleInvoice.getWholesalePrice().multiply(BigDecimal.valueOf(articleInvoice.getQuantity())));
+        }
+        invoice.setSubtotal(subtotal);
+    }
+
+    private void calculateInvoiceTotal(Invoice invoice) {
+        List<ArticleInvoice> articleInvoices = invoice.getArticleInvoice();
+        BigDecimal total = BigDecimal.ZERO;
+        for (ArticleInvoice articleInvoice : articleInvoices) {
+            total = total.add(articleInvoice.getTotal());
+        }
+        invoice.setTotal(total);
     }
 
     private void deleteInvoice(Invoice invoice) {
@@ -4144,10 +4145,6 @@ public class MainMenu extends javax.swing.JFrame {
         txtRegisterArticleNote.setText("");
     }
 
-    private void refreshRegisterTable() {
-        // TODO is this necessary?
-    }
-
     private void addArticleToInvoice(Article registerArticle) {
         try {
             ArticleInvoice newArticleInvoice = collectRegisterArticleInformation(registerArticle);
@@ -4176,7 +4173,7 @@ public class MainMenu extends javax.swing.JFrame {
     private BigDecimal getRegisterInvoiceTax() {
         BigDecimal total = new BigDecimal(0L);
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            total = total.add(articleInvoice.getWholesalePrice().multiply(articleInvoice.getArticle().getCalculableTaxRate())).setScale(2, RoundingMode.HALF_UP);
+            total = total.add(articleInvoice.getWholesalePrice().multiply(articleInvoice.getArticle().getCalculableTaxRate()).multiply(BigDecimal.valueOf(articleInvoice.getQuantity()))).setScale(2, RoundingMode.HALF_UP);
         }
         return total;
     }
@@ -4184,7 +4181,7 @@ public class MainMenu extends javax.swing.JFrame {
     private BigDecimal getRegisterInvoiceSubtotal() {
         BigDecimal total = new BigDecimal(0L);
         for (ArticleInvoice articleInvoice : registerArticleInvoices) {
-            total = total.add(articleInvoice.getWholesalePrice());
+            total = total.add(articleInvoice.getWholesalePrice().multiply(BigDecimal.valueOf(articleInvoice.getQuantity())));
         }
         return total;
     }
@@ -4404,9 +4401,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
         session.getTransaction().commit();
-        // TODO this should be substantially improved.
         JOptionPane.showMessageDialog(rootPane, "Database purged. A new operator must now be added manually to database.");
-        // TODO temporary?
         System.exit(1);
     }
 
@@ -4506,7 +4501,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void removeOptionsStatus(Status status) {
-        // TODO add check for used statuses (fk constraints)
         statusHandler.setEntity(status);
         try {
             statusHandler.delete();
@@ -4602,7 +4596,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     private void removeOptionsTransactionType(TransactionType transactionType) {
-        // TODO add check for used transaction types (fk constraints)
         transactionTypeHandler.setEntity(transactionType);
         try {
             transactionTypeHandler.delete();

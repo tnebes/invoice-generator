@@ -25,7 +25,6 @@ public class OperatorHandler extends Handler<Operator> {
      */
     public Operator getOperator(String email, char[] password) {
         
-        // TODO and Operator;
         Operator operator = (Operator) session
                 .createQuery("from operator where email = :email")
                 .setParameter("email", email)

@@ -29,7 +29,6 @@ public class CustomerHandler extends Handler<Customer> {
                 "or lower(middle_name) like lower(:searchToken) " +
                 "or lower(name) like lower(:searchToken)" +
                 "or lower(national_id_number) like lower(:searchToken)").setParameter("searchToken", "%" + token + "%").list();
-        // TODO this is badness.
         Long tokenID;
         try {
             tokenID = Long.parseLong(token);
