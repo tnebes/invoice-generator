@@ -434,9 +434,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblRegisterNote" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnRegisterAddArticle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
@@ -448,24 +446,31 @@
                                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtRegisterQuantity" pref="172" max="32767" attributes="0"/>
                                               <Component id="txtRegisterSelectedArticle" max="32767" attributes="0"/>
-                                              <Component id="txtRegisterQuantity" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblRegisterDiscount" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtRegisterDiscount" max="32767" attributes="0"/>
+                                      <Component id="lblRegisterNote" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnRegisterAddArticle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblRegisterDiscount" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtRegisterDiscount" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jScrollPane3" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane3" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="6" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnRegisterRemoveArticle" pref="79" max="32767" attributes="0"/>
-                                      <Component id="btnRegisterClearArticle" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jButton1" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
+                                          <Component id="btnRegisterClearArticle" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnRegisterRemoveArticle" min="-2" pref="79" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
