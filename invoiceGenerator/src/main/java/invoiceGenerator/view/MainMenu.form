@@ -1048,40 +1048,35 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="lblAddressId" pref="179" max="32767" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="lblAddressCountry" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="lblAddressCity1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="lblAddressStreetNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="lblAddressStreet" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="lblAddressStreetLetter" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txtAddressStreet" alignment="1" pref="266" max="32767" attributes="0"/>
-                                                      <Component id="txtAddressStreetLetter" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
-                                                      <Component id="txtAddressId" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtAddressZIP" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtAddressStreetNumber" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtAddressCountry" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="cbAddressType" min="-2" pref="130" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblAddressCity" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblAddressStreetNumber" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtAddressCity" min="-2" pref="265" max="-2" attributes="0"/>
+                                                  <Component id="txtAddressStreetNumber" min="-2" pref="266" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="lblAddressCity" max="32767" attributes="0"/>
+                                                      <Component id="lblAddressStreet" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblAddressId" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblAddressStreetLetter" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblAddressCity1" max="32767" attributes="0"/>
+                                                      <Component id="lblAddressCountry" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="txtAddressStreet" alignment="1" pref="266" max="32767" attributes="0"/>
+                                                          <Component id="txtAddressStreetLetter" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
+                                                          <Component id="txtAddressId" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="txtAddressZIP" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="txtAddressCountry" alignment="0" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="txtAddressCity" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1104,6 +1099,11 @@
                                               <Component id="txtAddressStreet" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtAddressStreetNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAddressStreetNumber" min="-2" pref="24" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="lblAddressStreetLetter" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                               <Component id="txtAddressStreetLetter" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1118,12 +1118,7 @@
                                               <Component id="txtAddressZIP" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblAddressCity1" min="-2" pref="24" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtAddressStreetNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblAddressStreetNumber" min="-2" pref="24" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="lblAddressCountry" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                               <Component id="txtAddressCountry" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1941,15 +1936,21 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="txtArticleRetailPrice" alignment="0" pref="146" max="32767" attributes="0"/>
-                                              <Component id="txtArticleWholesalePrice" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtArticleTaxRate" max="32767" attributes="0"/>
+                                              <Component id="txtArticleWholesalePrice" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblArticleShortDescriptionLabel3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="btnArticleCalculateCost" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lblArticleShortDescriptionLabel3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnArticleCalculateCost" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1964,16 +1965,14 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="lblArticleShortDescriptionLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="txtArticleRetailPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblArticleShortDescriptionLabel4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Component id="txtArticleWholesalePrice" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtArticleWholesalePrice" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="lblArticleShortDescriptionLabel4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                                  <Component id="btnArticleCalculateCost" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblArticleShortDescriptionLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Component id="txtArticleRetailPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnArticleCalculateCost" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
@@ -3482,6 +3481,7 @@
                     <Component class="javax.swing.JTextArea" name="txtStatusLongDescription">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
                     </Component>

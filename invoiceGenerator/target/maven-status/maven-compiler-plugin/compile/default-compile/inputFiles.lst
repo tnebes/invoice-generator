@@ -11,8 +11,11 @@ C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoice
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\view\MainMenu.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\util\InitialFixtures.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\model\Invoice.java
+C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\view\viewUtil\ArticlePicker.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\util\AuthorisationUtil.java
+C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\view\viewUtil\CustomerPicker.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\model\Address.java
+C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\controller\ArticleInvoiceHandler.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\model\Article.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\controller\CustomerHandler.java
 C:\Users\tnebes\Desktop\invoice-generator\invoiceGenerator\src\main\java\invoiceGenerator\controller\Handler.java
